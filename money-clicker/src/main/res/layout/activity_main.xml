@@ -29,14 +29,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/money"
-        app:srcCompat="@drawable/cookie" />
+        app:srcCompat="@drawable/cookie"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/money"
         android:layout_width="200dp"
         android:layout_height="20dp"
         android:layout_marginTop="48dp"
-        android:text="0"
+        android:text="@string/zero"
 
         android:textAlignment="textEnd"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,12 +49,44 @@
         android:id="@+id/dollar"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:text="$"
+        android:text="@string/dollar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/money"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.161" />
+
+    <Button
+        android:id="@+id/adder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/adder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cookie"
+        app:layout_constraintVertical_bias="0.513" />
+
+    <TextView
+        android:id="@+id/costOfAdder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cost"
+        app:layout_constraintBottom_toTopOf="@+id/adder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cookie" />
+
+    <TextView
+        android:id="@+id/clicked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Clicked"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adder"
+        app:layout_constraintVertical_bias="0.407" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

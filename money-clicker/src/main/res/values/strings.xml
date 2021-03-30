@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">money-clicker</string>
     <string name="money">Money you have:</string>
+    <string name="dollar">$</string>
+    <string name="adder">Increase click</string>
+    <string name="zero">0</string>
+    <string name="cost">Cost: 5 - Adder value: 1</string>
+    <string name="Clicked">Clicked: 0</string>
 </resources>
