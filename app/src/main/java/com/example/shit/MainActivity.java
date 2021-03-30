@@ -12,13 +12,20 @@ public class MainActivity extends AppCompatActivity {
     private EditText editText;
     private TextView textView;
     private Button button;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         editText = findViewById(R.id.editTextTextPersonName);
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText("");
+            }
+        });
         button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
