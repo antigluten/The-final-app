@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,7 +14,8 @@
         android:layout_marginTop="40dp"
         android:fontFamily="sans-serif"
         android:text="@string/money"
-        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:typeface="monospace"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,41 +29,32 @@
         android:layout_height="200sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/money"
-        app:srcCompat="@drawable/cookie"
-        android:contentDescription="TODO" />
+        app:layout_constraintVertical_bias="0.156"
+        app:srcCompat="@drawable/cookie" />
 
     <TextView
         android:id="@+id/money"
-        android:layout_width="200dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
         android:layout_marginTop="48dp"
         android:text="@string/zero"
-
         android:textAlignment="textEnd"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/dollar"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:text="@string/dollar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/money"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.161" />
 
     <Button
         android:id="@+id/adder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/adder"
+        app:backgroundTint="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,6 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cost"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/adder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,6 +76,7 @@
         android:id="@+id/clicked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:text="@string/Clicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

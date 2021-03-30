@@ -34,11 +34,12 @@ public class MainActivity extends AppCompatActivity {
         money = findViewById(R.id.money);
         ImageView cookie = findViewById(R.id.cookie);
         cookie.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 clickStats();
                 dollars += adderValue;
-                money.setText(String.valueOf(dollars));
+                money.setText("$ " + String.valueOf(dollars));
             }
         });
         Button adder = findViewById(R.id.adder);
