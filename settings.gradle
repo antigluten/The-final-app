@@ -1,2 +1,3 @@
+include ':money-clicker'
 include ':app'
 rootProject.name = "shit"

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">money-clicker</string>
+    <string name="money">Money you have:</string>
+</resources>
