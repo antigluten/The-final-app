@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -29,82 +30,62 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    String TAG = "TAG";
+    final String TAG = "FAILURE";
+
+    private static final String keyUser = "User";
+    private static final String keyName = "Name";
+    private static final String keyLast = "Last";
+    private static final String keyAge = "Age";
+
+    EditText name;
+    EditText last;
+    EditText age;
+    Button submit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText name = findViewById(R.id.name);
-        EditText last = findViewById(R.id.lastName);
-        EditText age = findViewById(R.id.age);
+        name = findViewById(R.id.name);
+        last = findViewById(R.id.lastName);
+        age = findViewById(R.id.age);
+        submit = findViewById(R.id.button);
 
-//        User person = new User("Vladimir", "Louis", 18);
+        FirebaseFirestore base = FirebaseFirestore.getInstance();
 
-        Map<String, Object> user = new HashMap<>();
-        user.put("Name", "Vladimir");
-        user.put("Last", "Louis");
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        submit.setOnClickListener(new View.OnClickListener() {
+            int id = 0;
+            @Override
+            public void onClick(View v) {
+                String nameA = name.getText().toString().trim();
+                String lastA = last.getText().toString().trim();
+                int ageA = Integer.parseInt(age.getText().toString().trim());
+                User user = new User(nameA, lastA, ageA);
 
-        db.collection("users")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("TAG", "Error adding document", e);
-                    }
-                });
+                Map<String, Object> data = new HashMap<>();
+                data.put(keyName, nameA);
+                data.put(keyLast, lastA);
+                data.put(keyAge, ageA);
 
-//        Button button = findViewById(R.id.button);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) throws NumberFormatException {
-//                int value = Integer.parseInt(age.toString());
-//                User person = new User(name.toString(), last.toString(), value);;
-//
-//
-//                db.collection("users")
-//                        .add(person)
-//                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                            @Override
-//                            public void onSuccess(DocumentReference documentReference) {
-//                                Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
-//                            }
-//                        })
-//                        .addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                Log.w("TAG", "Error adding document", e);
-//                            }
-//                        });
-//            }
-//        });
-
-
-
-
-        db.collection("users")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
+                base.collection("learning")
+                        .document(String.valueOf(id))
+                        .set(data)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
                             }
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d(TAG, "onFailure" + e.toString());
+                            }
+                        });
+                id++;
+            }
+        });
     }
-
-
 }
