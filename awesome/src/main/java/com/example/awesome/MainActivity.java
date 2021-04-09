@@ -3,8 +3,12 @@ package com.example.awesome;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -19,6 +23,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.example.awesome.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,33 +36,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
-//
-//        myRef.setValue("Hello, World!");
-//
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-//                String value = dataSnapshot.getValue(String.class);
-//                Log.d("DEBUG: ", "Value is: " + value);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                // Failed to read value
-//                Log.w("DEBUG: ", "Failed to read value.", error.toException());
-//            }
-//        });
+        EditText name = findViewById(R.id.name);
+        EditText last = findViewById(R.id.lastName);
+        EditText age = findViewById(R.id.age);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        User person = new User("Vladimir", "Louis", 18);
 
         Map<String, Object> user = new HashMap<>();
-        user.put("first", "Ada");
-        user.put("last", "Lovelace");
-        user.put("born", 1815);
+        user.put("Name", "Vladimir");
+        user.put("Last", "Louis");
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         db.collection("users")
                 .add(user)
@@ -73,6 +61,33 @@ public class MainActivity extends AppCompatActivity {
                         Log.w("TAG", "Error adding document", e);
                     }
                 });
+
+//        Button button = findViewById(R.id.button);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) throws NumberFormatException {
+//                int value = Integer.parseInt(age.toString());
+//                User person = new User(name.toString(), last.toString(), value);;
+//
+//
+//                db.collection("users")
+//                        .add(person)
+//                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                            @Override
+//                            public void onSuccess(DocumentReference documentReference) {
+//                                Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
+//                            }
+//                        })
+//                        .addOnFailureListener(new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull Exception e) {
+//                                Log.w("TAG", "Error adding document", e);
+//                            }
+//                        });
+//            }
+//        });
+
+
 
 
         db.collection("users")
