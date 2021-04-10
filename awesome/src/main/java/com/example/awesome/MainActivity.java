@@ -3,12 +3,14 @@ package com.example.awesome;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -41,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
     EditText last;
     EditText age;
     Button submit;
-
+    Button getData;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,39 +56,57 @@ public class MainActivity extends AppCompatActivity {
         last = findViewById(R.id.lastName);
         age = findViewById(R.id.age);
         submit = findViewById(R.id.button);
+        getData = findViewById(R.id.getData);
+        textView = findViewById(R.id.tx1);
 
         FirebaseFirestore base = FirebaseFirestore.getInstance();
+        DocumentReference ref = base.collection("learning").document("checking");
 
         submit.setOnClickListener(new View.OnClickListener() {
-            int id = 0;
             @Override
             public void onClick(View v) {
                 String nameA = name.getText().toString().trim();
                 String lastA = last.getText().toString().trim();
                 int ageA = Integer.parseInt(age.getText().toString().trim());
-                User user = new User(nameA, lastA, ageA);
 
-                Map<String, Object> data = new HashMap<>();
+                Map<String, String> data = new HashMap<>();
+
                 data.put(keyName, nameA);
                 data.put(keyLast, lastA);
-                data.put(keyAge, ageA);
 
-                base.collection("learning")
-                        .document(String.valueOf(id))
-                        .set(data)
+                ref.set(data)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @SuppressLint("ShowToast")
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this, "Successful", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Log.d(TAG, "onFailure" + e.toString());
+                                Log.e(TAG, "OnFailure: " + e.toString());
                             }
                         });
-                id++;
+            }
+        });
+        getData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @SuppressLint({"ShowToast", "SetTextI18n"})
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            if (documentSnapshot.exists()) {
+                                String name = documentSnapshot.getString(keyName);
+                                String last = documentSnapshot.getString(keyLast);
+
+                                textView.setText("Name is " + name + " Last name is " + last);
+                            } else {
+                                Toast.makeText(MainActivity.this, "No data exists", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
             }
         });
     }
