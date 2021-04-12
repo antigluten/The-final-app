@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Андрей\\.gradle\\caches\\transforms-2\\files-2.1\\f5d6f8ea6635d19df7df207dd1ef7715\\jetified-library-1.0.0\\res\\values-w820dp-v13\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "183",
+                        "endColumns": "57",
+                        "endOffsets": "236"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "57",
+                        "endOffsets": "108"
+                    }
+                }
+            ]
+        }
+    ]
+}

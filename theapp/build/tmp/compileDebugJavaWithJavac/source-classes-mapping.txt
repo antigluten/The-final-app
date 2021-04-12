@@ -1,0 +1,88 @@
+com/example/theapp/adapters/MyAdapter.java
+ com.example.theapp.adapters.MyAdapter
+com/example/theapp/fragments/MenuBottomSheetDialogFragment.java
+ com.example.theapp.fragments.MenuBottomSheetDialogFragment
+ com.example.theapp.fragments.MenuBottomSheetDialogFragment$1
+com/example/theapp/fragments/StatisticsFragment.java
+ com.example.theapp.fragments.StatisticsFragment
+com/example/theapp/databinding/ItemDeckBinding.java
+ com.example.theapp.databinding.ItemDeckBinding
+com/example/theapp/User.java
+ com.example.theapp.User
+com/example/theapp/adapters/MyViewHolder.java
+ com.example.theapp.adapters.MyViewHolder
+com/example/theapp/DeckBrowsingCardsActivity.java
+ com.example.theapp.DeckBrowsingCardsActivity
+com/example/theapp/databinding/FragmentProfileBinding.java
+ com.example.theapp.databinding.FragmentProfileBinding
+com/example/theapp/databinding/FragmentDeckBinding.java
+ com.example.theapp.databinding.FragmentDeckBinding
+com/example/theapp/databinding/ActivityBrowsingDeckBinding.java
+ com.example.theapp.databinding.ActivityBrowsingDeckBinding
+com/example/theapp/databinding/ActivityMainBinding.java
+ com.example.theapp.databinding.ActivityMainBinding
+com/example/theapp/databinding/FragmentStatisticsBinding.java
+ com.example.theapp.databinding.FragmentStatisticsBinding
+com/example/theapp/CardTest.java
+ com.example.theapp.CardTest
+com/example/theapp/databinding/ItemBrowsingCardsBinding.java
+ com.example.theapp.databinding.ItemBrowsingCardsBinding
+com/example/theapp/databinding/ItemTestBinding.java
+ com.example.theapp.databinding.ItemTestBinding
+com/example/theapp/SignUpActivity.java
+ com.example.theapp.SignUpActivity
+com/example/theapp/data/DatabaseHelper.java
+ com.example.theapp.data.DatabaseHelper
+com/example/theapp/databinding/ActivityLoginBinding.java
+ com.example.theapp.databinding.ActivityLoginBinding
+com/example/theapp/databinding/MenuBottomSheetDialogLayoutBinding.java
+ com.example.theapp.databinding.MenuBottomSheetDialogLayoutBinding
+com/example/theapp/databinding/ItemRecyclerViewBinding.java
+ com.example.theapp.databinding.ItemRecyclerViewBinding
+com/example/theapp/adapters/RecyclerViewAdapterCard.java
+ com.example.theapp.adapters.RecyclerViewAdapterCard
+ com.example.theapp.adapters.RecyclerViewAdapterCard$ViewHolder
+com/example/theapp/BuildConfig.java
+ com.example.theapp.BuildConfig
+com/example/theapp/fragments/ProfileFragment.java
+ com.example.theapp.fragments.ProfileFragment
+ com.example.theapp.fragments.ProfileFragment$1
+com/example/theapp/MainActivity.java
+ com.example.theapp.MainActivity
+ com.example.theapp.MainActivity$1
+com/example/theapp/data/Card.java
+ com.example.theapp.data.Card
+com/example/theapp/LogInActivity.java
+ com.example.theapp.LogInActivity
+ com.example.theapp.LogInActivity$1
+ com.example.theapp.LogInActivity$1$1
+ com.example.theapp.LogInActivity$2
+com/example/theapp/databinding/ActivitySignupBinding.java
+ com.example.theapp.databinding.ActivitySignupBinding
+com/example/theapp/DeckButtonDialogActivity.java
+ com.example.theapp.DeckButtonDialogActivity
+ com.example.theapp.DeckButtonDialogActivity$1
+ com.example.theapp.DeckButtonDialogActivity$2
+com/example/theapp/time/MyTimeAdapter.java
+ com.example.theapp.time.MyTimeAdapter
+com/example/theapp/adapters/RecyclerViewAdapterDecks.java
+ com.example.theapp.adapters.RecyclerViewAdapterDecks
+ com.example.theapp.adapters.RecyclerViewAdapterDecks$DeckViewHolder
+ com.example.theapp.adapters.RecyclerViewAdapterDecks$DeckViewHolder$1
+ com.example.theapp.adapters.RecyclerViewAdapterDecks$DeckViewHolder$2
+ com.example.theapp.adapters.RecyclerViewAdapterDecks$OnItemClickListener
+ com.example.theapp.adapters.RecyclerViewAdapterDecks$OnItemLongClickListener
+com/example/theapp/fragments/DeckFragment.java
+ com.example.theapp.fragments.DeckFragment
+ com.example.theapp.fragments.DeckFragment$1
+ com.example.theapp.fragments.DeckFragment$2
+ com.example.theapp.fragments.DeckFragment$3
+ com.example.theapp.fragments.DeckFragment$4
+com/example/theapp/databinding/CardTestBinding.java
+ com.example.theapp.databinding.CardTestBinding
+com/example/theapp/databinding/DialogRenameDeckBinding.java
+ com.example.theapp.databinding.DialogRenameDeckBinding
+com/example/theapp/data/Deck.java
+ com.example.theapp.data.Deck
+com/example/theapp/databinding/DeckDialogBinding.java
+ com.example.theapp.databinding.DeckDialogBinding

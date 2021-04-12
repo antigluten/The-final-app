@@ -5,6 +5,7 @@
       <module name="shit.app" target="15" />
       <module name="shit.awesome" target="15" />
       <module name="shit.money-clicker" target="15" />
+      <module name="shit.shouldwork" target="15" />
     </bytecodeTargetLevel>
   </component>
 </project>

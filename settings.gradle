@@ -1,3 +1,4 @@
+include ':shouldwork'
 include ':Algorithm'
 include ':awesome'
 include ':money-clicker'

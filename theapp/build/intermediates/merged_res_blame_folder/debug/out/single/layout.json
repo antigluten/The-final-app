@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_deck.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\item_deck.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\dialog_rename_deck.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\dialog_rename_deck.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\card_test.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\card_test.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_deck.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\fragment_deck.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\menu_bottom_sheet_dialog_layout.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\menu_bottom_sheet_dialog_layout.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_profile.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\fragment_profile.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\deck_dialog.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\deck_dialog.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_browsing_deck.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\activity_browsing_deck.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_recycler_view.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\item_recycler_view.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_browsing_cards.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\item_browsing_cards.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_test.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\item_test.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_statistics.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\fragment_statistics.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_login.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_signup.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\activity_signup.xml"
+    }
+]
