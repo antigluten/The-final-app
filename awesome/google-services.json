@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "117402913273",
+    "firebase_url": "https://awesome-e28ca-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "awesome-e28ca",
+    "storage_bucket": "awesome-e28ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117402913273:android:fa209c49433b7f805e9528",
+        "android_client_info": {
+          "package_name": "com.example.awesome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "117402913273-9pcut5oo4t8g7h9en1oo699d2km48vk0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqxyC8XkAH7MaQNN5LbdZJ80fHkVQVn8Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "117402913273-9pcut5oo4t8g7h9en1oo699d2km48vk0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

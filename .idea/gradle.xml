@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/awesome" />
             <option value="$PROJECT_DIR$/money-clicker" />
+            <option value="$PROJECT_DIR$/theapp" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
