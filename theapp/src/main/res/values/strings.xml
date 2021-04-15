@@ -3,4 +3,7 @@
     <string name="profile">Profile</string>
     <string name="statistics">Statistics</string>
     <string name="decks">Decks</string>
+    <string name="profile_name">Name</string>
+    <string name="profile_surname">Surname</string>
+    <string name="profile_button">Submit</string>
 </resources>

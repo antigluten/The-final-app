@@ -1,6 +1,2 @@
 include ':theapp'
-include ':Algorithm'
-include ':awesome'
-include ':money-clicker'
-include ':app'
 rootProject.name = "shit"

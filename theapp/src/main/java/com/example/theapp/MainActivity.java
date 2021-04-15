@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.theapp.fragments.ProfileFragment;
 import com.example.theapp.fragments.StatisticsFragment;
 import com.example.theapp.fragments.DeckFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,6 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
     Fragment deckFragment = new DeckFragment();
     Fragment statisticsFragment = new StatisticsFragment();
+    Fragment profileFragment = new ProfileFragment();
 
     Fragment currentFragment = deckFragment;
 
@@ -30,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .add(R.id.frame_content, deckFragment, "deck")
                 .add(R.id.frame_content, statisticsFragment, "stats")
+                .add(R.id.frame_content, profileFragment, "profile")
                 .hide(statisticsFragment)
+                .hide(profileFragment)
                 .commit();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -45,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navigation_stats:
                         changeFragment(statisticsFragment);
                         return true;
+                    case R.id.navigation_profile:
+                        changeFragment(profileFragment);
                 }
                 return false;
             }

@@ -8,6 +8,6 @@
         android:id="@+id/navigation_stats"
         android:title="@string/statistics"/>
     <item
-        android:id="@+id/navigation_notification"
-        android:title="fragment_notification" />
+        android:id="@+id/navigation_profile"
+        android:title="@string/profile" />
 </menu>

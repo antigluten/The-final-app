@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.7">
+    <bytecodeTargetLevel target="15">
       <module name="shit.app" target="15" />
       <module name="shit.awesome" target="15" />
       <module name="shit.money-clicker" target="15" />
-      <module name="shit.theapp" target="15" />
     </bytecodeTargetLevel>
   </component>
 </project>
