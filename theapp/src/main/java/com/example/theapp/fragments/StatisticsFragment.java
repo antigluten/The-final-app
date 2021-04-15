@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.example.theapp.R;
 
 
-public class CounterFragment extends Fragment {
+public class StatisticsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

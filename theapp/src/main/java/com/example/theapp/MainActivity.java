@@ -3,26 +3,23 @@ package com.example.theapp;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.theapp.R;
-import com.example.theapp.fragments.CounterFragment;
-import com.example.theapp.fragments.HomeFragment;
+import com.example.theapp.fragments.StatisticsFragment;
+import com.example.theapp.fragments.DeckFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    Fragment homeFragment = new HomeFragment();
-    Fragment counterFragment = new CounterFragment();
+    Fragment deckFragment = new DeckFragment();
+    Fragment statisticsFragment = new StatisticsFragment();
 
-    Fragment current = homeFragment;
+    Fragment currentFragment = deckFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.frame_content, homeFragment, "home")
-                .add(R.id.frame_content, counterFragment, "counter")
-                .hide(counterFragment)
+                .add(R.id.frame_content, deckFragment, "deck")
+                .add(R.id.frame_content, statisticsFragment, "stats")
+                .hide(statisticsFragment)
                 .commit();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -42,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.navigation_home:
-                        changeFragment(homeFragment);
+                    case R.id.navigation_deck:
+                        changeFragment(deckFragment);
                         return true;
-                    case R.id.navigation_counter:
-                        changeFragment(counterFragment);
+                    case R.id.navigation_stats:
+                        changeFragment(statisticsFragment);
                         return true;
                 }
                 return false;
@@ -55,16 +52,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeFragment(Fragment newFragment) {
-//      FragmentTransaction transaction = manager.beginTransaction();
-//      transaction.hide(current);
-//      transaction.show(homeFragment);
-//      transaction.commit();
         getSupportFragmentManager()
                 .beginTransaction()
-                .hide(current)
+                .hide(currentFragment)
                 .show(newFragment)
                 .commit();
-        current = newFragment;
+        currentFragment = newFragment;
     }
 
 

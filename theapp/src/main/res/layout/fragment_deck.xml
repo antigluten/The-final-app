@@ -4,11 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#308A39"
-    tools:context="com.example.theapp.fragments.HomeFragment">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_blank_fragment" />
+    tools:context="com.example.theapp.fragments.DeckFragment">
 
 </FrameLayout>
