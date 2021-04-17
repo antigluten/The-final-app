@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,10 +12,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.theapp.database.AppDatabase;
+import com.example.theapp.database.User;
+import com.example.theapp.database.UserDao;
 import com.example.theapp.fragments.ProfileFragment;
 import com.example.theapp.fragments.StatisticsFragment;
 import com.example.theapp.fragments.DeckFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     Fragment deckFragment = new DeckFragment();
@@ -55,6 +61,13 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        //TODO make a database
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "database-name").build();
+
+        UserDao userDao = db.userDao();
+        List<User> users = userDao.getAll();
     }
 
     private void changeFragment(Fragment newFragment) {
