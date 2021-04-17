@@ -10,11 +10,14 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.theapp.database.AppDatabase;
-import com.example.theapp.database.User;
-import com.example.theapp.database.UserDao;
+import com.example.theapp.database.UserModel;
 import com.example.theapp.fragments.ProfileFragment;
 import com.example.theapp.fragments.StatisticsFragment;
 import com.example.theapp.fragments.DeckFragment;
@@ -29,10 +32,16 @@ public class MainActivity extends AppCompatActivity {
 
     Fragment currentFragment = deckFragment;
 
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -57,18 +66,20 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.navigation_profile:
                         changeFragment(profileFragment);
+
+
                 }
                 return false;
             }
         });
 
-        //TODO make a database
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "database-name").build();
 
-        UserDao userDao = db.userDao();
-        List<User> users = userDao.getAll();
+
     }
+
+
+
+
 
     private void changeFragment(Fragment newFragment) {
         getSupportFragmentManager()
