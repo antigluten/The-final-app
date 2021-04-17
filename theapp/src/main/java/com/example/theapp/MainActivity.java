@@ -22,57 +22,65 @@ import com.example.theapp.fragments.ProfileFragment;
 import com.example.theapp.fragments.StatisticsFragment;
 import com.example.theapp.fragments.DeckFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Fragment deckFragment = new DeckFragment();
-    Fragment statisticsFragment = new StatisticsFragment();
-    Fragment profileFragment = new ProfileFragment();
-
-    Fragment currentFragment = deckFragment;
-
-
-
-
-
+//    Fragment deckFragment = new DeckFragment();
+//    Fragment statisticsFragment = new StatisticsFragment();
+//    Fragment profileFragment = new ProfileFragment();
+//
+//    Fragment currentFragment = deckFragment;
+//
+//
+//
+//
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("antigluten");
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.frame_content, deckFragment, "deck")
-                .add(R.id.frame_content, statisticsFragment, "stats")
-                .add(R.id.frame_content, profileFragment, "profile")
-                .hide(statisticsFragment)
-                .hide(profileFragment)
-                .commit();
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.navigation_deck:
-                        changeFragment(deckFragment);
-                        return true;
-                    case R.id.navigation_stats:
-                        changeFragment(statisticsFragment);
-                        return true;
-                    case R.id.navigation_profile:
-                        changeFragment(profileFragment);
-
-
-                }
-                return false;
-            }
-        });
-
+        ref.setValue("hello world");
+//
+//
+//
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .add(R.id.frame_content, deckFragment, "deck")
+//                .add(R.id.frame_content, statisticsFragment, "stats")
+//                .add(R.id.frame_content, profileFragment, "profile")
+//                .hide(statisticsFragment)
+//                .hide(profileFragment)
+//                .commit();
+//
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @SuppressLint("NonConstantResourceId")
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case R.id.navigation_deck:
+//                        changeFragment(deckFragment);
+//                        return true;
+//                    case R.id.navigation_stats:
+//                        changeFragment(statisticsFragment);
+//                        return true;
+//                    case R.id.navigation_profile:
+//                        changeFragment(profileFragment);
+//
+//
+//                }
+//                return false;
+//            }
+//        });
+//
 
 
     }
@@ -81,14 +89,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void changeFragment(Fragment newFragment) {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .hide(currentFragment)
-                .show(newFragment)
-                .commit();
-        currentFragment = newFragment;
-    }
+//    private void changeFragment(Fragment newFragment) {
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .hide(currentFragment)
+//                .show(newFragment)
+//                .commit();
+//        currentFragment = newFragment;
+//    }
 
 
     @Override
