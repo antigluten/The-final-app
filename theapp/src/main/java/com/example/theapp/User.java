@@ -1,8 +1,8 @@
 package com.example.theapp;
 
 public class User {
-    String name;
-    String last;
+    public String name;
+    public String last;
 
     public User() {
 

@@ -43,11 +43,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
+        User user = new User("Vladimir", "Louis");
+        ref.child("antigluten").setValue(user);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("antigluten");
 
-        ref.setValue("hello world");
+
 //
 //
 //
@@ -99,14 +100,14 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        Toast.makeText(
-                this,
-                "requestCode:"+requestCode+"|resultCode:"+resultCode,
-                Toast.LENGTH_LONG
-        ).show();
-
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        Toast.makeText(
+//                this,
+//                "requestCode:"+requestCode+"|resultCode:"+resultCode,
+//                Toast.LENGTH_LONG
+//        ).show();
+//
+//        super.onActivityResult(requestCode, resultCode, data);
+//    }
 }
