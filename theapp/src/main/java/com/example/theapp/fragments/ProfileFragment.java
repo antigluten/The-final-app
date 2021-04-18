@@ -19,13 +19,6 @@ import com.example.theapp.R;
 import com.example.theapp.database.UserModel;
 
 public class ProfileFragment extends Fragment {
-    // profile fragment's elements
-
-    Button submit;
-    EditText profileName, profileAge, profileSurname;
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
-    Switch switch1;
-    ListView listView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,29 +26,10 @@ public class ProfileFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        submit = rootView.findViewById(R.id.button);
-        profileName = rootView.findViewById(R.id.profileName);
-        profileSurname = rootView.findViewById(R.id.profileSurname);
-        profileAge = rootView.findViewById(R.id.profileAge);
-        switch1 = rootView.findViewById(R.id.switch1);
-        listView = rootView.findViewById(R.id._dynamic);
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                enteringData();
-            }
-        });
+
+
         return rootView;
     }
 
-    private void enteringData() {
-        try {
-            UserModel userModel = new UserModel(profileName.getText().toString(), profileSurname.getText().toString(),
-                    Integer.parseInt(profileAge.getText().toString()), switch1.isChecked());
-            Toast.makeText(getContext(), userModel.toString(), Toast.LENGTH_LONG).show();
-        } catch (Exception e) {
-            Toast.makeText(getContext(), "Error entering data", Toast.LENGTH_SHORT).show();
-        }
-    }
 }

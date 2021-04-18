@@ -9,18 +9,25 @@ import androidx.room.Room;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.theapp.database.UserModel;
 import com.example.theapp.fragments.ProfileFragment;
 import com.example.theapp.fragments.StatisticsFragment;
 import com.example.theapp.fragments.DeckFragment;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -41,11 +48,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_profile);
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
-        User user = new User("Vladimir", "Louis");
-        ref.child("antigluten").setValue(user);
+
+
+
+
+
+
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
+//        User user = new User("Vladimir", "Louis");
+//        ref.child("antigluten").setValue(user);
 
 
 
@@ -85,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
 
 
 
