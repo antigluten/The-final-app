@@ -35,21 +35,21 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-//    Fragment deckFragment = new DeckFragment();
-//    Fragment statisticsFragment = new StatisticsFragment();
-//    Fragment profileFragment = new ProfileFragment();
-//
-//    Fragment currentFragment = deckFragment;
-//
-//
-//
-//
-//
+    Fragment deckFragment = new DeckFragment();
+    Fragment statisticsFragment = new StatisticsFragment();
+    Fragment profileFragment = new ProfileFragment();
+
+    Fragment currentFragment = deckFragment;
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-        setContentView(R.layout.fragment_profile);
+        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.fragment_profile);
 
 
 
@@ -63,39 +63,38 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//
-//
-//
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .add(R.id.frame_content, deckFragment, "deck")
-//                .add(R.id.frame_content, statisticsFragment, "stats")
-//                .add(R.id.frame_content, profileFragment, "profile")
-//                .hide(statisticsFragment)
-//                .hide(profileFragment)
-//                .commit();
-//
-//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @SuppressLint("NonConstantResourceId")
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()) {
-//                    case R.id.navigation_deck:
-//                        changeFragment(deckFragment);
-//                        return true;
-//                    case R.id.navigation_stats:
-//                        changeFragment(statisticsFragment);
-//                        return true;
-//                    case R.id.navigation_profile:
-//                        changeFragment(profileFragment);
-//
-//
-//                }
-//                return false;
-//            }
-//        });
-//
+
+
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.frame_content, deckFragment, "deck")
+                .add(R.id.frame_content, statisticsFragment, "stats")
+                .add(R.id.frame_content, profileFragment, "profile")
+                .hide(statisticsFragment)
+                .hide(profileFragment)
+                .commit();
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_deck:
+                        changeFragment(deckFragment);
+                        return true;
+                    case R.id.navigation_stats:
+                        changeFragment(statisticsFragment);
+                        return true;
+                    case R.id.navigation_profile:
+                        changeFragment(profileFragment);
+                        return true;
+                }
+                return false;
+            }
+        });
+
 
 
     }
@@ -103,24 +102,24 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//    private void changeFragment(Fragment newFragment) {
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .hide(currentFragment)
-//                .show(newFragment)
-//                .commit();
-//        currentFragment = newFragment;
-//    }
+    private void changeFragment(Fragment newFragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .hide(currentFragment)
+                .show(newFragment)
+                .commit();
+        currentFragment = newFragment;
+    }
 
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        Toast.makeText(
-//                this,
-//                "requestCode:"+requestCode+"|resultCode:"+resultCode,
-//                Toast.LENGTH_LONG
-//        ).show();
-//
-//        super.onActivityResult(requestCode, resultCode, data);
-//    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Toast.makeText(
+                this,
+                "requestCode:"+requestCode+"|resultCode:"+resultCode,
+                Toast.LENGTH_LONG
+        ).show();
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

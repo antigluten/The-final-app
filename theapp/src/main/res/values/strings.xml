@@ -8,4 +8,8 @@
     <string name="profile_button">Submit</string>
     <string name="profile_age">Age</string>
     <string name="profileSignUp">Sign Up</string>
+    <string name="profile_password">Password</string>
+    <string name="profile_mail">someone@gmail.com</string>
+    <string name="terms">By creating an account, you agree to our</string>
+    <string name="terms2">Terms of Service and Privacy Policy</string>
 </resources>
