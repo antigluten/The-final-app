@@ -44,30 +44,11 @@ public class MainActivity extends AppCompatActivity {
     Fragment currentFragment = deckFragment;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        setContentView(R.layout.fragment_profile);
-
-
-
-
-
-
-
-
-//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
-//        User user = new User("Vladimir", "Louis");
-//        ref.child("antigluten").setValue(user);
-
-
-
-
-
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -102,9 +83,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-
     private void changeFragment(Fragment newFragment) {
         getSupportFragmentManager()
                 .beginTransaction()
@@ -114,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         currentFragment = newFragment;
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         Toast.makeText(
@@ -122,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 "requestCode:"+requestCode+"|resultCode:"+resultCode,
                 Toast.LENGTH_LONG
         ).show();
-
         super.onActivityResult(requestCode, resultCode, data);
     }
 }
