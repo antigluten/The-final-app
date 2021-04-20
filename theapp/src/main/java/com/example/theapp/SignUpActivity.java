@@ -3,10 +3,13 @@ package com.example.theapp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 
@@ -23,6 +26,8 @@ public class SignUpActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+
+
         mAuth = FirebaseAuth.getInstance();
 
         EditText login  = findViewById(R.id.profileName);
@@ -30,6 +35,9 @@ public class SignUpActivity extends Activity {
         EditText email = findViewById(R.id.profileEmail);
         Button submit = findViewById(R.id.profileSubmit);
         ProgressBar progressBar = findViewById(R.id.progress_circular);
+
+        Animation shake = AnimationUtils.loadAnimation(this, R.anim.snake);
+        submit.startAnimation(shake);
 
         submit.setOnClickListener(v -> {
             String name = login.getText().toString().trim();

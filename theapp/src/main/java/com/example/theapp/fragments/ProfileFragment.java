@@ -52,4 +52,16 @@ public class ProfileFragment extends Fragment {
 
         return rootView;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            Toast.makeText(getContext(), "You are not logged in", Toast.LENGTH_LONG).show();
+        } else {
+            startActivity(new Intent(getContext(), LogInActivity.class));
+
+        }
+    }
 }

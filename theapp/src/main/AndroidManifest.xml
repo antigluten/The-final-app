@@ -16,11 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity">
+        <activity android:name=".SignUpActivity" android:theme="@style/noAnimTheme">
 
         </activity>
-        <activity android:name=".LogInActivity">
-
+        <activity android:name=".LogInActivity" android:theme="@style/noAnimTheme">
         </activity>
     </application>
 

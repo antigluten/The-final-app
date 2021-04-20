@@ -4,5 +4,7 @@
     <style name="white">
         <item name="colorPrimary">@color/white</item>
     </style>
-
+    <style name="noAnimTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
 </resources>

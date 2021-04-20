@@ -1,6 +1,7 @@
 package com.example.theapp;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -84,17 +86,4 @@ public class LogInActivity extends Activity {
             }
         });
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            Toast.makeText(getBaseContext(), "There is user in resume", Toast.LENGTH_LONG).show();
-            finish();
-        } else {
-            Toast.makeText(getBaseContext(), "There is no user in resume", Toast.LENGTH_LONG).show();
-        }
-    }
-
 }
