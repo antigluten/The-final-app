@@ -28,27 +28,17 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ProfileFragment extends Fragment {
     View rootView;
+    Button logout;
+    FirebaseUser currentUser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        Button logout = rootView.findViewById(R.id.profileLogout);;
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        logout = rootView.findViewById(R.id.profileLogout);
 
-        if (user != null) {
-            Toast.makeText(getContext(), "You're signed in", Toast.LENGTH_LONG).show();
-            logout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(getContext(), LogInActivity.class));
-                }
-            });
-        } else {
-            startActivity(new Intent(getContext(), LogInActivity.class));
-        }
 
         return rootView;
     }
@@ -58,10 +48,18 @@ public class ProfileFragment extends Fragment {
         super.onResume();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            Toast.makeText(getContext(), "You are not logged in", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "You are logged in", Toast.LENGTH_LONG).show();
+            logout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(getContext(), LogInActivity.class));
+                }
+            });
         } else {
             startActivity(new Intent(getContext(), LogInActivity.class));
 
         }
     }
 }
+

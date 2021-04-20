@@ -1,6 +1,9 @@
 package com.example.theapp;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -12,6 +15,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,7 +30,7 @@ public class SignUpActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-
+        ConstraintLayout constraintLayout = findViewById(R.id.container);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -36,10 +40,8 @@ public class SignUpActivity extends Activity {
         Button submit = findViewById(R.id.profileSubmit);
         ProgressBar progressBar = findViewById(R.id.progress_circular);
 
-        Animation shake = AnimationUtils.loadAnimation(this, R.anim.snake);
-        submit.startAnimation(shake);
-
         submit.setOnClickListener(v -> {
+
             String name = login.getText().toString().trim();
             String pass = password.getText().toString().trim();
             String mail = email.getText().toString().trim();
@@ -47,27 +49,36 @@ public class SignUpActivity extends Activity {
             if (name.isEmpty()) {
                 login.setError("Invalid login");
                 login.requestFocus();
+                Animation shake = AnimationUtils.loadAnimation(this, R.anim.snake);
+                submit.startAnimation(shake);
                 return;
             }
 
             if (pass.isEmpty()) {
                 password.setError("Invalid password");
                 password.requestFocus();
+                Animation shake = AnimationUtils.loadAnimation(this, R.anim.snake);
+                submit.startAnimation(shake);
                 return;
             }
 
             if (mail.isEmpty()) {
                 email.setError("Please fill it");
                 email.requestFocus();
+                Animation shake = AnimationUtils.loadAnimation(this, R.anim.snake);
+                submit.startAnimation(shake);
                 return;
             }
 
             if (pass.length() < 8) {
                 password.setError("Invalid length of password, min is 8");
                 password.requestFocus();
+                Animation shake = AnimationUtils.loadAnimation(this, R.anim.snake);
+                submit.startAnimation(shake);
 
             }
 
+            constraintLayout.setVisibility(View.GONE);
             progressBar.setVisibility(View.VISIBLE);
             mAuth.createUserWithEmailAndPassword(mail, pass)
                     .addOnCompleteListener(task -> {

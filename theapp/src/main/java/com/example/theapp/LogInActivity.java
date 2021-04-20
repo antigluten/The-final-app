@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +37,7 @@ public class LogInActivity extends Activity {
         Button logIn = findViewById(R.id.profileRegisterButton);
         ProgressBar progressBar = findViewById(R.id.profileProgress);
 
+        ConstraintLayout constraintLayout = findViewById(R.id.container2);
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +62,7 @@ public class LogInActivity extends Activity {
 
                 }
 
+                constraintLayout.setVisibility(View.GONE);
                 progressBar.setVisibility(View.VISIBLE);
 
                 mAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
