@@ -70,4 +70,10 @@ public class DeckAdapter extends RecyclerView.Adapter<DeckAdapter.DeckViewHolder
             linearLayout = itemView.findViewById(R.id.recycler_view_item);
         }
     }
+
+    public void updateData(ArrayList<Deck> viewModels) {
+        items.clear();
+        items.addAll(viewModels);
+        notifyDataSetChanged();
+    }
 }
