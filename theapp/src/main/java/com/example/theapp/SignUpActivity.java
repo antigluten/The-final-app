@@ -49,32 +49,24 @@ public class SignUpActivity extends Activity {
             if (name.isEmpty()) {
                 login.setError("Invalid login");
                 login.requestFocus();
-                Animation shake = AnimationUtils.loadAnimation(this, R.anim.snake);
-                submit.startAnimation(shake);
                 return;
             }
 
             if (pass.isEmpty()) {
                 password.setError("Invalid password");
                 password.requestFocus();
-                Animation shake = AnimationUtils.loadAnimation(this, R.anim.snake);
-                submit.startAnimation(shake);
                 return;
             }
 
             if (mail.isEmpty()) {
                 email.setError("Please fill it");
                 email.requestFocus();
-                Animation shake = AnimationUtils.loadAnimation(this, R.anim.snake);
-                submit.startAnimation(shake);
                 return;
             }
 
             if (pass.length() < 8) {
                 password.setError("Invalid length of password, min is 8");
                 password.requestFocus();
-                Animation shake = AnimationUtils.loadAnimation(this, R.anim.snake);
-                submit.startAnimation(shake);
 
             }
 
