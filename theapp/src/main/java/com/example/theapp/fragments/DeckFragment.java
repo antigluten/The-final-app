@@ -19,9 +19,10 @@ import com.example.theapp.data.Contact;
 import com.example.theapp.model.DatabaseHandler;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DeckFragment extends Fragment {
-    String TAG = "Antigluten";
+    String TAG = "ANTIGLUTEN";
 
 
     private ListView recyclerView;
@@ -39,6 +40,13 @@ public class DeckFragment extends Fragment {
 //        vladimir.setName("Vladimir");
 //        vladimir.setPhoheNumber("123456789");
 //        db.addContact(vladimir);
+
+        List<Contact> contactList = new ArrayList<>();
+        contactList = db.getAllContacts();
+
+        for (Contact contact : contactList) {
+            Log.d(TAG, "addContact: " + contact.getId() + " " + contact.getName() + " " + contact.getPhoheNumber());
+        }
 
         recyclerView = rootView.findViewById(R.id.recycler_view);
         arrayList = new ArrayList<>();
