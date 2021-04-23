@@ -15,6 +15,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.theapp.R;
+import com.example.theapp.data.Contact;
+import com.example.theapp.model.DatabaseHandler;
 
 import java.util.ArrayList;
 
@@ -32,6 +34,12 @@ public class DeckFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_deck, container, false);
 
+        DatabaseHandler db = new DatabaseHandler(getContext());
+//        Contact vladimir = new Contact();
+//        vladimir.setName("Vladimir");
+//        vladimir.setPhoheNumber("123456789");
+//        db.addContact(vladimir);
+
         recyclerView = rootView.findViewById(R.id.recycler_view);
         arrayList = new ArrayList<>();
 
@@ -42,7 +50,6 @@ public class DeckFragment extends Fragment {
 
         arrayAdapter = new ArrayAdapter<>(
                 getContext(),
-//                android.R.layout.simple_list_item_1,
                 R.layout.item_test,
                 arrayList
         );
@@ -53,7 +60,7 @@ public class DeckFragment extends Fragment {
         recyclerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d(TAG, "onItemClick: " + position);
+                Log.d(TAG, "onItemClick: " + position + " " + arrayList.get(position));
             }
         });
 
@@ -61,18 +68,23 @@ public class DeckFragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                String text = editText.getText().toString().trim();
+//                if (arrayList.size() != 0) {
+//                    if (!arrayList.contains(text)) {
+//                        arrayList.add(text);
+//                        arrayAdapter.notifyDataSetChanged();
+//                        editText.setText("");
+//                    }
+//                } else {
+//                    arrayList.add(text);
+//                    arrayAdapter.notifyDataSetChanged();
+//                    editText.setText("");
+//                }
                 String text = editText.getText().toString().trim();
-                if (arrayList.size() != 0) {
-                    if (!arrayList.contains(text)) {
-                        arrayList.add(text);
-                        arrayAdapter.notifyDataSetChanged();
-                        editText.setText("");
-                    }
-                } else {
-                    arrayList.add(text);
-                    arrayAdapter.notifyDataSetChanged();
-                    editText.setText("");
-                }
+                Contact contact = new Contact();
+                contact.setName(text);
+                contact.setPhoheNumber(null);
+                db.addContact(contact);
             }
         });
 
