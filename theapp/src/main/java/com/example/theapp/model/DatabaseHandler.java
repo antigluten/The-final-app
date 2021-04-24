@@ -68,7 +68,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        Contact contact = new Contact();
+        Contact contact = new Contact("antigluten", "01032003");
         contact.setId(Integer.parseInt(cursor.getString(0)));
         contact.setName(cursor.getString(1));
         contact.setPhoheNumber(cursor.getString(2));
@@ -88,7 +88,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //loop through data
         if (cursor.moveToFirst()) {
             do {
-                Contact contact = new Contact();
+                Contact contact = new Contact("antigluten", "01032003");
                 contact.setId(Integer.parseInt(cursor.getString(0)));
                 contact.setName(cursor.getString(1));
                 contact.setPhoheNumber(cursor.getString(2));
@@ -100,4 +100,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return contactList;
     }
 
+    public int updateContact(Contact contact) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Util.KEY_NAME, contact.getName());
+        values.put(Util.KEY_PHONE_NUMBER, contact.getPhoheNumber());
+
+        //update the row
+
+        return db.update(Util.TABLE_NAME, values, Util.KEY_ID + "=?",
+                new String[]{String.valueOf(contact.getId())});
+    }
+
+
+    public void deleteContact(Contact contact) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(Util.TABLE_NAME, Util.KEY_ID + "=?",
+                new String[]{String.valueOf(contact.getId())});
+
+        db.close();
+    }
+
+    public int getCount() {
+        String countQuery = "SELECT * FROM " + Util.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+
+        return cursor.getCount();
+
+    }
 }
