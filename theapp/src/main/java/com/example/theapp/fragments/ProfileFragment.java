@@ -48,7 +48,7 @@ public class ProfileFragment extends Fragment {
         super.onResume();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            Toast.makeText(getContext(), "You are logged in", Toast.LENGTH_LONG).show();
+//            Toast.makeText(getContext(), "You are logged in", Toast.LENGTH_LONG).show();
             logout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,6 +18,8 @@ import com.example.theapp.fragments.ProfileFragment;
 import com.example.theapp.fragments.StatisticsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     Fragment deckFragment = new DeckFragment();
     Fragment statisticsFragment = new StatisticsFragment();
@@ -23,7 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
     Fragment currentFragment = deckFragment;
 
+    private String TAG = "ANTIGLUTEN";
 
+    private ListView listView;
+    private ArrayList<String> contactArrayList;
+    private ArrayAdapter<String> arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
