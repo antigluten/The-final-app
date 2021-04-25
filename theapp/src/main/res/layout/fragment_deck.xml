@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/test_edit"
+            android:id="@+id/foreignWord"
             android:layout_width="270dp"
             android:layout_height="50dp"
             android:background="@drawable/input_back"
@@ -36,7 +36,7 @@
             android:paddingLeft="20dp"
             android:ems="10"
             android:fontFamily="@font/roboto"
-            android:hint="Enter something"
+            android:hint="Word/Sentence to learn"
             android:textColorHint="#666e7e"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,8 +45,47 @@
             app:layout_constraintTop_toBottomOf="@+id/recycler_view"
             app:layout_constraintVertical_bias="0.163" />
 
+
+        <EditText
+            android:id="@+id/translation"
+            android:layout_width="270dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/input_back"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:fontFamily="@font/roboto"
+            android:hint="Translation"
+            android:paddingLeft="20dp"
+            android:textColorHint="#666e7e"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/foreignWord"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/context"
+            android:layout_width="270dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/input_back"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:fontFamily="@font/roboto"
+            android:hint="Context"
+            android:paddingLeft="20dp"
+            android:textColorHint="#666e7e"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/translation"
+            app:layout_constraintVertical_bias="0.0" />
+
         <Button
-            android:id="@+id/test_button"
+            android:id="@+id/cardButton"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:backgroundTint="@color/white"
@@ -56,7 +95,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/test_edit"
+            app:layout_constraintTop_toBottomOf="@+id/context"
             app:layout_constraintVertical_bias="0.163" />
 
 

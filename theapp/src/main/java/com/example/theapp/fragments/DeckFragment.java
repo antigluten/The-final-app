@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,18 +32,37 @@ public class DeckFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_deck, container, false);
-//
-//        Card card;
-//
-//        try {
-//            card = new Card("Insecure", "Not confident in relationships with others", "I feel insecure in the new company");
-//            Toast.makeText(getContext(), card.toString(), Toast.LENGTH_LONG).show();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//
-//            Toast.makeText(getContext(), "Error creating a card", Toast.LENGTH_LONG).show();
-//            card = new Card("1", "2", "3");
-//        }
+
+        Button submit = rootView.findViewById(R.id.cardButton);
+        EditText foreign = rootView.findViewById(R.id.foreignWord);
+        EditText translation = rootView.findViewById(R.id.translation);
+        EditText context = rootView.findViewById(R.id.context);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+                Card card = new Card(
+                        foreign.getText().toString().trim(),
+                        translation.getText().toString().trim(),
+                        context.getText().toString().trim()
+                );
+                Toast.makeText(getContext(), card.toString(), Toast.LENGTH_LONG).show();
+                Log.d(TAG, "onClick: " + card.toString());
+
+                boolean success = databaseHelper.addOne(card);
+                Toast.makeText(getContext(), "Success = " + success, Toast.LENGTH_LONG).show();
+                Log.d(TAG, "onClick: " + success);
+
+                if (success) {
+                    foreign.setText("");
+                    translation.setText("");
+                    context.setText("");
+                }
+
+            }
+        });
+
 
         DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
 //        boolean success = databaseHelper.addOne(card);
