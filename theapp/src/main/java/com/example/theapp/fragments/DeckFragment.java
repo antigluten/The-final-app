@@ -24,19 +24,31 @@ public class DeckFragment extends Fragment {
     private String TAG = "ANTIGLUTEN";
 
     private ListView listView;
-    private ArrayList<String> contactArrayList;
-    private ArrayAdapter<String> arrayAdapter;
+    private ArrayList<Card> arrayList;
+    private ArrayAdapter<Card> arrayAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_deck, container, false);
+        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
 
         Button submit = rootView.findViewById(R.id.cardButton);
         EditText foreign = rootView.findViewById(R.id.foreignWord);
         EditText translation = rootView.findViewById(R.id.translation);
         EditText context = rootView.findViewById(R.id.context);
+
+        listView = rootView.findViewById(R.id.recycler_view);
+        arrayList = (ArrayList<Card>) databaseHelper.getAll();
+
+        arrayAdapter = new ArrayAdapter<>(
+                getContext(),
+                R.layout.item_test,
+                arrayList
+        );
+
+        listView.setAdapter(arrayAdapter);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,11 +72,12 @@ public class DeckFragment extends Fragment {
                     context.setText("");
                 }
 
+                arrayList.add(card);
             }
         });
 
 
-        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+
 //        boolean success = databaseHelper.addOne(card);
 //        Toast.makeText(getContext(), "Success = " + success, Toast.LENGTH_LONG).show();
 
