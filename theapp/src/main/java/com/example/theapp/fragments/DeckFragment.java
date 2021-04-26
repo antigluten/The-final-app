@@ -14,18 +14,21 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.theapp.R;
+import com.example.theapp.adapters.MyAdapter;
 import com.example.theapp.data.Card;
 import com.example.theapp.data.DatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class DeckFragment extends Fragment {
     private String TAG = "ANTIGLUTEN";
 
     private ListView listView;
     private ArrayList<Card> arrayList;
-    private ArrayAdapter<Card> arrayAdapter;
+    private ArrayAdapter<Card> adapter;
+//    private MyAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,13 +45,18 @@ public class DeckFragment extends Fragment {
         listView = rootView.findViewById(R.id.recycler_view);
         arrayList = (ArrayList<Card>) databaseHelper.getAll();
 
-        arrayAdapter = new ArrayAdapter<>(
+//        adapter = new MyAdapter(
+//                Objects.requireNonNull(getContext()),
+//                arrayList
+//        );
+
+        adapter = new ArrayAdapter<>(
                 getContext(),
-                R.layout.item_test,
+                android.R.layout.simple_list_item_1,
                 arrayList
         );
 
-        listView.setAdapter(arrayAdapter);
+        listView.setAdapter(adapter);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +81,7 @@ public class DeckFragment extends Fragment {
                 }
 
                 arrayList.add(card);
+                listView.setAdapter(adapter);
             }
         });
 

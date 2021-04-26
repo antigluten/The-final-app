@@ -39,14 +39,19 @@ public class Card {
         this.id = id;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Card{" +
+//                "id='" + id + '\'' +
+//                ", frontWord='" + frontWord + '\'' +
+//                ", translationWord='" + translationWord + '\'' +
+//                ", context='" + context + '\'' +
+//                '}';
+//    }
     @Override
     public String toString() {
-        return "Card{" +
-                "id='" + id + '\'' +
-                ", frontWord='" + frontWord + '\'' +
-                ", translationWord='" + translationWord + '\'' +
-                ", context='" + context + '\'' +
-                '}';
+        return id + "\t" + frontWord + '\t'  + translationWord + '\t' +
+                 context;
     }
 
     public String getTranslationWord() {

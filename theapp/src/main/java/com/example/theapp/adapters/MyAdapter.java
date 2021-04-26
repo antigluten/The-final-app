@@ -27,6 +27,7 @@ public class MyAdapter extends ArrayAdapter<Card> {
 
     @Override
     public long getItemId(int position) {
+        return new Card().getId();
     }
 
     @NonNull
@@ -35,20 +36,25 @@ public class MyAdapter extends ArrayAdapter<Card> {
         MyViewHolder viewHolder;
         if (view == null) {
             view = inflater.inflate(R.layout.item_test, null);
-// Do some initialization
-//Retrieve the view on the item layout and set the value.
+
             viewHolder = new MyViewHolder(view);
             view.setTag(viewHolder);
         }
         //TODO
         else {
-            viewHolder = (ViewHolder) view.getTag();
+            viewHolder = (MyViewHolder) view.getTag();
         }
-//Retrieve your object
-        Card data = getItem(position);
-        viewHolder..setTypeface(m_Font);
-        viewHolder.txt.setText(data.text);
-        viewHolder.img.setImageBitmap(BitmapFactory.decodeFile(data.imageAddr));
+
+        Card card = getItem(position);
+        viewHolder.wordToLearn.setText(card.getFrontWord());
+        viewHolder.translation.setText(card.getTranslationWord());
+        if (card.getContext().isEmpty()) {
+            viewHolder.context.setText("");
+        } {
+            viewHolder.context.setText(card.getContext());
+        }
+
+        return view;
     }
 }
 

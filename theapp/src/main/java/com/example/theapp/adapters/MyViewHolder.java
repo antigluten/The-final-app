@@ -6,9 +6,9 @@ import android.widget.TextView;
 import com.example.theapp.R;
 
 public class MyViewHolder {
-    private TextView wordToLearn;
-    private TextView translation;
-    private TextView context;
+    public final TextView wordToLearn;
+    public final TextView translation;
+    public final TextView context;
 
     public MyViewHolder(View view) {
         wordToLearn = view.findViewById(R.id.item_wordToLearn);

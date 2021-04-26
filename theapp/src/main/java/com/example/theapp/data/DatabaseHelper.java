@@ -40,7 +40,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addOne(Card card){
-
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
