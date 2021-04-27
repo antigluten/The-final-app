@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.theapp.R;
 import com.example.theapp.adapters.MyAdapter;
-import com.example.theapp.browser.RecyclerAdapter;
+import com.example.theapp.browser.RecyclerViewAdapter;
 import com.example.theapp.data.Card;
 import com.example.theapp.data.DatabaseHelper;
 
@@ -36,42 +36,84 @@ public class DeckFragment extends Fragment {
 
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView recyclerView;
-    private RecyclerAdapter adapter;
+    private RecyclerViewAdapter adapter;
 
-    private ArrayList<String> arrayList = new ArrayList<>();
+    private ArrayList<Card> arrayList = new ArrayList<>();
 
+    private EditText foreign;
+    private EditText translation;
+    private EditText context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_deck, container, false);
 
+        foreign = rootView.findViewById(R.id.foreignWord);
+        translation = rootView.findViewById(R.id.translation);
+        context = rootView.findViewById(R.id.context);
+
         editText = rootView.findViewById(R.id.foreignWord);
         button = rootView.findViewById(R.id.cardButton);
 
+        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+        Card card = new Card();
+        boolean success = databaseHelper.addOne(card);
+        Toast.makeText(getContext(), "Success = " + success, Toast.LENGTH_LONG).show();
+        arrayList = (ArrayList<Card>) databaseHelper.getAll();
 
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView = rootView.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        adapter = new RecyclerAdapter(getContext(), arrayList);
+        adapter = new RecyclerViewAdapter(getContext(), arrayList);
         recyclerView.setAdapter(adapter);
 
+        Log.d(TAG, "onCreateView: " + adapter.getItemCount());
         return rootView;
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
+        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+
+        Card card = new Card();
+        boolean success = databaseHelper.addOne(card);
+        Toast.makeText(getContext(), "Success = " + success, Toast.LENGTH_LONG).show();
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayList.add(editText.getText().toString().trim());
-                adapter.notifyDataSetChanged();
+                DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+                String word = foreign.getText().toString().trim();
+                String back = translation.getText().toString().trim();
+                String sentence = context.getText().toString().trim();
+
+                if (!word.isEmpty() && !back.isEmpty()) {
+
+                    Card card = new Card(
+                            word,
+                            back,
+                            sentence
+                    );
+
+                    boolean success = databaseHelper.addOne(card);
+                    Toast.makeText(getContext(), "Success = " + success, Toast.LENGTH_LONG).show();
+
+                    if (success) {
+                        foreign.setText("");
+                        translation.setText("");
+                        context.setText("");
+                        arrayList = (ArrayList<Card>) databaseHelper.getAll();
+                        adapter.update(arrayList);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+
             }
         });
-
-
     }
 
 

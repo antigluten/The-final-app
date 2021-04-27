@@ -7,7 +7,7 @@
 
 
     <TextView
-        android:id="@+id/itemRecyclerView"
+        android:id="@+id/recyclerViewWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -21,16 +21,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/itemRecyclerViewIndex"
+        android:id="@+id/recyclerViewTranslation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_margin="8dp"
+        android:layout_margin="16dp"
         android:textColor="@color/black"
         android:text=""
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewWord" />
 </androidx.constraintlayout.widget.ConstraintLayout>
