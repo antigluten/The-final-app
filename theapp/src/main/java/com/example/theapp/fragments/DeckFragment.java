@@ -1,5 +1,6 @@
 package com.example.theapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.theapp.CardTest;
 import com.example.theapp.R;
 import com.example.theapp.adapters.MyAdapter;
 import com.example.theapp.browser.RecyclerViewAdapter;
@@ -74,6 +76,20 @@ public class DeckFragment extends Fragment {
         super.onResume();
 
         DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+
+        adapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Card card = arrayList.get(position);
+                Log.d(TAG, "Clicked: " + position);
+                Intent intent = new Intent(getContext(), CardTest.class);
+                intent.putExtra("Foreign", card.getFrontWord());
+                intent.putExtra("Translation", card.getTranslationWord());
+                intent.putExtra("Sentence", card.getContext());
+                startActivity(intent);
+            }
+        });
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +107,6 @@ public class DeckFragment extends Fragment {
                     );
 
                     boolean success = databaseHelper.addOne(card);
-                    Toast.makeText(getContext(), "Success = " + success, Toast.LENGTH_LONG).show();
 
                     if (success) {
                         foreign.setText("");
@@ -100,6 +115,8 @@ public class DeckFragment extends Fragment {
                         arrayList = (ArrayList<Card>) databaseHelper.getAll();
                         adapter.update(arrayList);
                         adapter.notifyDataSetChanged();
+                    } else {
+
                     }
                 }
 

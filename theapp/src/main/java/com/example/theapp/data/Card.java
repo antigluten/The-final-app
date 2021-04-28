@@ -50,8 +50,7 @@ public class Card {
 //    }
     @Override
     public String toString() {
-        return id + "\t" + frontWord + '\t'  + translationWord + '\t' +
-                 context;
+        return "Foreign word: " + frontWord + "\nTranslation: " + translationWord + "\nContext: " + context;
     }
 
     public String getTranslationWord() {

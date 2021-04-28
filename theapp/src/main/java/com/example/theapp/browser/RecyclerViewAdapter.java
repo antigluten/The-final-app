@@ -1,6 +1,7 @@
 package com.example.theapp.browser;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +19,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context context;
     private ArrayList<Card> arrayList;
 
+    private OnItemClickListener listener;
+
     public RecyclerViewAdapter(Context context, ArrayList<Card> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -46,6 +53,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.arrayList = arrayList;
     }
 
+    public interface OnItemClickListener {
+        public void onItemClick(int position);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView word;
         public TextView translation;
@@ -55,6 +66,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             word = itemView.findViewById(R.id.recyclerViewWord);
             translation = itemView.findViewById(R.id.recyclerViewTranslation);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+
         }
     }
 
