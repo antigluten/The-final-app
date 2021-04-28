@@ -53,13 +53,9 @@ public class DeckFragment extends Fragment {
         translation = rootView.findViewById(R.id.translation);
         context = rootView.findViewById(R.id.context);
 
-        editText = rootView.findViewById(R.id.foreignWord);
         button = rootView.findViewById(R.id.cardButton);
 
         DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
-        Card card = new Card();
-        boolean success = databaseHelper.addOne(card);
-        Toast.makeText(getContext(), "Success = " + success, Toast.LENGTH_LONG).show();
         arrayList = (ArrayList<Card>) databaseHelper.getAll();
 
         layoutManager = new LinearLayoutManager(getContext());
@@ -108,7 +104,8 @@ public class DeckFragment extends Fragment {
                         context.setText("");
                         arrayList = (ArrayList<Card>) databaseHelper.getAll();
                         adapter.update(arrayList);
-                        adapter.notifyDataSetChanged();
+//                        adapter.notifyDataSetChanged();
+                        adapter.notifyItemInserted(0);
                     }
                 }
 
