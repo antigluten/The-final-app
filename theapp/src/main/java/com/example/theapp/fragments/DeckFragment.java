@@ -1,6 +1,8 @@
 package com.example.theapp.fragments;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
@@ -58,6 +60,7 @@ public class DeckFragment extends Fragment {
         button = rootView.findViewById(R.id.cardButton);
 
         DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+
         arrayList = (ArrayList<Card>) databaseHelper.getAll();
 
         layoutManager = new LinearLayoutManager(getContext());
@@ -122,7 +125,9 @@ public class DeckFragment extends Fragment {
 
             }
         });
+
     }
+
 
 
 }
