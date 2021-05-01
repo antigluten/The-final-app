@@ -8,7 +8,9 @@ public class Deck {
     public int numberToRelearn;
     public int numberNewCards;
     public int numberToRevise;
+    public String dateCreated;
     public ArrayList<Card> cards;
+
 
     public Deck() {
     }

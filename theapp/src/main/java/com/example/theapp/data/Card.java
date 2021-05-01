@@ -1,34 +1,29 @@
 package com.example.theapp.data;
 
+import java.util.Calendar;
+
 public class Card {
     int id;
     String frontWord;
     String translationWord;
     String context;
+    int type;
+    String dateCreated;
+    String dueDate;
+    String deck;
 
     public Card(){
 
     }
 
-    public Card(String frontWord, String translationWord, String context) {
+    public Card(String frontWord, String translationWord, String context, int type, String dateCreated, String dueDate, String deck) {
         this.frontWord = frontWord;
         this.translationWord = translationWord;
         this.context = context;
-    }
-
-    public Card(int id, String frontWord, String translationWord, String context) {
-        this.id = id;
-        this.frontWord = frontWord;
-        this.translationWord = translationWord;
-        this.context = context;
-    }
-
-    public String getFrontWord() {
-        return frontWord;
-    }
-
-    public void setFrontWord(String frontWord) {
-        this.frontWord = frontWord;
+        this.type = type;
+        this.dateCreated = dateCreated;
+        this.dueDate = dueDate;
+        this.deck = deck;
     }
 
     public int getId() {
@@ -39,18 +34,12 @@ public class Card {
         this.id = id;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Card{" +
-//                "id='" + id + '\'' +
-//                ", frontWord='" + frontWord + '\'' +
-//                ", translationWord='" + translationWord + '\'' +
-//                ", context='" + context + '\'' +
-//                '}';
-//    }
-    @Override
-    public String toString() {
-        return "Foreign word: " + frontWord + "\nTranslation: " + translationWord + "\nContext: " + context;
+    public String getFrontWord() {
+        return frontWord;
+    }
+
+    public void setFrontWord(String frontWord) {
+        this.frontWord = frontWord;
     }
 
     public String getTranslationWord() {
@@ -67,5 +56,37 @@ public class Card {
 
     public void setContext(String context) {
         this.context = context;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public String getDeck() {
+        return deck;
+    }
+
+    public void setDeck(String deck) {
+        this.deck = deck;
     }
 }

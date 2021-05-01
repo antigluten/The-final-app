@@ -3,8 +3,11 @@ package com.example.theapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     Fragment profileFragment = new ProfileFragment();
 
     Fragment currentFragment = deckFragment;
+    
+
 
     private String TAG = "ANTIGLUTEN";
 
@@ -38,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        
+        Button addDeck = findViewById(R.id.buttonAddDeck);
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -68,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
+        
 
 
     }
