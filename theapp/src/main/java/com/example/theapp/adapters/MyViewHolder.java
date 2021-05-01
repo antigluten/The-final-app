@@ -13,6 +13,6 @@ public class MyViewHolder {
     public MyViewHolder(View view) {
         wordToLearn = view.findViewById(R.id.item_wordToLearn);
         translation = view.findViewById(R.id.item_translation);
-        context = view.findViewById(R.id.context);
+        context = view.findViewById(R.id.item_context);
     }
 }

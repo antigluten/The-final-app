@@ -4,100 +4,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/blue_profile"
+    xmlns:whilu="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context="com.example.theapp.fragments.DeckFragment">
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintVertical_bias="0"
-            android:background="@color/white"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:text="add deck"
+            android:fontFamily="@font/futura_medium"
+            android:backgroundTint="#3C82FF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/foreignWord"
-            android:layout_width="270dp"
-            android:layout_height="50dp"
-            android:background="@drawable/input_back"
-            android:drawablePadding="10dp"
-            android:paddingLeft="20dp"
-            android:ems="10"
-            android:fontFamily="@font/roboto"
-            android:hint="Word/Sentence to learn"
-            android:textColorHint="#666e7e"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_view"
-            app:layout_constraintVertical_bias="0.163" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12sp"
+                android:layout_marginTop="12sp"
+                android:fontFamily="@font/futura_medium"
+                android:text="@string/yourDecks"
+                android:textColor="#3C82FF"
+                android:textSize="40sp" />
 
 
-        <EditText
-            android:id="@+id/translation"
-            android:layout_width="270dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="22dp"
-            android:background="@drawable/input_back"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:fontFamily="@font/roboto"
-            android:hint="Translation"
-            android:paddingLeft="20dp"
-            android:textColorHint="#666e7e"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/foreignWord"
-            app:layout_constraintVertical_bias="0.0" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/context"
-            android:layout_width="270dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="22dp"
-            android:background="@drawable/input_back"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:fontFamily="@font/roboto"
-            android:hint="Context"
-            android:paddingLeft="20dp"
-            android:textColorHint="#666e7e"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60sp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/translation"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            tools:layout_editor_absoluteX="0dp">
 
-        <Button
-            android:id="@+id/cardButton"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/white"
-            android:text="Submit"
-            android:textColor="@color/blue_profile"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/context"
-            app:layout_constraintVertical_bias="0.163" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewDeck"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="12sp"
+                tools:ignore="RtlSymmetry"
+                tools:listitem="@layout/item_deck" />
+
+        </LinearLayout>
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </FrameLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80sp"
+    android:layout_marginTop="12sp"
+    android:layout_marginStart="8sp"
+    android:layout_marginEnd="8sp"
+    android:background="@drawable/deck">
+
+
+
+
+    <TextView
+        android:id="@+id/deckName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deckName"
+        android:layout_marginTop="12sp"
+        android:layout_marginStart="12sp"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins"
+        android:textColor="#004e98"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/deckTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total: 0"
+        android:textSize="16sp"
+        android:textColor="#333533"
+        android:layout_marginTop="12sp"
+        android:layout_marginStart="24sp"
+        android:fontFamily="@font/poppins"
+        app:layout_constraintStart_toEndOf="@id/deckName"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/deckLearn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12sp"
+        android:layout_marginTop="8sp"
+        android:fontFamily="@font/poppins"
+        android:text="New: 0"
+        android:textColor="#118ab2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deckName" />
+
+    <TextView
+        android:id="@+id/deckRevise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24sp"
+        android:layout_marginTop="8sp"
+        android:fontFamily="@font/poppins"
+        android:text="Revise: 0"
+        android:textColor="#06d6a0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/deckRelearn"
+        app:layout_constraintTop_toBottomOf="@+id/deckName" />
+
+
+    <TextView
+        android:id="@+id/deckRelearn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24sp"
+        android:layout_marginTop="8sp"
+        android:fontFamily="@font/poppins"
+        android:text="Relearn: 0"
+        android:textColor="#ef476f"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/deckLearn"
+        app:layout_constraintTop_toBottomOf="@+id/deckName" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

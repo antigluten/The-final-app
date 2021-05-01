@@ -34,14 +34,15 @@ apply plugin: 'com.google.gms.google-services'
 
 
 dependencies {
-
+    implementation 'com.github.whilu.CustomButton:library:1.0.0'
 
     implementation platform('com.google.firebase:firebase-bom:27.0.0')
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-auth'
-
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation 'androidx.navigation:navigation-ui:2.3.5'
 
 
     def room_version = "2.2.6"
