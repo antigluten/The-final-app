@@ -1,9 +1,11 @@
 package com.example.theapp.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,7 +33,7 @@ import com.google.firebase.database.DatabaseReference;
 import java.time.Instant;
 import java.util.ArrayList;
 
-public class DeckFragment extends Fragment implements DeckButtonDialogActivity.DialogListener {
+public class DeckFragment extends Fragment {
     private String TAG = "ANTIGLUTEN";
 
 //    private Button button;
@@ -49,6 +51,9 @@ public class DeckFragment extends Fragment implements DeckButtonDialogActivity.D
     private String getDeckName;
     private FrameLayout frameLayout;
     private Button addDeck;
+    private ArrayList<Deck> decks;
+    private RecyclerViewAdapterDecks adapterDecks;
+    private int lastIndex;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,26 +62,27 @@ public class DeckFragment extends Fragment implements DeckButtonDialogActivity.D
         addDeck = rootView.findViewById(R.id.buttonAddDeck);
 
 
-        ArrayList<Deck> decks = new ArrayList<>();
-        ArrayList<Card> cards = new ArrayList<>();
-//        decks.add(new Deck("English", 100, 50,
-//                23, 27, cards));
-
+        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+        decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         RecyclerView recyclerView = rootView.findViewById(R.id.recyclerViewDeck);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(new RecyclerViewAdapterDecks(getContext(), decks));
+        adapterDecks = new RecyclerViewAdapterDecks(getContext(), decks);
+        recyclerView.setAdapter(adapterDecks);
 
 
-        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
-        boolean success = databaseHelper.addCard(new Card("Hello", "World",
-                "Hello world",0, "2021-05-02", "2021-05-03", "English"));
-        if (success) {
-            Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getContext(), "Fail", Toast.LENGTH_SHORT).show();
-        }
+        lastIndex = decks.size();
+
+
+//        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+//        boolean success = databaseHelper.addCard(new Card("Hello", "World",
+//                "Hello world",0, "2021-05-02", "2021-05-03", "English"));
+//        if (success) {
+//            Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(getContext(), "Fail", Toast.LENGTH_SHORT).show();
+//        }
 //        foreign = rootView.findViewById(R.id.foreignWord);
 //        translation = rootView.findViewById(R.id.translation);
 //        context = rootView.findViewById(R.id.context);
@@ -102,14 +108,35 @@ public class DeckFragment extends Fragment implements DeckButtonDialogActivity.D
     public void onResume() {
         super.onResume();
 
-
+        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+        decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
+        adapterDecks.notifyItemRangeInserted(lastIndex, decks.size());
+        DeckButtonDialogActivity deckButtonDialogActivity = new DeckButtonDialogActivity();
+        deckButtonDialogActivity.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                updateDecks();
+            }
+        });
         addDeck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openDialog();
-
+                deckButtonDialogActivity.show(getChildFragmentManager(), "Dialog");
+                Log.d(TAG, "openDialog: clicked Dialog");
+//                openDialog();
+//                lastIndex = decks.size();
+//                DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+//                boolean success = databaseHelper.addDeck(new Deck("Hello world"));
+//                if (success) {
+//                    Toast.makeText(getContext(), "Success adding the deck", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+//                }
+//                updateDecks();
             }
         });
+
+
 //        addDeck.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -167,17 +194,20 @@ public class DeckFragment extends Fragment implements DeckButtonDialogActivity.D
 
     }
 
+    public void updateDecks(){
+        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+        decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
+        adapterDecks.updateDeckList(decks);
+        adapterDecks.notifyDataSetChanged();
+    }
+
     public void openDialog() {
         DeckButtonDialogActivity deckButtonDialogActivity = new DeckButtonDialogActivity();
         deckButtonDialogActivity.show(getChildFragmentManager(), "Dialog");
         Log.d(TAG, "openDialog: clicked Dialog");
     }
 
-    @Override
-    public void transferText(String deckName) {
-        getDeckName = deckName;
-        Log.d(TAG, "transferText: " + deckName);
-    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

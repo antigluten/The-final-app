@@ -5,11 +5,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.format.DateFormat;
 
 import androidx.annotation.Nullable;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME_CARDS = "CARDS";
@@ -86,6 +91,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long insert = db.insert(TABLE_NAME_CARDS, null, values);
         return insert != -1;
     }
+
+    public boolean addDeck(Deck deck) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+
+        Date c = Calendar.getInstance().getTime();
+        System.out.println("Current time => " + c);
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+        String formattedDate = df.format(c);
+
+        values.put(COLUMN_NAME, deck.getName());
+        values.put(COLUMN_TOTAL, deck.getTotalNumberOfCard());
+        values.put(COLUMN_RELEARN, deck.getNumberToRelearn());
+        values.put(COLUMN_NEW, deck.getNumberNewCards());
+        values.put(COLUMN_REVISE, deck.getNumberToRevise());
+        values.put(COLUMN_DECK_CREATED, formattedDate);
+
+        long insert = db.insert(TABLE_NAME_DECKS, null, values);
+        return insert != -1;
+    }
 //
 //    public boolean addOne(Card card) {
 //        SQLiteDatabase db = this.getWritableDatabase();
@@ -142,7 +168,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //        long insert = db.insert(TABLE_NAME, null, values);
 //        return insert != -1;
 //    }
-//
+    public List<Deck> getAllDecks() {
+        List<Deck> returnList = new ArrayList<>();
+
+        String queryString = "SELECT * FROM " + TABLE_NAME_DECKS;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int deckId = cursor.getInt(0);
+                String name = cursor.getString(1);
+                int total = cursor.getInt(2);
+                int newCards = cursor.getInt(3);
+                int learn = cursor.getInt(4);
+                int revise = cursor.getInt(5);
+                String dateCreated = cursor.getString(6);
+
+                Deck deck = new Deck(name, total, learn, newCards, revise, dateCreated);
+                returnList.add(deck);
+            } while (cursor.moveToNext());
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return returnList;
+    }
 //
 //    public List<Card> getAll() {
 //        List<Card> returnList = new ArrayList<>();

@@ -21,14 +21,13 @@ public class Deck {
     public Deck() {
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public Deck(String name) {
         this.name = name;
         this.totalNumberOfCard = 0;
         this.numberToRelearn = 0;
         this.numberNewCards = 0;
         this.numberToRevise = 0;
-        String dateCreated = LocalDate.now().toString();
+        String dateCreated;
         this.cards = null;
     }
 
@@ -39,6 +38,15 @@ public class Deck {
         this.numberNewCards = numberNewCards;
         this.numberToRevise = numberToRevise;
         this.cards = cards;
+    }
+
+    public Deck(String name, int totalNumberOfCard, int numberToRelearn, int numberNewCards, int numberToRevise, String dateCreated) {
+        this.name = name;
+        this.totalNumberOfCard = totalNumberOfCard;
+        this.numberToRelearn = numberToRelearn;
+        this.numberNewCards = numberNewCards;
+        this.numberToRevise = numberToRevise;
+        this.dateCreated = dateCreated;
     }
 
     @Override
@@ -99,5 +107,13 @@ public class Deck {
 
     public void setCards(ArrayList<Card> cards) {
         this.cards = cards;
+    }
+
+    public String getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
     }
 }

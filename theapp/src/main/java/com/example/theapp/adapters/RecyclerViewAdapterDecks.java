@@ -42,6 +42,10 @@ public class RecyclerViewAdapterDecks extends RecyclerView.Adapter<RecyclerViewA
 
     }
 
+    public void updateDeckList(ArrayList<Deck> decks) {
+        this.decks = decks;
+    }
+
     @Override
     public int getItemCount() {
         return decks.size();

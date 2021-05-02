@@ -1,26 +1,31 @@
 package com.example.theapp;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatDialogFragment;
-import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Objects;
+import com.example.theapp.adapters.RecyclerViewAdapterDecks;
+import com.example.theapp.data.DatabaseHelper;
+import com.example.theapp.data.Deck;
 
-public class DeckButtonDialogActivity extends AppCompatDialogFragment {
+import java.util.ArrayList;
+
+public class DeckButtonDialogActivity extends AppCompatDialogFragment implements DialogInterface.OnDismissListener {
     private EditText deckName;
-    private DialogListener listener;
+    private DialogInterface.OnDismissListener onDismissListener;
 
     @NonNull
     @Override
@@ -32,15 +37,22 @@ public class DeckButtonDialogActivity extends AppCompatDialogFragment {
         builder.setView(view).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                dialog.cancel();
             }
         }).setPositiveButton("Add", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String name = deckName.getText().toString().trim();
-                Intent i = new Intent();
-                i.putExtra("deckName", name);
-                getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, i);
+                DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+                boolean success = databaseHelper.addDeck(new Deck(name));
+                if (success) {
+                    Toast.makeText(getContext(), "Success adding the deck", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+                }
+//                updateDecks(new View(getContext()));
+
             }
         });
 
@@ -48,8 +60,29 @@ public class DeckButtonDialogActivity extends AppCompatDialogFragment {
         return builder.create();
     }
 
-
-    public interface DialogListener {
-        void transferText(String deckName);
+    public void setOnDismissListener(DialogInterface.OnDismissListener onDismissListener) {
+        this.onDismissListener = onDismissListener;
     }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        if (onDismissListener != null) {
+            onDismissListener.onDismiss(dialog);
+        }
+    }
+
+    public void updateDecks(View view) {
+        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+        ArrayList<Deck> decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewDeck);
+        RecyclerViewAdapterDecks adapterDecks = new RecyclerViewAdapterDecks(getContext(), decks);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapterDecks);
+//            adapterDecks.updateDeckList(decks);
+//            adapterDecks.notifyDataSetChanged();
+    }
+
 }
