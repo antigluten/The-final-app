@@ -1,5 +1,11 @@
 package com.example.theapp.data;
 
+import android.icu.util.LocaleData;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Deck {
@@ -13,6 +19,17 @@ public class Deck {
 
 
     public Deck() {
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public Deck(String name) {
+        this.name = name;
+        this.totalNumberOfCard = 0;
+        this.numberToRelearn = 0;
+        this.numberNewCards = 0;
+        this.numberToRevise = 0;
+        String dateCreated = LocalDate.now().toString();
+        this.cards = null;
     }
 
     public Deck(String name, int totalNumberOfCard, int numberToLearn, int numberNewCards, int numberToRevise, ArrayList<Card> cards) {

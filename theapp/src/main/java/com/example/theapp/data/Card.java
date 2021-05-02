@@ -7,13 +7,23 @@ public class Card {
     String frontWord;
     String translationWord;
     String context;
-    int type;
+    //initial 0 - new 1 - learn 2 - revise 3 - mature
+    int type = 0;
     String dateCreated;
     String dueDate;
     String deck;
 
     public Card(){
 
+    }
+
+    public Card(String frontWord, String translationWord, String context, String dateCreated, String dueDate, String deck) {
+        this.frontWord = frontWord;
+        this.translationWord = translationWord;
+        this.context = context;
+        this.dateCreated = dateCreated;
+        this.dueDate = dueDate;
+        this.deck = deck;
     }
 
     public Card(String frontWord, String translationWord, String context, int type, String dateCreated, String dueDate, String deck) {

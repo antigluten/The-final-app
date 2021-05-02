@@ -14,10 +14,12 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.theapp.DeckButtonDialogActivity;
 import com.example.theapp.R;
 import com.example.theapp.adapters.RecyclerViewAdapter;
 import com.example.theapp.adapters.RecyclerViewAdapterDecks;
@@ -29,7 +31,7 @@ import com.google.firebase.database.DatabaseReference;
 import java.time.Instant;
 import java.util.ArrayList;
 
-public class DeckFragment extends Fragment {
+public class DeckFragment extends Fragment implements DeckButtonDialogActivity.DialogListener {
     private String TAG = "ANTIGLUTEN";
 
 //    private Button button;
@@ -44,7 +46,7 @@ public class DeckFragment extends Fragment {
 //    private EditText foreign;
 //    private EditText translation;
 //    private EditText context;
-
+    private String getDeckName;
     private FrameLayout frameLayout;
     private Button addDeck;
 
@@ -104,7 +106,7 @@ public class DeckFragment extends Fragment {
         addDeck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
+                openDialog();
 
             }
         });
@@ -165,6 +167,20 @@ public class DeckFragment extends Fragment {
 
     }
 
+    public void openDialog() {
+        DeckButtonDialogActivity deckButtonDialogActivity = new DeckButtonDialogActivity();
+        deckButtonDialogActivity.show(getChildFragmentManager(), "Dialog");
+        Log.d(TAG, "openDialog: clicked Dialog");
+    }
 
+    @Override
+    public void transferText(String deckName) {
+        getDeckName = deckName;
+        Log.d(TAG, "transferText: " + deckName);
+    }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }
