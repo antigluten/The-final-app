@@ -15,19 +15,22 @@ import org.xmlpull.v1.XmlPullParser;
 
 
 public class StatisticsFragment extends Fragment {
+    View.OnLongClickListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         FragmentStatisticsBinding binding = FragmentStatisticsBinding.inflate(getLayoutInflater());
 
         binding.textViewTest.setText("Hello world");
 
-        binding.textViewTest.setOnClickListener(new View.OnClickListener() {
+        binding.textViewTest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onLongClick(View v) {
                 MenuBottomSheetDialogFragment.newInstance(R.menu.email_bottom_sheet_menu).show(getParentFragmentManager(), null);
+                return true;
             }
         });
 
@@ -36,4 +39,6 @@ public class StatisticsFragment extends Fragment {
 
 
     }
+
+
 }
