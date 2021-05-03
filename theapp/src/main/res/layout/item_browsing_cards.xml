@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12sp"
+    android:layout_marginStart="8sp"
+    android:layout_marginEnd="8sp"
+    android:paddingStart="20sp"
+    android:padding="8sp"
+    android:background="@drawable/deck">
+
+
+
+
+    <TextView
+        android:id="@+id/cardFront"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insecure"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins"
+        android:textColor="#00171f"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/cardTranslation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:textColor="#003f88"
+        android:layout_marginTop="4sp"
+        android:text="Someone, who is not sure in his relationships"
+        app:layout_constraintStart_toStartOf="@id/cardFront"
+        app:layout_constraintTop_toBottomOf="@id/cardFront"/>
+
+    <TextView
+        android:id="@+id/cardContext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2sp"
+        android:fontFamily="@font/poppins"
+        android:text="Recently, he has been so insecure."
+        android:textColor="#0077b6"
+        app:layout_constraintStart_toStartOf="@id/cardTranslation"
+        app:layout_constraintTop_toBottomOf="@id/cardTranslation" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,14 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatDialogFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.theapp.adapters.RecyclerViewAdapterDecks;
 import com.example.theapp.data.DatabaseHelper;
 import com.example.theapp.data.Deck;
 
-import java.util.ArrayList;
 
 public class DeckButtonDialogActivity extends AppCompatDialogFragment implements DialogInterface.OnDismissListener {
     private EditText deckName;
@@ -34,25 +31,32 @@ public class DeckButtonDialogActivity extends AppCompatDialogFragment implements
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.deck_dialog, null);
 
-        builder.setView(view).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        }).setPositiveButton("Add", new DialogInterface.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String name = deckName.getText().toString().trim();
-                DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
-                boolean success = databaseHelper.addDeck(new Deck(name));
-                if (success) {
-                    Toast.makeText(getContext(), "Success adding the deck", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
-                }
-//                updateDecks(new View(getContext()));
+        builder.setView(view);
 
+        Button buttonAdd = view.findViewById(R.id.dialogButtonAdd);
+        Button buttonCancel = view.findViewById(R.id.dialogButtonCancel);
+
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = deckName.getText().toString().trim();
+                if (!name.isEmpty()) {
+                    DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+                    boolean success = databaseHelper.addDeck(new Deck(name));
+                    if (success) {
+                        Toast.makeText(getContext(), "Success adding the deck", Toast.LENGTH_SHORT).show();
+                        dismiss();
+                    } else {
+                        Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
             }
         });
 
@@ -71,18 +75,4 @@ public class DeckButtonDialogActivity extends AppCompatDialogFragment implements
             onDismissListener.onDismiss(dialog);
         }
     }
-
-    public void updateDecks(View view) {
-        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
-        ArrayList<Deck> decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewDeck);
-        RecyclerViewAdapterDecks adapterDecks = new RecyclerViewAdapterDecks(getContext(), decks);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapterDecks);
-//            adapterDecks.updateDeckList(decks);
-//            adapterDecks.notifyDataSetChanged();
-    }
-
 }

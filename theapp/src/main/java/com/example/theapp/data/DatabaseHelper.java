@@ -35,7 +35,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DECK_CREATED = "CREATED";
     private static final String COLUMN_CARD_DECK = "DECK";
 
-
     public DatabaseHelper(@Nullable Context context) {
         super(context, "anti.db", null, 1);
     }
@@ -96,22 +95,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-
-        Date c = Calendar.getInstance().getTime();
-        System.out.println("Current time => " + c);
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
-        String formattedDate = df.format(c);
-
         values.put(COLUMN_NAME, deck.getName());
         values.put(COLUMN_TOTAL, deck.getTotalNumberOfCard());
         values.put(COLUMN_RELEARN, deck.getNumberToRelearn());
         values.put(COLUMN_NEW, deck.getNumberNewCards());
         values.put(COLUMN_REVISE, deck.getNumberToRevise());
-        values.put(COLUMN_DECK_CREATED, formattedDate);
+        values.put(COLUMN_DECK_CREATED, deck.getDateCreated());
 
         long insert = db.insert(TABLE_NAME_DECKS, null, values);
         return insert != -1;
     }
+
+
 //
 //    public boolean addOne(Card card) {
 //        SQLiteDatabase db = this.getWritableDatabase();

@@ -2,11 +2,16 @@ package com.example.theapp.data;
 
 import android.icu.util.LocaleData;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class Deck {
     public String name;
@@ -27,7 +32,7 @@ public class Deck {
         this.numberToRelearn = 0;
         this.numberNewCards = 0;
         this.numberToRevise = 0;
-        String dateCreated;
+        this.dateCreated = getToday();
         this.cards = null;
     }
 
@@ -115,5 +120,12 @@ public class Deck {
 
     public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+    public String getToday() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.UK);
+        Log.d("ANTIGLUTEN", "getToday: " + dateFormat.format(calendar.getTime()));
+        return dateFormat.format(calendar.getTime());
     }
 }

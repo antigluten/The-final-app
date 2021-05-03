@@ -6,33 +6,41 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
+import com.example.myapplication.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
-    private RecyclerViewAdapter recyclerViewAdapter;
-    private ArrayList<String> arrayList;
+
+    int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        arrayList = new ArrayList<>();
-
-
-        for (int i = 0; i < 100; i++) {
-            arrayList.add("Hello world " + i);
-        }
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
 
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewAdapter = new RecyclerViewAdapter(MainActivity.this, arrayList);
-        recyclerView.setAdapter(recyclerViewAdapter);
+        binding.textView.setText("Hello world");
 
+        binding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (i % 2) {
+                    case 0:
+                        binding.textView.setText("Hello suka");
+                        break;
+                    case 1:
+                        binding.textView.setText("Hello pidor");
+                }
+                if (i == 10) i = 0;
+                i++;
+            }
+        });
 
     }
 }

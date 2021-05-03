@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.theapp.R;
-import com.example.theapp.data.Card;
 import com.example.theapp.data.Deck;
 
 import java.util.ArrayList;
@@ -18,6 +17,8 @@ import java.util.ArrayList;
 public class RecyclerViewAdapterDecks extends RecyclerView.Adapter<RecyclerViewAdapterDecks.DeckViewHolder> {
     private Context context;
     private ArrayList<Deck> decks;
+
+    private RecyclerViewAdapterDecks.OnItemClickListener listener;
 
     public RecyclerViewAdapterDecks(Context context, ArrayList<Deck> decks) {
         this.context = context;
@@ -67,6 +68,25 @@ public class RecyclerViewAdapterDecks extends RecyclerView.Adapter<RecyclerViewA
             numberNewCards = itemView.findViewById(R.id.deckLearn);
             numberToRevise = itemView.findViewById(R.id.deckRevise);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
+    }
+
+    public void setOnItemClickListener(RecyclerViewAdapterDecks.OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface OnItemClickListener {
+        public void onItemClick(int position);
     }
 }

@@ -3,6 +3,7 @@ package com.example.theapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.theapp.databinding.FragmentDeckBinding;
 import com.example.theapp.fragments.DeckFragment;
 import com.example.theapp.fragments.ProfileFragment;
 import com.example.theapp.fragments.StatisticsFragment;
@@ -43,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Button addDeck = findViewById(R.id.buttonAddDeck);
 
         getSupportFragmentManager()
                 .beginTransaction()
