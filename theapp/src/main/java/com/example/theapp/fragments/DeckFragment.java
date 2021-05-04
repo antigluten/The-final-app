@@ -81,6 +81,16 @@ public class DeckFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        adapterDecks.setOnItemLongClickListener(new RecyclerViewAdapterDecks.OnItemLongClickListener() {
+            @Override
+            public void onItemLongClickListener(int position) {
+                Log.d(TAG, "onItemLongClickListener: " + position);
+                MenuBottomSheetDialogFragment.newInstance(R.menu.email_bottom_sheet_menu).show(getParentFragmentManager(), null);
+            }
+        });
+
+
     }
 
     public void updateDecks(int arraySize){

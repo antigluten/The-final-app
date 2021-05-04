@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.theapp.R;
 import com.example.theapp.data.Deck;
+import com.example.theapp.databinding.FragmentStatisticsBinding;
+import com.example.theapp.fragments.MenuBottomSheetDialogFragment;
 
 import java.util.ArrayList;
 
@@ -19,6 +22,8 @@ public class RecyclerViewAdapterDecks extends RecyclerView.Adapter<RecyclerViewA
     private ArrayList<Deck> decks;
 
     private RecyclerViewAdapterDecks.OnItemClickListener listener;
+    private RecyclerViewAdapterDecks.OnItemLongClickListener onItemLongClickListener;
+
 
     public RecyclerViewAdapterDecks(Context context, ArrayList<Deck> decks) {
         this.context = context;
@@ -79,6 +84,22 @@ public class RecyclerViewAdapterDecks extends RecyclerView.Adapter<RecyclerViewA
                     }
                 }
             });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if (onItemLongClickListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            onItemLongClickListener.onItemLongClickListener(position);
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            });
+
+
         }
     }
 
@@ -88,5 +109,13 @@ public class RecyclerViewAdapterDecks extends RecyclerView.Adapter<RecyclerViewA
 
     public interface OnItemClickListener {
         public void onItemClick(int position);
+    }
+
+    public void setOnItemLongClickListener(RecyclerViewAdapterDecks.OnItemLongClickListener onItemLongClickListener) {
+        this.onItemLongClickListener = onItemLongClickListener;
+    }
+
+    public interface OnItemLongClickListener {
+        public void onItemLongClickListener(int position);
     }
 }
