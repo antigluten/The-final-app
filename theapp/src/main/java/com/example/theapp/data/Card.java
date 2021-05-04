@@ -36,6 +36,17 @@ public class Card {
         this.deck = deck;
     }
 
+    public Card(int id, String frontWord, String translationWord, String context, int type, String dateCreated, String dueDate, String deck) {
+        this.id = id;
+        this.frontWord = frontWord;
+        this.translationWord = translationWord;
+        this.context = context;
+        this.type = type;
+        this.dateCreated = dateCreated;
+        this.dueDate = dueDate;
+        this.deck = deck;
+    }
+
     public int getId() {
         return id;
     }

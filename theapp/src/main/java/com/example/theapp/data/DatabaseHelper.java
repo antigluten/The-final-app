@@ -25,6 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_CARD_TYPE = "TYPE";
     public static final String COLUMN_CARD_DATE_CREATED = "CREATED";
     public static final String COLUMN_CARD_DUE = "DUE";
+    public static final String COLUMN_CARD_DECK = "DECK";
 
     public static final String TABLE_NAME_DECKS = "DECKS";
     public static final String COLUMN_NAME = "NAME";
@@ -33,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_RELEARN = "LEARN";
     public static final String COLUMN_REVISE = "REVISE";
     public static final String COLUMN_DECK_CREATED = "CREATED";
-    private static final String COLUMN_CARD_DECK = "DECK";
+
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, "anti.db", null, 1);
@@ -192,6 +193,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 Deck deck = new Deck(id, name, total, learn, newCards, revise, dateCreated);
                 returnList.add(deck);
+            } while (cursor.moveToNext());
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return returnList;
+    }
+
+
+
+    public List<Card> getAllCardWithDeckName(String deckName) {
+        List<Card> returnList = new ArrayList<>();
+
+        String queryString = "SELECT * FROM " + TABLE_NAME_CARDS + " WHERE " + COLUMN_CARD_DECK + "=?";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, new String[]{deckName});
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String frontWord = cursor.getString(1);
+                String translation = cursor.getString(2);
+                String using = cursor.getString(3);
+                int cardType = cursor.getInt(4);
+                String cardCreated = cursor.getString(5);
+                String cardDue = cursor.getString(6);
+                String deck = cursor.getString(7);
+
+
+                returnList.add(new Card(id, frontWord, translation, using, cardType, cardCreated, cardDue, deck));
             } while (cursor.moveToNext());
 
         }

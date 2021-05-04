@@ -21,8 +21,6 @@
             android:layout_marginStart="24sp"
             android:layout_marginTop="4sp"
             android:fontFamily="@font/futura_medium"
-            android:text="Japanese"
-            android:textColor="#3C82FF"
             android:textSize="40sp" />
 
         <LinearLayout
@@ -82,6 +80,35 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutBrowsing"
         tools:ignore="RtlSymmetry"
         tools:listitem="@layout/item_browsing_cards" />
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hideOnScroll="true"
+        android:layout_gravity="bottom"
+        app:fabAlignmentMode="center"
+        app:fabCradleRoundedCornerRadius="@dimen/bottom_app_bar_fab_cradle_corner_radius"
+        app:fabCradleMargin="@dimen/bottom_app_bar_fab_cradle_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="BottomAppBar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_anchor="@id/bottomAppBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/asl_edit_reply" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

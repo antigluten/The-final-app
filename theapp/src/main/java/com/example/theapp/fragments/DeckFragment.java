@@ -83,8 +83,10 @@ public class DeckFragment extends Fragment {
                 Deck deck = list.get(position);
                 Log.d(TAG, "onItemClick: " + deck.getId());
 
-//                Intent intent = new Intent(getContext(), DeckBrowsingCardsActivity.class);
-//                startActivity(intent);
+
+                Intent intent = new Intent(getContext(), DeckBrowsingCardsActivity.class);
+                intent.putExtra("Deck", deck.getName());
+                startActivity(intent);
             }
         });
 
@@ -109,7 +111,6 @@ public class DeckFragment extends Fragment {
         adapterDecks.updateDeckList(decks);
         adapterDecks.notifyItemRangeInserted(arraySize, decks.size());
     }
-
 
     public static void updateDecks(DatabaseHelper databaseHelper, int position) {
         ArrayList<Deck> decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
