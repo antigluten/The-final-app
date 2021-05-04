@@ -7,7 +7,10 @@
     android:layout_marginTop="12sp"
     android:layout_marginStart="8sp"
     android:layout_marginEnd="8sp"
-    android:background="@drawable/deck">
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/custom_ripple"
+    android:transitionName="@string/email_card_detail_transition_name">
 
 
 

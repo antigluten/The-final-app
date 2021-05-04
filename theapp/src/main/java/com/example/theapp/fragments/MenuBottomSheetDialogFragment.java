@@ -5,17 +5,23 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.MenuRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.theapp.R;
+import com.example.theapp.data.DatabaseHelper;
+import com.example.theapp.data.Deck;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class MenuBottomSheetDialogFragment extends BottomSheetDialogFragment {
     private NavigationView navigationView;
+
+    Deck deck;
+    int position;
 
     @Nullable
     @Override
@@ -32,6 +38,24 @@ public class MenuBottomSheetDialogFragment extends BottomSheetDialogFragment {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Toast.makeText(getContext(), "Item: " + item.toString(), Toast.LENGTH_SHORT).show();
+                switch (item.getItemId()) {
+                    case R.id.menu_rename:
+                        Toast.makeText(getContext(), "You clicked it", Toast.LENGTH_SHORT).show();
+                        dismiss();
+                        break;
+                    case R.id.menu_delete:
+                        DatabaseHelper db = new DatabaseHelper(getContext());
+                        if (deck != null) {
+                            boolean success = db.deleteDeck(getDeck());
+                            Toast.makeText(getContext(), "Returns " + success + " " + deck.getId(), Toast.LENGTH_SHORT).show();
+                            DeckFragment.updateDecks(db, getPosition());
+                            dismiss();
+                        } else {
+                            Toast.makeText(getContext(), "Null object", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                }
                 dismiss();
                 return true;
             }
@@ -40,12 +64,31 @@ public class MenuBottomSheetDialogFragment extends BottomSheetDialogFragment {
 
     }
 
-    public final static MenuBottomSheetDialogFragment newInstance(@MenuRes int menuResId) {
+    public MenuBottomSheetDialogFragment newInstance(@MenuRes int menuResId, Deck deck, int position) {
         MenuBottomSheetDialogFragment fragment = new MenuBottomSheetDialogFragment();
+        fragment.setDeck(deck);
+        fragment.setPosition(position);
+
         Bundle bundle = new Bundle();
 
         bundle.putInt("MenuBottomSheetDialogFragment_menuResId", menuResId);
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setDeck(Deck deck) {
+        this.deck = deck;
+    }
+
+    public Deck getDeck() {
+        return deck;
     }
 }

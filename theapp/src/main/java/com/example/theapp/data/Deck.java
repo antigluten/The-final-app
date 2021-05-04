@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Deck {
+    public int id;
     public String name;
     public int totalNumberOfCard;
     public int numberToRelearn;
@@ -54,6 +55,16 @@ public class Deck {
         this.dateCreated = dateCreated;
     }
 
+    public Deck(int id, String name, int totalNumberOfCard, int numberToRelearn, int numberNewCards, int numberToRevise, String dateCreated) {
+        this.id = id;
+        this.name = name;
+        this.totalNumberOfCard = totalNumberOfCard;
+        this.numberToRelearn = numberToRelearn;
+        this.numberNewCards = numberNewCards;
+        this.numberToRevise = numberToRevise;
+        this.dateCreated = dateCreated;
+    }
+
     @Override
     public String toString() {
         return "Deck{" +
@@ -64,6 +75,14 @@ public class Deck {
                 ", numberToRevise=" + numberToRevise +
                 ", cards=" + cards +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

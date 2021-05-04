@@ -26,13 +26,14 @@ public class StatisticsFragment extends Fragment {
 
         binding.textViewTest.setText("Hello world");
 
-        binding.textViewTest.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                MenuBottomSheetDialogFragment.newInstance(R.menu.email_bottom_sheet_menu).show(getParentFragmentManager(), null);
-                return true;
-            }
-        });
+//        binding.textViewTest.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                MenuBottomSheetDialogFragment menuBottomSheetDialogFragment = new MenuBottomSheetDialogFragment();
+//                menuBottomSheetDialogFragment.newInstance(R.menu.email_bottom_sheet_menu).show(getParentFragmentManager(), null);
+//                return true;
+//            }
+//        });
 
 
         return binding.getRoot();

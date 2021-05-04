@@ -106,6 +106,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insert != -1;
     }
 
+    public boolean deleteDeck(Deck deck) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("DELETE FROM " + TABLE_NAME_DECKS + " WHERE " + COLUMN_ID + " = " + deck.getId(), null);
+        if (cursor.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 //
 //    public boolean addOne(Card card) {
@@ -173,7 +182,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                int deckId = cursor.getInt(0);
+                int id = cursor.getInt(0);
                 String name = cursor.getString(1);
                 int total = cursor.getInt(2);
                 int newCards = cursor.getInt(3);
@@ -181,7 +190,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int revise = cursor.getInt(5);
                 String dateCreated = cursor.getString(6);
 
-                Deck deck = new Deck(name, total, learn, newCards, revise, dateCreated);
+                Deck deck = new Deck(id, name, total, learn, newCards, revise, dateCreated);
                 returnList.add(deck);
             } while (cursor.moveToNext());
 

@@ -20,6 +20,7 @@ import com.example.theapp.R;
 import com.example.theapp.adapters.RecyclerViewAdapterDecks;
 import com.example.theapp.data.DatabaseHelper;
 import com.example.theapp.data.Deck;
+import com.example.theapp.databinding.MenuBottomSheetDialogLayoutBinding;
 
 import java.util.ArrayList;
 
@@ -30,7 +31,7 @@ public class DeckFragment extends Fragment {
     private FrameLayout frameLayout;
     private Button addDeck;
     private ArrayList<Deck> decks;
-    private RecyclerViewAdapterDecks adapterDecks;
+    private static RecyclerViewAdapterDecks adapterDecks;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,8 +78,13 @@ public class DeckFragment extends Fragment {
             @Override
             public void onItemClick(int position) {
                 Log.d(TAG, "onItemClick: " + position);
-                Intent intent = new Intent(getContext(), DeckBrowsingCardsActivity.class);
-                startActivity(intent);
+                DatabaseHelper db = new DatabaseHelper(getContext());
+                ArrayList<Deck> list = (ArrayList<Deck>) db.getAllDecks();
+                Deck deck = list.get(position);
+                Log.d(TAG, "onItemClick: " + deck.getId());
+
+//                Intent intent = new Intent(getContext(), DeckBrowsingCardsActivity.class);
+//                startActivity(intent);
             }
         });
 
@@ -86,9 +92,13 @@ public class DeckFragment extends Fragment {
             @Override
             public void onItemLongClickListener(int position) {
                 Log.d(TAG, "onItemLongClickListener: " + position);
-                MenuBottomSheetDialogFragment.newInstance(R.menu.email_bottom_sheet_menu).show(getParentFragmentManager(), null);
+                MenuBottomSheetDialogFragment menuBottomSheetDialogFragment = new MenuBottomSheetDialogFragment();
+                menuBottomSheetDialogFragment.newInstance(R.menu.email_bottom_sheet_menu, decks.get(position), position).show(getParentFragmentManager(), null);
+
+
             }
         });
+
 
 
     }
@@ -99,4 +109,12 @@ public class DeckFragment extends Fragment {
         adapterDecks.updateDeckList(decks);
         adapterDecks.notifyItemRangeInserted(arraySize, decks.size());
     }
+
+
+    public static void updateDecks(DatabaseHelper databaseHelper, int position) {
+        ArrayList<Deck> decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
+        adapterDecks.updateDeckList(decks);
+        adapterDecks.notifyItemRemoved(position);
+    }
+
 }
