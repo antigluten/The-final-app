@@ -30,16 +30,16 @@ public final class DialogRenameDeckBinding implements ViewBinding {
   public final Button dialogButtonCancel;
 
   @NonNull
-  public final TextView textView4;
+  public final TextView dialogNewDeck;
 
   private DialogRenameDeckBinding(@NonNull ConstraintLayout rootView,
       @NonNull EditText deckNameDialog, @NonNull Button dialogButtonAdd,
-      @NonNull Button dialogButtonCancel, @NonNull TextView textView4) {
+      @NonNull Button dialogButtonCancel, @NonNull TextView dialogNewDeck) {
     this.rootView = rootView;
     this.deckNameDialog = deckNameDialog;
     this.dialogButtonAdd = dialogButtonAdd;
     this.dialogButtonCancel = dialogButtonCancel;
-    this.textView4 = textView4;
+    this.dialogNewDeck = dialogNewDeck;
   }
 
   @Override
@@ -87,14 +87,14 @@ public final class DialogRenameDeckBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textView4;
-      TextView textView4 = rootView.findViewById(id);
-      if (textView4 == null) {
+      id = R.id.dialogNewDeck;
+      TextView dialogNewDeck = rootView.findViewById(id);
+      if (dialogNewDeck == null) {
         break missingId;
       }
 
       return new DialogRenameDeckBinding((ConstraintLayout) rootView, deckNameDialog,
-          dialogButtonAdd, dialogButtonCancel, textView4);
+          dialogButtonAdd, dialogButtonCancel, dialogNewDeck);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

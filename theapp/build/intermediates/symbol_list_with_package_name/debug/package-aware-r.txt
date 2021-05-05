@@ -1827,6 +1827,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable dialog_background
+drawable dialog_bg
 drawable divider
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
@@ -1838,6 +1839,7 @@ drawable ic_circle
 drawable ic_clock_black_24dp
 drawable ic_close
 drawable ic_close_small
+drawable ic_deck
 drawable ic_delete
 drawable ic_done
 drawable ic_edit
@@ -1860,6 +1862,7 @@ drawable ic_reply_logo
 drawable ic_schedule
 drawable ic_search
 drawable ic_settings
+drawable ic_statistics
 drawable ic_twotone_add_circle_outline
 drawable ic_twotone_delete
 drawable ic_twotone_drafts
@@ -1871,6 +1874,7 @@ drawable ic_twotone_send
 drawable ic_twotone_star
 drawable ic_twotone_star_on_background
 drawable ic_twotone_stars
+drawable ic_user
 drawable ic_wave
 drawable ic_wave1
 drawable input
@@ -2100,6 +2104,10 @@ id design_menu_item_text
 id design_navigation_view
 id dialogButtonAdd
 id dialogButtonCancel
+id dialogCardContext
+id dialogCardFront
+id dialogCardTranslation
+id dialogNewDeck
 id dialog_button
 id dimensions
 id direct
@@ -2391,7 +2399,6 @@ id textStart
 id textTop
 id textView
 id textView2
-id textView4
 id textViewTest
 id text_input_end_icon
 id text_input_error_icon
@@ -2518,6 +2525,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dialog_card
 layout dialog_rename_deck
 layout fragment_deck
 layout fragment_profile
@@ -2636,6 +2644,9 @@ string bottom_nav_drawer_profile_image_content_desc
 string bottom_sheet_behavior
 string bottomsheet_action_expand_halfway
 string cancelDeck
+string cardContext
+string cardFront
+string cardTranslation
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
@@ -2670,6 +2681,7 @@ string deckName
 string deck_name
 string decks
 string default_web_client_id
+string dialogNewCard
 string email_card_detail_transition_name
 string email_card_transition_name
 string email_recipient_to
@@ -3021,7 +3033,9 @@ style Base_Widget_MaterialComponents_TextView
 style CardView
 style CardView_Dark
 style CardView_Light
+style CustomAlertDialog
 style EmptyTheme
+style MaterialAlertDialog_App
 style MaterialAlertDialog_MaterialComponents
 style MaterialAlertDialog_MaterialComponents_Body_Text
 style MaterialAlertDialog_MaterialComponents_Picker_Date_Calendar
@@ -3063,6 +3077,7 @@ style RtlOverlay_Widget_AppCompat_Search_DropDown_Text
 style RtlOverlay_Widget_AppCompat_SearchView_MagIcon
 style RtlUnderlay_Widget_AppCompat_ActionButton
 style RtlUnderlay_Widget_AppCompat_ActionButton_Overflow
+style ShapeAppearance_App_MediumComponent
 style ShapeAppearance_MaterialComponents
 style ShapeAppearance_MaterialComponents_LargeComponent
 style ShapeAppearance_MaterialComponents_MediumComponent
@@ -3276,6 +3291,7 @@ style Theme_Shit
 style Theme_Shit_AppBarOverlay
 style Theme_Shit_NoActionBar
 style Theme_Shit_PopupOverlay
+style ThemeOverlay_App_MaterialAlertDialog
 style ThemeOverlay_AppCompat
 style ThemeOverlay_AppCompat_ActionBar
 style ThemeOverlay_AppCompat_Dark

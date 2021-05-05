@@ -1,3 +1,7 @@
+com/example/theapp/DeckDialogFragment.java
+ com.example.theapp.DeckDialogFragment
+ com.example.theapp.DeckDialogFragment$1
+ com.example.theapp.DeckDialogFragment$2
 com/example/theapp/adapters/MyAdapter.java
  com.example.theapp.adapters.MyAdapter
 com/example/theapp/fragments/MenuBottomSheetDialogFragment.java
@@ -13,6 +17,7 @@ com/example/theapp/adapters/MyViewHolder.java
  com.example.theapp.adapters.MyViewHolder
 com/example/theapp/DeckBrowsingCardsActivity.java
  com.example.theapp.DeckBrowsingCardsActivity
+ com.example.theapp.DeckBrowsingCardsActivity$1
 com/example/theapp/databinding/FragmentProfileBinding.java
  com.example.theapp.databinding.FragmentProfileBinding
 com/example/theapp/databinding/FragmentDeckBinding.java
@@ -31,6 +36,8 @@ com/example/theapp/databinding/ItemTestBinding.java
  com.example.theapp.databinding.ItemTestBinding
 com/example/theapp/SignUpActivity.java
  com.example.theapp.SignUpActivity
+com/example/theapp/databinding/DialogCardBinding.java
+ com.example.theapp.databinding.DialogCardBinding
 com/example/theapp/data/DatabaseHelper.java
  com.example.theapp.data.DatabaseHelper
 com/example/theapp/databinding/ActivityLoginBinding.java
@@ -59,10 +66,6 @@ com/example/theapp/LogInActivity.java
  com.example.theapp.LogInActivity$2
 com/example/theapp/databinding/ActivitySignupBinding.java
  com.example.theapp.databinding.ActivitySignupBinding
-com/example/theapp/DeckButtonDialogActivity.java
- com.example.theapp.DeckButtonDialogActivity
- com.example.theapp.DeckButtonDialogActivity$1
- com.example.theapp.DeckButtonDialogActivity$2
 com/example/theapp/time/MyTimeAdapter.java
  com.example.theapp.time.MyTimeAdapter
 com/example/theapp/adapters/RecyclerViewAdapterDecks.java
@@ -72,6 +75,8 @@ com/example/theapp/adapters/RecyclerViewAdapterDecks.java
  com.example.theapp.adapters.RecyclerViewAdapterDecks$DeckViewHolder$2
  com.example.theapp.adapters.RecyclerViewAdapterDecks$OnItemClickListener
  com.example.theapp.adapters.RecyclerViewAdapterDecks$OnItemLongClickListener
+com/example/theapp/CardDialogFragment.java
+ com.example.theapp.CardDialogFragment
 com/example/theapp/fragments/DeckFragment.java
  com.example.theapp.fragments.DeckFragment
  com.example.theapp.fragments.DeckFragment$1

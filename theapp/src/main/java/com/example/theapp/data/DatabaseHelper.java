@@ -235,6 +235,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return returnList;
     }
+
+    public void updateCardList() {
+
+    }
 //
 //    public List<Card> getAll() {
 //        List<Card> returnList = new ArrayList<>();
@@ -264,4 +268,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //    }
 //
 
+    public boolean deleteAllDecksAndCards() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("DELETE FROM " + TABLE_NAME_DECKS, null);
+        Cursor cursor1 = db.rawQuery("DELETE FROM " + TABLE_NAME_CARDS, null);
+        if (cursor.moveToFirst() && cursor1.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean deleteAllCards() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("DELETE FROM " + TABLE_NAME_CARDS, null);
+        if (cursor.moveToFirst() && cursor.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

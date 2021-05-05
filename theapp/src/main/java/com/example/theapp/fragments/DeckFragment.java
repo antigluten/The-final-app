@@ -3,6 +3,7 @@ package com.example.theapp.fragments;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +14,14 @@ import android.widget.FrameLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Database;
 
 import com.example.theapp.DeckBrowsingCardsActivity;
-import com.example.theapp.DeckButtonDialogActivity;
+import com.example.theapp.DeckDialogFragment;
 import com.example.theapp.R;
 import com.example.theapp.adapters.RecyclerViewAdapterDecks;
 import com.example.theapp.data.DatabaseHelper;
 import com.example.theapp.data.Deck;
-import com.example.theapp.databinding.MenuBottomSheetDialogLayoutBinding;
 
 import java.util.ArrayList;
 
@@ -58,7 +59,7 @@ public class DeckFragment extends Fragment {
         super.onResume();
 
         int arraySize = decks.size();
-        DeckButtonDialogActivity deckButtonDialogActivity = new DeckButtonDialogActivity();
+        DeckDialogFragment deckButtonDialogActivity = new DeckDialogFragment();
         deckButtonDialogActivity.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
@@ -70,7 +71,8 @@ public class DeckFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 deckButtonDialogActivity.show(getChildFragmentManager(), "Dialog");
-                Log.d(TAG, "openDialog: clicked Dialog");
+                Log.d(TAG, "openDialog: dialog clicked");
+
             }
         });
 

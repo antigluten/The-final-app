@@ -53,6 +53,10 @@ public class RecyclerViewAdapterCard extends RecyclerView.Adapter<RecyclerViewAd
         this.arrayList = arrayList;
     }
 
+    public void updateCardList(ArrayList<Card> arrayList) {
+        this.arrayList = arrayList;
+    }
+
 //    public interface OnItemClickListener {
 //        public void onItemClick(int position);
 //    }

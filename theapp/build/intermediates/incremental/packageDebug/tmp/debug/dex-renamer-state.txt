@@ -1,4 +1,4 @@
-#Wed May 05 01:19:32 MSK 2021
+#Wed May 05 15:21:28 MSK 2021
 base.2=C\:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 path.2=classes2.dex
 base.1=C\:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex

@@ -4,18 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/dialog_background"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="24sp">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/dialogNewDeck"
         android:layout_width="243dp"
         android:layout_height="32dp"
-        android:layout_marginTop="12sp"
+        android:layout_marginTop="0sp"
         android:fontFamily="@font/futura_medium"
         android:text="@string/enterDeckName"
-        android:textColor="@color/royal_blue"
+        android:textColor="@color/reply_blue_700"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,14 +27,15 @@
         android:ems="10"
         android:textSize="18sp"
         android:paddingStart="12sp"
-        android:background="@drawable/input"
+        android:paddingEnd="12dp"
+        android:background="@drawable/deck"
         android:fontFamily="@font/futura_medium"
         android:inputType="textPersonName"
         android:layout_marginTop="12sp"
         android:hint="@string/deck_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/dialogNewDeck"
         tools:ignore="RtlSymmetry" />
 
     <Button
@@ -43,9 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:backgroundTint="@color/white"
         android:text="@string/addDeck"
-        android:textColor="@color/royal_blue"
         app:layout_constraintStart_toEndOf="@+id/dialogButtonCancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deckNameDialog" />
@@ -55,9 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:backgroundTint="@color/white"
         android:text="@string/cancelDeck"
-        android:textColor="@color/royal_blue"
         app:layout_constraintEnd_toStartOf="@+id/dialogButtonAdd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deckNameDialog" />

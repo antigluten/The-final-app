@@ -18,16 +18,19 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.theapp.data.DatabaseHelper;
 import com.example.theapp.data.Deck;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
+import java.util.ArrayList;
 
 
-public class DeckButtonDialogActivity extends AppCompatDialogFragment implements DialogInterface.OnDismissListener {
+public class DeckDialogFragment extends AppCompatDialogFragment implements DialogInterface.OnDismissListener {
     private EditText deckName;
     private DialogInterface.OnDismissListener onDismissListener;
 
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity(), R.style.ThemeOverlay_App_MaterialAlertDialog);
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.deck_dialog, null);
 
@@ -42,13 +45,28 @@ public class DeckButtonDialogActivity extends AppCompatDialogFragment implements
                 String name = deckName.getText().toString().trim();
                 if (!name.isEmpty()) {
                     DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
-                    boolean success = databaseHelper.addDeck(new Deck(name));
-                    if (success) {
-                        Toast.makeText(getContext(), "Success adding the deck", Toast.LENGTH_SHORT).show();
-                        dismiss();
-                    } else {
-                        Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+                    ArrayList<Deck> list = (ArrayList<Deck>) databaseHelper.getAllDecks();
+                    boolean deckExist = true;
+                    for (Deck deck : list) {
+                        if (name.equals(deck.getName())) {
+                            deckName.requestFocus();
+                            Toast.makeText(getContext(), "You have deck with this name", Toast.LENGTH_SHORT).show();
+                            deckExist = false;
+                            break;
+                        }
                     }
+                    if (deckExist) {
+                        boolean success = databaseHelper.addDeck(new Deck(name));
+                        if (success) {
+                            Toast.makeText(getContext(), "Success adding the deck", Toast.LENGTH_SHORT).show();
+                            dismiss();
+                        } else {
+                            Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                } else {
+                    deckName.requestFocus();
+                    Toast.makeText(getContext(), "Enter deck name", Toast.LENGTH_SHORT).show();
                 }
             }
         });

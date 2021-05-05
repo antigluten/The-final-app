@@ -4,6 +4,10 @@
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\item_deck.xml"
     },
     {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\dialog_card.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\dialog_card.xml"
+    },
+    {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\dialog_rename_deck.xml",
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\dialog_rename_deck.xml"
     },

@@ -1,0 +1,371 @@
+[33mcommit 5a2e8efd440f764bf163ccadfb8222a5aa65545c[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Wed May 5 01:21:32 2021 +0300
+
+    Adding more things
+
+[33mcommit af685964aadfaa3a499d38cd576de68de353e3bb[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Tue May 4 20:53:33 2021 +0300
+
+    Added  delete using additional dialog and it worked but i have to pay attention to database because there can be problems
+
+[33mcommit 1ad911931125631792b31576a17920c40ef25389[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Tue May 4 12:08:00 2021 +0300
+
+    added onItemLongClick to decks to make more tools
+
+[33mcommit a91341b170a94fb7693a360397b46c5d13e3ab18[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Mon May 3 23:22:23 2021 +0300
+
+    Got how to implement the onLongClick
+
+[33mcommit c878633dd9b7e888ae3d8ca0eb7bf18dca885d9d[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Mon May 3 23:08:13 2021 +0300
+
+    Should I clean my project?
+
+[33mcommit 6d5d2c848a6095a9aab71b6833c3a8437382f2b2[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sun May 2 16:20:41 2021 +0300
+
+    I made it refreshable, so I spent about 1 hours to get where the problem is
+
+[33mcommit 63f53bccebeb607f41cf0a83358dd53ccbf92c31[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sun May 2 13:09:23 2021 +0300
+
+    Tried to add dialog to add deck to db, got a problem with transferring data from the dialogfragment
+
+[33mcommit dd59b20169c29f7e4e8365d9c5b16e4c9ca1ce6c[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sun May 2 02:45:26 2021 +0300
+
+    I just want to add a button to add cards and decks, but I have to prepare the structure of the data
+
+[33mcommit 0194444ab12dc17bc30cb36520b292ea42c7ff4a[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sat May 1 21:47:14 2021 +0300
+
+    Found some templates and started working on decks, so after a while when I did a design I can code my future activity
+
+[33mcommit baee1fc2e78e839c554ad97114f1795a0abfb856[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Fri Apr 30 22:24:26 2021 +0300
+
+    Trying to add additional tables and make the structure of data
+
+[33mcommit cf804129e2c7d09aea47d3021f1bb5c1007fd8c7[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Thu Apr 29 22:14:52 2021 +0300
+
+    If you tap on an item, it opens a new activity and if you press button to delete and it's gonna delete the card and close the new activity
+
+[33mcommit eb034775f9ee20c80da3542d23f501e2e333e468[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Thu Apr 29 01:14:54 2021 +0300
+
+    Added a thing to listen items, so it opens new activity where you can see the information about studies
+
+[33mcommit 97f6eef1ff6e65fce7f19d90594aaf7293e61989[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Wed Apr 28 23:45:33 2021 +0300
+
+    Fixed problem with adding items to recycler view and the next step is starting designing the page with decks, it also gonna be a recycler view, so I think I'm starting doing it and I have to have about 2 hours to make the first thing to test
+
+[33mcommit dc546fdb47b258bda0f0f0e77ac757236f836a93[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Wed Apr 28 23:03:58 2021 +0300
+
+    There is still a problem with blank items
+
+[33mcommit 2974f638063a5c6f6424db5bb78fa68975e4f508[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Tue Apr 27 23:34:10 2021 +0300
+
+    Made some sort of algorithm with recycler view, but there is one problem with spacing, I'm not sure I can say it's because of the database, but I think maybe there are some problems.
+
+[33mcommit f9ec7bece80d9764485982083a243fb5bd72f7a2[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Tue Apr 27 17:39:11 2021 +0300
+
+    Didn't get how to implement it to my app, so I just can do things like in my second app and today after a while I'm gonna do something with db
+
+[33mcommit bab7f7563c8bec06399c850addb1d0edb648e591[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Mon Apr 26 23:35:17 2021 +0300
+
+    Cleared something before doing something with recycler view and learning how it works
+
+[33mcommit fe408dda55b25f9f68e2c53d142d4adfb7077eb3[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sun Apr 25 23:58:43 2021 +0300
+
+    I want sleep
+
+[33mcommit 5b97156c469bcd59227b87b5b14723bb3d9c0cb6[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sun Apr 25 23:39:21 2021 +0300
+
+    I suppose I have to create a custom array adapter for my app
+
+[33mcommit 69b742e43cd613efdbc9316717dc0376d29943a3[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sun Apr 25 16:37:42 2021 +0300
+
+    Add some edit texts to create a card to db by clicking a button, so it works
+
+[33mcommit a5d49b2c354f0e187e2fc4db71cddd42180ad13f[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sat Apr 24 23:43:28 2021 +0300
+
+    I made a class to save all data and it works I have to make it more interactive and sophisticated, so there are lots of work and I have to spend more time
+
+[33mcommit 3124cffb30e869aab33a65e4a081987dece7d06b[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sat Apr 24 18:01:49 2021 +0300
+
+    I asked the teacher whether we can you kotlin or not and if it is yes so i am gonna do that thing
+
+[33mcommit 98a91263381b220b488dcbe0d8205b2c7d9d1a56[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Fri Apr 23 23:45:16 2021 +0300
+
+    Added something to make it faster adding to a list all contacts and in the future gonna make it with all the stuff.
+
+[33mcommit f83b5de2fdb5c3a5b602b05d021dab14690b92a7[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Fri Apr 23 23:40:31 2021 +0300
+
+    Worked a little bit with database and didn't get how to save data because after reloading the app I can't achieve it, so just gonna learn how to do it and then I can combine offline and online databases and make it easier to use without the Internet
+
+[33mcommit f45e4d4007e0427c65e7f3d302e89de4a1929c96[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Thu Apr 22 20:20:50 2021 +0300
+
+    Cleared the project and learnt something about listview
+
+[33mcommit 6c9d312c2b377bd7a1ef310a7d4d076ae0570022[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Thu Apr 22 00:30:24 2021 +0300
+
+    Let's go
+
+[33mcommit acca85875149b5c1357fd10532d4db007d64fac0[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Wed Apr 21 22:30:24 2021 +0300
+
+    worked some things with recycler view, didn't got what it is, so just gonna continue watching guides and working on the product, i got one thing that we can arrange everything in recycler view and it's gonna be like a list for it
+
+[33mcommit 117e635b415f4136009bd3d25be3183ad07b8c6e[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Wed Apr 21 00:38:41 2021 +0300
+
+    added new module for fast testing and made new ui for login, so i won the progressbar, so it's blue now and fixed the bug
+
+[33mcommit c458f098dfd5159d7ab754f562c97da21ee3ade3[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Tue Apr 20 14:19:55 2021 +0300
+
+    made login and signup withou animation because it's annoying and i found an animation so just gonna try it
+
+[33mcommit 2ebd10d04f94b9dde1bcb2bd70c5115423645d69[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Tue Apr 20 00:31:39 2021 +0300
+
+    Made registration and login, so I just have to complete some ui for them and can start working on profile
+
+[33mcommit 0bf62d0600e2bbb1da9561076ad6611d6f3e2995[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Mon Apr 19 22:09:27 2021 +0300
+
+    Added some new functions to register and it saves it in the db, so there's a problem, the app doesn't remember you, I'm gonna make it remember
+
+[33mcommit 1361a48d5ecd26d14f2ecbed6bc25a01ab427f0e[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Mon Apr 19 20:20:34 2021 +0300
+
+    It's a commit to make a copy of working part because I'm gonna do some login things and I should clear the project
+
+[33mcommit f12907fc25a15bbde499b0c8e595df11d20e405b[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Mon Apr 19 12:15:27 2021 +0300
+
+    added some register logic and it worked
+
+[33mcommit c9451f2b6b38dc20378212e1942ee173ccb726c4[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sun Apr 18 21:06:00 2021 +0300
+
+    made it more adaptive so it can look better
+
+[33mcommit 502654bad4f26404bdd2b73f59f6d1c7e626093c[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sun Apr 18 20:21:25 2021 +0300
+
+    Created a design for sign up and gonna do a design for login and the logic between two activities
+
+[33mcommit d1e435a18c077fb066719ab8e97d1acbfcfb6b44[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sun Apr 18 19:08:27 2021 +0300
+
+    Added some ui
+
+[33mcommit 0621ad4cd7af1a62c0fc3d5d58c660daced996b1[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sat Apr 17 23:05:54 2021 +0300
+
+    Solved a problem with database, you have to have all properties as public because it will crash then
+
+[33mcommit 14961a8c719c82b9514a24260baac306b0c74f8f[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sat Apr 17 22:56:21 2021 +0300
+
+    yes yes yes, i did it, i was able to add my new information to the database, so now i have all of that  to do my main purpose
+
+[33mcommit 983348dcb2dc5b79217485fcc4e38cd2ca3cb373[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sat Apr 17 20:00:36 2021 +0300
+
+    class for database
+
+[33mcommit 8341b71a6cac9320d983db7fa8202cc3344c88be[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sat Apr 17 19:51:16 2021 +0300
+
+    Added some features for fragment and got how to findviewbyid in other activities
+
+[33mcommit 6a585edefd805d3f16eea37cc466bb190da49fc8[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sat Apr 17 12:19:31 2021 +0300
+
+    added some shit from the database
+
+[33mcommit 64982e1e6e362d16d1d8724749283d89e86b43dc[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Fri Apr 16 21:36:58 2021 +0300
+
+    fucking firebase i hate you because i've spent 3-5 hours trying understand what's wrong and it didn't show much result
+
+[33mcommit 0d630f7bd30a14195f1598725e5ca58f4697f473[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Thu Apr 15 22:17:13 2021 +0300
+
+    Removed last modules, added some new features, and gonna add some firebase realtime database
+
+[33mcommit cef1f3eacdb949ad45e6f375761e8e67f1e420d3[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Thu Apr 15 22:01:26 2021 +0300
+
+    Renamed all the variables
+
+[33mcommit 5260dca23a08c1a56a35be483e38db0c22f3ebf7[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Thu Apr 15 21:22:02 2021 +0300
+
+    added some fragments
+
+[33mcommit cf7b92b8a819569e3464dbef0fb75e9ec4673b6a[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Thu Apr 15 21:01:56 2021 +0300
+
+    fuck this github i don't get android studio
+
+[33mcommit 6711e08f437cd0b6873226b982f80db412ebadec[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Thu Apr 15 20:59:05 2021 +0300
+
+    Revert "added button to get data"
+    
+    This reverts commit 68f4fbb7
+
+[33mcommit 3e8153897bcb4ffe850c554657bc2bd72cb97826[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Thu Apr 15 20:51:14 2021 +0300
+
+    Cleared all the project and started doing app
+
+[33mcommit 2c557fefdbcf694fb2e6d1f777378e94e034cbb7[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Mon Apr 12 17:41:26 2021 +0300
+
+    fuck this shit
+
+[33mcommit 68f4fbb7e1f6c679c095873501f877eac40b5022[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sat Apr 10 21:30:10 2021 +0300
+
+    added button to get data
+
+[33mcommit f7d51076d7de0ef7ae473a3b907c81d4bd074807[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sat Apr 10 00:23:21 2021 +0300
+
+    I was able to send some information from a device so I found another problem, there are documents system and if I add a new information I would think I create like a new object but I just overwrite elder information so I'm gonna find the solution to the problem
+
+[33mcommit fa71fc80c5f4d309dd3199c33434218984cf9895[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Fri Apr 9 22:07:35 2021 +0300
+
+    understood that you can't upload an object to the db, and there were mistakes with parsing edit to int through string
+
+[33mcommit 6dd31fd37a217915615f9f87720c7511be673b94[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Fri Apr 9 21:28:40 2021 +0300
+
+    Added firestore and created a db with users
+
+[33mcommit 1db7da063638cd868799c352b53eaccb836d7af3[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Fri Apr 9 21:19:25 2021 +0300
+
+    added some shit like the new library for the algorithm and new module for the app without any ui to try this real-time databases
+
+[33mcommit c964d9401fd243937d633c6ae0bb320298ac5067[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Tue Mar 30 20:34:58 2021 +0300
+
+    added new module to try fragments and made some updates to the clicker
+
+[33mcommit 04d8165e592cd33fb42d27023908972ebf1fedfb[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Tue Mar 30 17:12:03 2021 +0300
+
+    Added some features such as:
+     - increasing click
+     - statistics for clicks
+     - increasing cost and showing it
+     - button "increase click"
+
+[33mcommit d32bfceed3b09a8cdc62141c95ec462449d128e3[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Tue Mar 30 16:22:21 2021 +0300
+
+    Forgot to add the png picture
+
+[33mcommit d876099796d24ef365bb88b787c7d3afe6e8c4e3[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Tue Mar 30 16:21:10 2021 +0300
+
+    Created clicker, you can click on cookie and get some value
+
+[33mcommit 302f4c22dd1f25d9426c75da906e6326106997af[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Tue Mar 30 14:17:37 2021 +0300
+
+    Tried to make it without it, but failed, because only after tap it works and becomes blank
+
+[33mcommit 89e2cd26fc59ceccea284e348e3db7db8bf4d394[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Tue Mar 30 14:00:41 2021 +0300
+
+    Created an app where you can add your name, but there is one mistake is when you make first tap on the field there is the text Enter your name and I want to get rid of it
+
+[33mcommit ecce63907a68077c60a52b867c2424fc38896f85[m
+Author: Vladimir Louis <vovangus1235@gmail.com>
+Date:   Sun Mar 28 22:03:45 2021 +0300
+
+    Initial commit
