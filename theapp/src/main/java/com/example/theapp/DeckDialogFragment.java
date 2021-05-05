@@ -36,6 +36,8 @@ public class DeckDialogFragment extends AppCompatDialogFragment implements Dialo
 
         builder.setView(view);
 
+        deckName = view.findViewById(R.id.deckNameDialog);
+
         Button buttonAdd = view.findViewById(R.id.dialogButtonAdd);
         Button buttonCancel = view.findViewById(R.id.dialogButtonCancel);
 
@@ -78,7 +80,7 @@ public class DeckDialogFragment extends AppCompatDialogFragment implements Dialo
             }
         });
 
-        deckName = view.findViewById(R.id.deckNameDialog);
+
         return builder.create();
     }
 

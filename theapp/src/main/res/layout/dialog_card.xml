@@ -75,22 +75,22 @@
         tools:ignore="RtlSymmetry" />
 
     <Button
-        android:id="@+id/dialogButtonAdd"
+        android:id="@+id/dialogCardButtonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/addDeck"
-        app:layout_constraintStart_toEndOf="@+id/dialogButtonCancel"
+        app:layout_constraintStart_toEndOf="@+id/dialogCardButtonCancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialogCardContext" />
 
     <Button
-        android:id="@+id/dialogButtonCancel"
+        android:id="@+id/dialogCardButtonCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/cancelDeck"
-        app:layout_constraintEnd_toStartOf="@+id/dialogButtonAdd"
+        app:layout_constraintEnd_toStartOf="@+id/dialogCardButtonAdd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialogCardContext" />
 

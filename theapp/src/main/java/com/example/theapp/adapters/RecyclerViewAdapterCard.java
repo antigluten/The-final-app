@@ -87,5 +87,4 @@ public class RecyclerViewAdapterCard extends RecyclerView.Adapter<RecyclerViewAd
 
         }
     }
-
 }
