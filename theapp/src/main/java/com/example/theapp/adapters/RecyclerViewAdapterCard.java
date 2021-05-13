@@ -19,6 +19,8 @@ public class RecyclerViewAdapterCard extends RecyclerView.Adapter<RecyclerViewAd
     private ArrayList<Card> arrayList;
 
 //    private OnItemClickListener listener;
+    private static RecyclerViewAdapterCard.OnItemLongClickListener onItemLongClickListener;
+
 
     public RecyclerViewAdapterCard(Context context, ArrayList<Card> arrayList) {
         this.context = context;
@@ -85,6 +87,29 @@ public class RecyclerViewAdapterCard extends RecyclerView.Adapter<RecyclerViewAd
 //                }
 //            });
 
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if (onItemLongClickListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            onItemLongClickListener.onItemLongClickListener(position);
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            });
+
         }
+    }
+
+    public void setOnItemLongClickListener(RecyclerViewAdapterCard.OnItemLongClickListener onItemLongClickListener) {
+        this.onItemLongClickListener = onItemLongClickListener;
+    }
+
+    public interface OnItemLongClickListener {
+        public void onItemLongClickListener(int position);
     }
 }

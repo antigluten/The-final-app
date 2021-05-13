@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.theapp.R;
 import com.example.theapp.data.Deck;
-import com.example.theapp.databinding.FragmentStatisticsBinding;
-import com.example.theapp.fragments.MenuBottomSheetDialogFragment;
 
 import java.util.ArrayList;
 

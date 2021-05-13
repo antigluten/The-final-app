@@ -3,7 +3,6 @@ package com.example.theapp.fragments;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.FrameLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Database;
 
 import com.example.theapp.DeckBrowsingCardsActivity;
 import com.example.theapp.DeckDialogFragment;
@@ -96,8 +94,8 @@ public class DeckFragment extends Fragment {
             @Override
             public void onItemLongClickListener(int position) {
                 Log.d(TAG, "onItemLongClickListener: " + position);
-                MenuBottomSheetDialogFragment menuBottomSheetDialogFragment = new MenuBottomSheetDialogFragment();
-                menuBottomSheetDialogFragment.newInstance(R.menu.email_bottom_sheet_menu, decks.get(position), position).show(getParentFragmentManager(), null);
+                MenuBottomDeckFragment menuBottomDeckFragment = new MenuBottomDeckFragment();
+                menuBottomDeckFragment.newInstance(R.menu.email_bottom_sheet_menu, decks.get(position), position).show(getParentFragmentManager(), null);
 
 
             }

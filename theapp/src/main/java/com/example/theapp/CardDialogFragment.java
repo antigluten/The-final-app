@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -73,9 +74,11 @@ public class CardDialogFragment extends DialogFragment {
                         }
                     }
                     if (cardExist) {
-                        boolean success = databaseHelper.addCard(new Card(front, translation, sentence, 0,
-                                getToday(), getToday(), deckName));
+                        Card card = new Card(front, translation, sentence, 0,
+                                getToday(), getToday(), deckName);
+                        boolean success = databaseHelper.addCard(card);
                         if (success) {
+//                            databaseHelper.addToTotal(card);
                             Toast.makeText(getContext(), "Success adding the card", Toast.LENGTH_SHORT).show();
                             dismiss();
                         } else {

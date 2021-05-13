@@ -2104,6 +2104,8 @@ id design_menu_item_text
 id design_navigation_view
 id dialogButtonAdd
 id dialogButtonCancel
+id dialogCardButtonAdd
+id dialogCardButtonCancel
 id dialogCardContext
 id dialogCardFront
 id dialogCardTranslation
@@ -2261,6 +2263,7 @@ id navigation_header_container
 id navigation_profile
 id navigation_stats
 id navigation_view
+id navigation_view_card
 id never
 id noScroll
 id none
@@ -2548,6 +2551,7 @@ layout material_time_input
 layout material_timepicker
 layout material_timepicker_dialog
 layout material_timepicker_textinput_display
+layout menu_bottom_card
 layout menu_bottom_sheet_dialog_layout
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
@@ -2602,6 +2606,7 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu email_bottom_sheet_menu
+menu menu_bottom_card
 menu navigation
 mipmap ic_launcher
 mipmap ic_launcher_round

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.format.DateFormat;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -34,6 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_RELEARN = "LEARN";
     public static final String COLUMN_REVISE = "REVISE";
     public static final String COLUMN_DECK_CREATED = "CREATED";
+    private static final String TAG = "ANTIGLUTEN";
 
 
     public DatabaseHelper(@Nullable Context context) {
@@ -76,7 +78,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_NAME_DECKS);
     }
 
-    public boolean addCard(Card card){
+    public boolean addCard(Card card) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -88,7 +90,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_CARD_DUE, card.getDueDate());
         values.put(COLUMN_CARD_DECK, card.getDeck());
 
+
         long insert = db.insert(TABLE_NAME_CARDS, null, values);
+        db.close();
         return insert != -1;
     }
 
@@ -107,6 +111,60 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insert != -1;
     }
 
+    public int getTotalFromDeck(Card card) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "select " + COLUMN_TOTAL + " from " +  TABLE_NAME_DECKS + " WHERE " + COLUMN_NAME + " =?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{card.getDeck()});
+        int total = 0;
+
+        if (cursor.moveToFirst()) {
+            do {
+                total = cursor.getInt(0);
+
+            } while (cursor.moveToNext());
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return total;
+    }
+
+    public int getTotalFromDeck(String deckName) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "select " + COLUMN_TOTAL + " from " +  TABLE_NAME_DECKS + " WHERE " + COLUMN_NAME + " =?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{deckName});
+        int total = 0;
+
+        if (cursor.moveToFirst()) {
+            do {
+                total = cursor.getInt(0);
+
+            } while (cursor.moveToNext());
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return total;
+    }
+
+    public boolean deleteCard(Card card) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("DELETE FROM " + TABLE_NAME_CARDS + " WHERE " + COLUMN_ID + " = " +  card.getId(), null);
+        if (cursor.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public boolean deleteDeck(Deck deck) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("DELETE FROM " + TABLE_NAME_DECKS + " WHERE " + COLUMN_ID + " = " + deck.getId(), null);
@@ -117,62 +175,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-//
-//    public boolean addOne(Card card) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//
-//        values.put(COLUMN_FRONT_WORD, card.getFrontWord());
-//        values.put(COLUMN_TRANSLATION_WORD, card.getTranslationWord());
-//        values.put(COLUMN_CONTEXT, card.getContext());
-//
-//        long insert = db.insert(TABLE_NAME, null, values);
-//        return insert != -1;
-//    }
-//
-//    public boolean update(Card card) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//
-//        contentValues.put(COLUMN_ID, card.getId());
-//        contentValues.put(COLUMN_FRONT_WORD, card.getFrontWord());
-//        contentValues.put(COLUMN_TRANSLATION_WORD, card.getTranslationWord());
-//        contentValues.put(COLUMN_CONTEXT, card.getContext());
-//        int success = db.update(TABLE_NAME, contentValues, COLUMN_ID + " =? ", new String[]{String.valueOf(card.getId())});
-//        return success != -1;
-//    }
-//
-//
-//    public boolean deleteOne(Card card) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        int success = db.delete(TABLE_NAME, COLUMN_ID + " =? ", new String[]{String.valueOf(card.getId())});
-//        return success != -1;
-//    }
-//
-//    public void createNewTable(SQLiteDatabase db, String deckName) {
-//        String onCreate = "create table " + deckName + "(" +
-//                "id integer not null primary key autoincrement,\n" +
-//                "    front text not null,\n" +
-//                "    back text not null,\n" +
-//                "    context text not null,\n" +
-//                "    type integer not null,\n" +
-//                "    dueDate date not null,\n" +
-//                "    dateCreated date not null" + ")";
-//        db.execSQL(onCreate);
-//    }
-//
-//    public boolean addToDeck(String table, Card card) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//
-//        ContentValues values = new ContentValues();
-//
-//        values.put(COLUMN_FRONT_WORD, card.getFrontWord());
-//        values.put(COLUMN_TRANSLATION_WORD, card.getTranslationWord());
-//        values.put(COLUMN_CONTEXT, card.getContext());
-//
-//        long insert = db.insert(TABLE_NAME, null, values);
-//        return insert != -1;
-//    }
     public List<Deck> getAllDecks() {
         List<Deck> returnList = new ArrayList<>();
 
@@ -231,7 +233,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-        db.close();
+//        db.close();
 
         return returnList;
     }
@@ -239,34 +241,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void updateCardList() {
 
     }
-//
-//    public List<Card> getAll() {
-//        List<Card> returnList = new ArrayList<>();
-//
-//        String queryString = "SELECT * FROM " + TABLE_NAME;
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//        Cursor cursor = db.rawQuery(queryString, null);
-//
-//        if (cursor.moveToFirst()) {
-//            do {
-//                int customerID = cursor.getInt(0);
-//                String frontWord = cursor.getString(1);
-//                String translation = cursor.getString(2);
-//                String context = cursor.getString(3);
-//
-//                Card card = new Card(customerID, frontWord, translation, context);
-//                returnList.add(card);
-//            } while (cursor.moveToNext());
-//
-//        }
-//
-//        cursor.close();
-//        db.close();
-//
-//        return returnList;
-//    }
-//
 
     public boolean deleteAllDecksAndCards() {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -288,4 +262,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+    public void addToTotal(String deckName, int number) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+
+//        values.put(COLUMN_NAME, deckName);
+        values.put(COLUMN_TOTAL, number);
+//        values.put(COLUMN_RELEARN, 0);
+//        values.put(COLUMN_NEW, 0);
+//        values.put(COLUMN_REVISE, 0);
+//        values.put(COLUMN_DECK_CREATED, 0);
+
+        String whereClaus = "NAME=?";
+        String[] whereArgs = {deckName};
+
+        long insert = db.update(TABLE_NAME_DECKS, values, whereClaus, whereArgs);
+        Log.d(TAG, "addToTotal: " + insert);
+    }
+
 }
