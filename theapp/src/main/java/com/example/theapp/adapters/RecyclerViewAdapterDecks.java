@@ -98,7 +98,10 @@ public class RecyclerViewAdapterDecks extends RecyclerView.Adapter<RecyclerViewA
 
 
         }
+
     }
+
+
 
     public void setOnItemClickListener(RecyclerViewAdapterDecks.OnItemClickListener listener) {
         this.listener = listener;

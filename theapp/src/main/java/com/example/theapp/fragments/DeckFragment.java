@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -48,13 +49,14 @@ public class DeckFragment extends Fragment {
         adapterDecks = new RecyclerViewAdapterDecks(getContext(), decks);
         recyclerView.setAdapter(adapterDecks);
 
-
         return rootView;
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
+        adapterDecks.notifyDataSetChanged();
 
         int arraySize = decks.size();
         DeckDialogFragment deckButtonDialogActivity = new DeckDialogFragment();
@@ -86,6 +88,7 @@ public class DeckFragment extends Fragment {
 
                 Intent intent = new Intent(getContext(), DeckBrowsingCardsActivity.class);
                 intent.putExtra("Deck", deck.getName());
+                intent.putExtra("position", position);
                 startActivity(intent);
             }
         });
@@ -105,6 +108,12 @@ public class DeckFragment extends Fragment {
 
     }
 
+    public static void updateDecksData(DatabaseHelper databaseHelper, ArrayList<Deck> decks) {
+        decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
+        adapterDecks.updateDeckList(decks);
+        adapterDecks.notifyDataSetChanged();
+    }
+
     public void updateDecks(int arraySize){
         DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
         decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
@@ -118,4 +127,7 @@ public class DeckFragment extends Fragment {
         adapterDecks.notifyItemRemoved(position);
     }
 
+    public static RecyclerViewAdapterDecks getRecyclerView() {
+        return adapterDecks;
+    }
 }

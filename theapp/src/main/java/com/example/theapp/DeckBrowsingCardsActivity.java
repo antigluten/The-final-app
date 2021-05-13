@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,9 +19,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.theapp.adapters.RecyclerViewAdapterCard;
+import com.example.theapp.adapters.RecyclerViewAdapterDecks;
 import com.example.theapp.data.Card;
 import com.example.theapp.data.DatabaseHelper;
 import com.example.theapp.data.Deck;
+import com.example.theapp.fragments.DeckFragment;
 import com.example.theapp.fragments.MenuBottomCardFragment;
 import com.example.theapp.fragments.MenuBottomDeckFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,12 +31,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 public class DeckBrowsingCardsActivity extends AppCompatActivity {
+    private String TAG = "ANTIGLUTEN";
+
     private FloatingActionButton floatingActionButton;
     private static String deckName;
     private static RecyclerViewAdapterCard adapterCard;
     private ArrayList<Card> cards;
     private TextView totalTextView;
     private static Deck deck;
+    private int position;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +51,7 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         deckName = intent.getStringExtra("Deck");
 
+        position = intent.getIntExtra("position", 0);
 
         TextView name = findViewById(R.id.deckNameBrowsing);
         name.setText(deckName);
@@ -127,6 +134,15 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         ArrayList<Card> cards = (ArrayList<Card>) databaseHelper.getAllCardWithDeckName(deckName);
         adapterCard.updateCardList(cards);
         adapterCard.notifyItemRemoved(position);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
+        ArrayList<Deck> decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
+        DeckFragment.updateDecksData(databaseHelper, decks);
     }
 
     public void updateCards(int arraySize, String deckName){

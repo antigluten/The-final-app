@@ -35,7 +35,7 @@
         android:layout_marginStart="24sp"
         android:layout_marginTop="18sp"
         android:fontFamily="@font/work_sans"
-        android:text="Total: 30"
+        android:text="Total: 0"
         android:textColor="@color/reply_black_800"
         app:layout_constraintStart_toEndOf="@id/deckRevise"
         app:layout_constraintTop_toBottomOf="@+id/deckName" />
