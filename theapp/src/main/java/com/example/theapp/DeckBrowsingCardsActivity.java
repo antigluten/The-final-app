@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,7 @@ import java.util.ArrayList;
 public class DeckBrowsingCardsActivity extends AppCompatActivity {
     private String TAG = "ANTIGLUTEN";
 
-    private FloatingActionButton floatingActionButton;
+    private Button floatingActionButton;
     private static String deckName;
     private static RecyclerViewAdapterCard adapterCard;
     private ArrayList<Card> cards;
@@ -76,7 +77,7 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         adapterCard = new RecyclerViewAdapterCard(getBaseContext(), cards);
         recyclerView.setAdapter(adapterCard);
 
-        floatingActionButton = findViewById(R.id.floatingActionButton);
+        floatingActionButton = findViewById(R.id.buttonBrowsing);
 
 
         totalTextView = findViewById(R.id.deckTotalBrowsing);

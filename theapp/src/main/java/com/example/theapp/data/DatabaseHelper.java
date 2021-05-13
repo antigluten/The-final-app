@@ -39,7 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public DatabaseHelper(@Nullable Context context) {
-        super(context, "anti.db", null, 1);
+        super(context, "flashit.sql3", null, 1);
     }
 
     @Override
