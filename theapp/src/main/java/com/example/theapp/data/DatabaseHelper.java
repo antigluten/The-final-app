@@ -263,17 +263,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void addToTotal(String deckName, int number) {
+    public void refreshTotal(String deckName, int number) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-
-
-//        values.put(COLUMN_NAME, deckName);
         values.put(COLUMN_TOTAL, number);
-//        values.put(COLUMN_RELEARN, 0);
-//        values.put(COLUMN_NEW, 0);
-//        values.put(COLUMN_REVISE, 0);
-//        values.put(COLUMN_DECK_CREATED, 0);
 
         String whereClaus = "NAME=?";
         String[] whereArgs = {deckName};

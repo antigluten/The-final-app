@@ -78,8 +78,8 @@ public class CardDialogFragment extends DialogFragment {
                                 getToday(), getToday(), deckName);
                         boolean success = databaseHelper.addCard(card);
                         if (success) {
-//                            databaseHelper.addToTotal(card);
                             Toast.makeText(getContext(), "Success adding the card", Toast.LENGTH_SHORT).show();
+                            DeckBrowsingCardsActivity.updateCards(databaseHelper, deckName);
                             dismiss();
                         } else {
                             Toast.makeText(getContext(), "Failed adding the card", Toast.LENGTH_SHORT).show();

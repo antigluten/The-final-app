@@ -2029,7 +2029,6 @@ id beginOnFirstDraw
 id beginning
 id blocking
 id bottom
-id bottomAppBar
 id bottomNavigationView
 id bounce
 id browser_actions_header_text
@@ -2038,7 +2037,9 @@ id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
 id buttonAddDeck
+id buttonBrowsing
 id buttonPanel
+id buttonStudy
 id cache_measures
 id cancel_button
 id cardContext
@@ -2146,7 +2147,6 @@ id fitToContents
 id fixed
 id flip
 id floating
-id floatingActionButton
 id forever
 id fragment_container_view_tag
 id frame_content
@@ -2193,6 +2193,7 @@ id line3
 id linear
 id linearLayout
 id linearLayoutBrowsing
+id linearLayoutBrowsingButton
 id listMode
 id listView
 id list_item

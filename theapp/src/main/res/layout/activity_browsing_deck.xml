@@ -130,7 +130,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-
+            android:id="@+id/buttonStudy"
             android:layout_width="140sp"
             android:layout_height="70sp"
             android:textSize="24sp"

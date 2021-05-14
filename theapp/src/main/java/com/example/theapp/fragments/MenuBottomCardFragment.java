@@ -1,10 +1,14 @@
 package com.example.theapp.fragments;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.MenuRes;
@@ -19,7 +23,11 @@ import com.example.theapp.data.Deck;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.navigation.NavigationView;
 
+import org.jetbrains.annotations.NotNull;
+
 public class MenuBottomCardFragment extends BottomSheetDialogFragment {
+
+    private String TAG = "ANTIGLUTEN";
     private NavigationView navigationView;
 
     Card card;
@@ -37,6 +45,7 @@ public class MenuBottomCardFragment extends BottomSheetDialogFragment {
 
         navigationView = view.findViewById(R.id.navigation_view_card);
         navigationView.inflateMenu(R.menu.menu_bottom_card);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -45,8 +54,7 @@ public class MenuBottomCardFragment extends BottomSheetDialogFragment {
                     case R.id.menu_delete:
                         DatabaseHelper db = new DatabaseHelper(getContext());
                         if (card != null) {
-                            boolean success = db.deleteCard(card);
-                            Toast.makeText(getContext(), "Returns " + success + " " + card.getId(), Toast.LENGTH_SHORT).show();
+                            db.deleteCard(card);
                             DeckBrowsingCardsActivity.deleteCard(db, getPosition());
                             dismiss();
                         } else {
@@ -62,15 +70,23 @@ public class MenuBottomCardFragment extends BottomSheetDialogFragment {
 
     }
 
+
+    @Override
+    public void onDismiss(@NonNull @NotNull DialogInterface dialog) {
+        super.onDismiss(dialog);
+        Log.d(TAG, "onDismiss: dismissed");
+    }
+
+    //TODO update size because of the problem...
     public MenuBottomCardFragment newInstance(@MenuRes int menuResId, Card card, int position) {
         MenuBottomCardFragment fragment = new MenuBottomCardFragment();
         fragment.setCard(card);
         fragment.setPosition(position);
 
-        Bundle bundle = new Bundle();
+//        Bundle bundle = new Bundle();
 
-        bundle.putInt("MenuBottomSheetDialogFragment_menuResId", menuResId);
-        fragment.setArguments(bundle);
+//        bundle.putInt("MenuBottomSheetDialogFragment_menuResId", menuResId);
+//        fragment.setArguments(bundle);
         return fragment;
     }
 

@@ -106,10 +106,12 @@ public class RecyclerViewAdapterCard extends RecyclerView.Adapter<RecyclerViewAd
     }
 
     public void setOnItemLongClickListener(RecyclerViewAdapterCard.OnItemLongClickListener onItemLongClickListener) {
-        this.onItemLongClickListener = onItemLongClickListener;
+        RecyclerViewAdapterCard.onItemLongClickListener = onItemLongClickListener;
     }
 
     public interface OnItemLongClickListener {
         public void onItemLongClickListener(int position);
     }
+
+
 }
