@@ -3,6 +3,7 @@ package com.example.theapp.data;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.format.DateFormat;
@@ -18,6 +19,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+    private static final String TAG = "ANTIGLUTEN";
+
     public static final String TABLE_NAME_CARDS = "CARDS";
     public static final String COLUMN_ID = "ID";
     public static final String COLUMN_FRONT_WORD = "FRONT_WORD";
@@ -35,8 +38,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_RELEARN = "LEARN";
     public static final String COLUMN_REVISE = "REVISE";
     public static final String COLUMN_DECK_CREATED = "CREATED";
-    private static final String TAG = "ANTIGLUTEN";
-
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, "flashit.sql3", null, 1);
@@ -210,7 +211,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<Card> getAllCardWithDeckName(String deckName) {
         List<Card> returnList = new ArrayList<>();
 
-        String queryString = "SELECT * FROM " + TABLE_NAME_CARDS + " WHERE " + COLUMN_CARD_DECK + "=?";
+        String queryString = "SELECT * FROM " + TABLE_NAME_CARDS +
+                " WHERE " + COLUMN_CARD_DECK + "=?";
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(queryString, new String[]{deckName});
@@ -275,4 +277,55 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "addToTotal: " + insert);
     }
 
+    public void changeTypeOfCard(Card card) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        int type = getType(card) + 1;
+        values.put(COLUMN_CARD_TYPE, type);
+
+        String whereClaus = "ID=?";
+        String[] whereArgs = {String.valueOf(card.getId())};
+
+        long insert = db.update(TABLE_NAME_CARDS, values, whereClaus, whereArgs);
+        Log.d(TAG, "changeTypeOfCard: " + insert);
+    }
+
+    public int getType(Card card) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "select " + COLUMN_CARD_TYPE + " from " +  TABLE_NAME_CARDS + " WHERE " + COLUMN_ID + " =?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(card.getId())});
+
+        int type = 0;
+
+        if (cursor.moveToFirst()) {
+            do {
+                type = cursor.getInt(0);
+
+            } while (cursor.moveToNext());
+
+        }
+
+        cursor.close();
+
+        return type;
+    }
+
+
+    /* todo card logic
+    0 - the card is just added, if you answer it right you will have to confirm second one to see it tomorrow, and if was wrong one it stays 0.
+    1 - it was 2, but you forgot it
+    2 - it has a review and you have to get one more review to see it later
+    3 - you made two right answers in a row and you can delay it
+     */
+
+
+
+    public long getNumberOfLearnCards (String deckName) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return DatabaseUtils.longForQuery(db,
+                "SELECT COUNT(*) FROM CARDS WHERE DECK = 'test 1' and TYPE = 2", null);
+    }
 }

@@ -1845,6 +1845,7 @@ drawable ic_deck
 drawable ic_delete
 drawable ic_done
 drawable ic_edit
+drawable ic_edit1
 drawable ic_forward
 drawable ic_home
 drawable ic_keyboard_black_24dp
@@ -2033,6 +2034,7 @@ id beginning
 id blocking
 id bottom
 id bottomNavigationView
+id bottomSheetChangeType
 id bottomSheetContainer
 id bottomSheetDelete
 id bounce
@@ -2816,6 +2818,7 @@ string status_bar_notification_info_overflow
 string terms
 string terms2
 string title_activity_main2
+string total
 string yourDecks
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light

@@ -12,13 +12,14 @@ com/example/theapp/User.java
  com.example.theapp.User
 com/example/theapp/adapters/MyViewHolder.java
  com.example.theapp.adapters.MyViewHolder
-com/example/theapp/databinding/DeckDialogBinding.java
- com.example.theapp.databinding.DeckDialogBinding
+com/example/theapp/fragments/MenuBottomCardFragment.java
+ com.example.theapp.fragments.MenuBottomCardFragment
+ com.example.theapp.fragments.MenuBottomCardFragment$1
 com/example/theapp/fragments/MenuBottomDeckFragment.java
  com.example.theapp.fragments.MenuBottomDeckFragment
  com.example.theapp.fragments.MenuBottomDeckFragment$1
-com/example/theapp/data/Deck.java
- com.example.theapp.data.Deck
+com/example/theapp/DeckBrowsingCardsActivity.java
+ com.example.theapp.DeckBrowsingCardsActivity
 com/example/theapp/databinding/FragmentProfileBinding.java
  com.example.theapp.databinding.FragmentProfileBinding
 com/example/theapp/databinding/FragmentDeckBinding.java
@@ -80,22 +81,6 @@ com/example/theapp/adapters/RecyclerViewAdapterDecks.java
  com.example.theapp.adapters.RecyclerViewAdapterDecks$DeckViewHolder$2
  com.example.theapp.adapters.RecyclerViewAdapterDecks$OnItemClickListener
  com.example.theapp.adapters.RecyclerViewAdapterDecks$OnItemLongClickListener
-com/example/theapp/databinding/DialogRenameDeckBinding.java
- com.example.theapp.databinding.DialogRenameDeckBinding
-com/example/theapp/databinding/LayoutMenuBottomCardBinding.java
- com.example.theapp.databinding.LayoutMenuBottomCardBinding
-com/example/theapp/databinding/CardTestBinding.java
- com.example.theapp.databinding.CardTestBinding
-com/example/theapp/fragments/MenuBottomCardFragment.java
- com.example.theapp.fragments.MenuBottomCardFragment
- com.example.theapp.fragments.MenuBottomCardFragment$1
-com/example/theapp/DeckBrowsingCardsActivity.java
- com.example.theapp.DeckBrowsingCardsActivity
- com.example.theapp.DeckBrowsingCardsActivity$1
- com.example.theapp.DeckBrowsingCardsActivity$2
- com.example.theapp.DeckBrowsingCardsActivity$3
- com.example.theapp.DeckBrowsingCardsActivity$3$1
- com.example.theapp.DeckBrowsingCardsActivity$4
 com/example/theapp/CardDialogFragment.java
  com.example.theapp.CardDialogFragment
  com.example.theapp.CardDialogFragment$1
@@ -106,3 +91,13 @@ com/example/theapp/fragments/DeckFragment.java
  com.example.theapp.fragments.DeckFragment$2
  com.example.theapp.fragments.DeckFragment$3
  com.example.theapp.fragments.DeckFragment$4
+com/example/theapp/databinding/CardTestBinding.java
+ com.example.theapp.databinding.CardTestBinding
+com/example/theapp/databinding/LayoutMenuBottomCardBinding.java
+ com.example.theapp.databinding.LayoutMenuBottomCardBinding
+com/example/theapp/databinding/DialogRenameDeckBinding.java
+ com.example.theapp.databinding.DialogRenameDeckBinding
+com/example/theapp/data/Deck.java
+ com.example.theapp.data.Deck
+com/example/theapp/databinding/DeckDialogBinding.java
+ com.example.theapp.databinding.DeckDialogBinding
