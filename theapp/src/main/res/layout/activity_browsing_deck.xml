@@ -116,7 +116,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="12dp"
             tools:ignore="RtlSymmetry"
-            tools:listitem="@layout/item_browsing_cards" />
+            tools:listitem="@layout/item_browsing_cards"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <LinearLayout

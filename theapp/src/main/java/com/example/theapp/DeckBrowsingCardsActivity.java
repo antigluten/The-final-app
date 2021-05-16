@@ -4,9 +4,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,6 +25,7 @@ import com.example.theapp.data.DatabaseHelper;
 import com.example.theapp.data.Deck;
 import com.example.theapp.fragments.DeckFragment;
 import com.example.theapp.fragments.MenuBottomCardFragment;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -107,12 +112,43 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
             }
         });
 
-        MenuBottomCardFragment menuBottomCardFragment = new MenuBottomCardFragment();
+        //TODO manually add the fragment
+//        MenuBottomCardFragment menuBottomCardFragment = new MenuBottomCardFragment();
+//        adapterCard.setOnItemLongClickListener(new RecyclerViewAdapterCard.OnItemLongClickListener() {
+//            @Override
+//            public void onItemLongClickListener(int position) {
+//                Log.d(TAG, "onItemLongClickListener: position " + position + " cards size: " + cards.size()) ;
+//                menuBottomCardFragment.newInstance(R.menu.menu_bottom_card, cards.get(position), position).show(getSupportFragmentManager(), null);
+//            }
+//        });
+
+        BottomSheetDialog dialog = new BottomSheetDialog(DeckBrowsingCardsActivity.this, R.style.BottomSheetDialogTheme);
         adapterCard.setOnItemLongClickListener(new RecyclerViewAdapterCard.OnItemLongClickListener() {
             @Override
             public void onItemLongClickListener(int position) {
-                Log.d(TAG, "onItemLongClickListener: position " + position + " cards size: " + cards.size()) ;
-                menuBottomCardFragment.newInstance(R.menu.menu_bottom_card, cards.get(position), position).show(getSupportFragmentManager(), null);
+                View bottomSheetView = LayoutInflater.from(getApplicationContext()).
+                        inflate(R.layout.layout_menu_bottom_card,
+                                (ViewGroup) findViewById(R.id.bottomSheetContainer),
+                                false
+                        );
+
+                TextView deckNameView = bottomSheetView.findViewById(R.id.deckNameBottomSheet);
+                deckNameView.setText(cards.get(position).getFrontWord());
+
+                LinearLayout deleteLayout = bottomSheetView.findViewById(R.id.bottomSheetDelete);
+                deleteLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        databaseHelper.deleteCard(cards.get(position));
+                        updateAfterDeletion(position, deckName);
+                        dialog.dismiss();
+                    }
+                });
+
+
+                dialog.setContentView(bottomSheetView);
+                dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                dialog.show();
             }
         });
 
@@ -148,6 +184,16 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         ArrayList<Card> cards = (ArrayList<Card>) databaseHelper.getAllCardWithDeckName(deckName);
         adapterCard.updateCardList(cards);
         adapterCard.notifyItemRangeInserted(arraySize, cards.size());
+    }
+
+    public void updateAfterDeletion(int position, String deckName) {
+        DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
+        ArrayList<Card> cards = (ArrayList<Card>) databaseHelper.getAllCardWithDeckName(deckName);
+        adapterCard.updateCardList(cards);
+        adapterCard.notifyItemRemoved(position);
+        int total = databaseHelper.getTotalFromDeck(deckName) - 1;
+        databaseHelper.refreshTotal(deckName ,total);
+        totalTextView.setText("Total: " + databaseHelper.getTotalFromDeck(deckName));
     }
 
     public static void updateCards(DatabaseHelper databaseHelper, String deckName) {

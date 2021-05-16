@@ -82,6 +82,8 @@ com/example/theapp/adapters/RecyclerViewAdapterDecks.java
  com.example.theapp.adapters.RecyclerViewAdapterDecks$OnItemLongClickListener
 com/example/theapp/databinding/DialogRenameDeckBinding.java
  com.example.theapp.databinding.DialogRenameDeckBinding
+com/example/theapp/databinding/LayoutMenuBottomCardBinding.java
+ com.example.theapp.databinding.LayoutMenuBottomCardBinding
 com/example/theapp/databinding/CardTestBinding.java
  com.example.theapp.databinding.CardTestBinding
 com/example/theapp/fragments/MenuBottomCardFragment.java
@@ -92,6 +94,7 @@ com/example/theapp/DeckBrowsingCardsActivity.java
  com.example.theapp.DeckBrowsingCardsActivity$1
  com.example.theapp.DeckBrowsingCardsActivity$2
  com.example.theapp.DeckBrowsingCardsActivity$3
+ com.example.theapp.DeckBrowsingCardsActivity$3$1
  com.example.theapp.DeckBrowsingCardsActivity$4
 com/example/theapp/CardDialogFragment.java
  com.example.theapp.CardDialogFragment

@@ -66,5 +66,9 @@
     {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_signup.xml",
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\activity_signup.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\layout_menu_bottom_card.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\layout_menu_bottom_card.xml"
     }
 ]

@@ -1789,6 +1789,7 @@ drawable avd_reply_to_edit
 drawable avd_show_password
 drawable background
 drawable bottom_app_bar_title_foreground
+drawable bottom_sheet_background
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1819,6 +1820,7 @@ drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
 drawable custom_progressbar
 drawable custom_ripple
+drawable custom_ripple_layout
 drawable deck
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
@@ -1863,6 +1865,7 @@ drawable ic_schedule
 drawable ic_search
 drawable ic_settings
 drawable ic_statistics
+drawable ic_trash_alt_solid
 drawable ic_twotone_add_circle_outline
 drawable ic_twotone_delete
 drawable ic_twotone_drafts
@@ -2030,6 +2033,8 @@ id beginning
 id blocking
 id bottom
 id bottomNavigationView
+id bottomSheetContainer
+id bottomSheetDelete
 id bounce
 id browser_actions_header_text
 id browser_actions_menu_item_icon
@@ -2085,6 +2090,7 @@ id decelerateAndComplete
 id deckLearn
 id deckLearnBrowsing
 id deckName
+id deckNameBottomSheet
 id deckNameBrowsing
 id deckNameDialog
 id deckRelearn
@@ -2538,6 +2544,7 @@ layout item_browsing_cards
 layout item_deck
 layout item_recycler_view
 layout item_test
+layout layout_menu_bottom_card
 layout material_chip_input_combo
 layout material_clock_display
 layout material_clock_display_divider
@@ -3036,6 +3043,8 @@ style Base_Widget_MaterialComponents_Snackbar
 style Base_Widget_MaterialComponents_TextInputEditText
 style Base_Widget_MaterialComponents_TextInputLayout
 style Base_Widget_MaterialComponents_TextView
+style BottomSheetDialogTheme
+style BottomSheetStyle
 style CardView
 style CardView_Dark
 style CardView_Light
