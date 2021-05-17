@@ -83,14 +83,8 @@ com/example/theapp/adapters/RecyclerViewAdapterDecks.java
  com.example.theapp.adapters.RecyclerViewAdapterDecks$OnItemLongClickListener
 com/example/theapp/CardDialogFragment.java
  com.example.theapp.CardDialogFragment
- com.example.theapp.CardDialogFragment$1
- com.example.theapp.CardDialogFragment$2
 com/example/theapp/fragments/DeckFragment.java
  com.example.theapp.fragments.DeckFragment
- com.example.theapp.fragments.DeckFragment$1
- com.example.theapp.fragments.DeckFragment$2
- com.example.theapp.fragments.DeckFragment$3
- com.example.theapp.fragments.DeckFragment$4
 com/example/theapp/databinding/CardTestBinding.java
  com.example.theapp.databinding.CardTestBinding
 com/example/theapp/databinding/LayoutMenuBottomCardBinding.java

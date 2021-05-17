@@ -34,6 +34,9 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
     private static RecyclerViewAdapterCard adapterCard;
     private ArrayList<Card> cards;
     private TextView totalTextView;
+    private TextView newTextView;
+    private TextView learnTextView;
+    private TextView reviseTextView;
     private Button studyButton;
 
 
@@ -45,9 +48,7 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
 
         DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
 
-        //todo checking relearn number
-        long learn = databaseHelper.getNumberOfLearnCards(deckName);
-        Log.d(TAG, "onCreate: to learn " + learn);
+
 
         Intent intent = getIntent();
         deckName = intent.getStringExtra("Deck");
@@ -67,7 +68,16 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         floatingActionButton = findViewById(R.id.buttonBrowsing);
 
         totalTextView = findViewById(R.id.deckTotalBrowsing);
-        totalTextView.setText(getString(R.string.total) + databaseHelper.getTotalFromDeck(deckName));
+        totalTextView.setText(getString(R.string.total) + databaseHelper.getNumberOfTotalCards(deckName));
+
+        newTextView = findViewById(R.id.deckLearnBrowsing);
+        newTextView.setText("New: " + databaseHelper.getNumberOfNewCards(deckName));
+
+        learnTextView = findViewById(R.id.deckRelearnBrowsing);
+        learnTextView.setText("Learn: " + databaseHelper.getNumberOfLearnCards(deckName));
+
+        reviseTextView = findViewById(R.id.deckReviseBrowsing);
+        reviseTextView.setText("Revise: " + databaseHelper.getNumberOfReviseCards(deckName));
 
         studyButton = findViewById(R.id.buttonStudy);
     }
@@ -79,23 +89,24 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
+        databaseHelper.refreshDecks(deckName);
 
-        Log.d(TAG, "onResume: cards size:" + cards.size());
-
-
-        Log.d(TAG, "onResume: resuming...");
-
-
-        int arraySize = cards.size();
         CardDialogFragment cardDialogFragment = new CardDialogFragment(deckName);
+        cardDialogFragment.setCancelable(false);
+
         floatingActionButton.setOnClickListener(v -> cardDialogFragment.show(getSupportFragmentManager(), "DialogCard"));
 
+        Log.d(TAG, "onResume: ...");
         cardDialogFragment.setOnDismissListener(dialog -> {
-            updateCards(arraySize, deckName);
-            int number = databaseHelper.getTotalFromDeck(deckName) + 1;
-            databaseHelper.refreshTotal(deckName, databaseHelper.getTotalFromDeck(deckName) + 1);
-            totalTextView.setText(getString(R.string.total) + number);
+            updateCards(deckName);
+            if (cardDialogFragment.getAdded()) {
+                cardDialogFragment.setAdded(false);
+                databaseHelper.refreshTotal(deckName, databaseHelper.getNumberOfTotalCards(deckName));
+                updateNumbers(databaseHelper);
+            }
+
         });
+        
 
         BottomSheetDialog dialog = new BottomSheetDialog(DeckBrowsingCardsActivity.this, R.style.BottomSheetDialogTheme);
         adapterCard.setOnItemLongClickListener(position -> {
@@ -106,25 +117,37 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
                     );
 
             TextView deckNameView = bottomSheetView.findViewById(R.id.deckNameBottomSheet);
-            deckNameView.setText(cards.get(position).getFrontWord());
+            cards = (ArrayList<Card>) databaseHelper.getAllCardWithDeckName(deckName);
 
-            LinearLayout deleteLayout = bottomSheetView.findViewById(R.id.bottomSheetDelete);
-            deleteLayout.setOnClickListener(v -> {
-                databaseHelper.deleteCard(cards.get(position));
-                updateAfterDeletion(position, deckName);
-                dialog.dismiss();
-            });
+            if (cards.size() != 0) {
+                deckNameView.setText(cards.get(position).getFrontWord());
+                Log.d(TAG, "onResume: " + cards.size());
+                LinearLayout deleteLayout = bottomSheetView.findViewById(R.id.bottomSheetDelete);
+                deleteLayout.setOnClickListener(v -> {
+                    databaseHelper.deleteCard(cards.get(position));
+                    updateAfterDeletion(position, deckName);
+                    updateNumbers(databaseHelper);
+                    dialog.dismiss();
+                });
 
-            LinearLayout changeLayout = bottomSheetView.findViewById(R.id.bottomSheetChangeType);
-            changeLayout.setOnClickListener(v -> {
-                databaseHelper.changeTypeOfCard(cards.get(position));
-                dialog.dismiss();
-            });
+                LinearLayout changeLayout = bottomSheetView.findViewById(R.id.bottomSheetChangeType);
+                changeLayout.setOnClickListener(v -> {
+                    databaseHelper.changeTypeOfCard(cards.get(position));
+
+                    updateNumbers(databaseHelper);
 
 
-            dialog.setContentView(bottomSheetView);
-            dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            dialog.show();
+                    dialog.dismiss();
+                });
+
+                dialog.setContentView(bottomSheetView);
+                dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                dialog.show();
+            } else {
+
+            }
+
+
         });
 
 
@@ -136,7 +159,7 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
 
     public static void deleteCard(DatabaseHelper databaseHelper, int position) {
         ArrayList<Card> cards = (ArrayList<Card>) databaseHelper.getAllCardWithDeckName(deckName);
-        databaseHelper.refreshTotal(deckName, databaseHelper.getTotalFromDeck(deckName) - 1);
+        databaseHelper.refreshTotal(deckName, databaseHelper.getNumberOfTotalCards(deckName));
         adapterCard.updateCardList(cards);
         adapterCard.notifyItemRemoved(position);
     }
@@ -146,15 +169,15 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         super.onDestroy();
 
         DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
-        ArrayList<Deck> decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
-        DeckFragment.updateDecksData(databaseHelper, decks);
+        DeckFragment.updateDecksData(databaseHelper);
+        databaseHelper.refreshDecks(deckName);
     }
 
-    public void updateCards(int arraySize, String deckName) {
+    public void updateCards(String deckName) {
         DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
         ArrayList<Card> cards = (ArrayList<Card>) databaseHelper.getAllCardWithDeckName(deckName);
         adapterCard.updateCardList(cards);
-        adapterCard.notifyItemRangeInserted(arraySize, cards.size());
+        adapterCard.notifyItemInserted(cards.size());
     }
 
     @SuppressLint("SetTextI18n")
@@ -163,15 +186,24 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         ArrayList<Card> cards = (ArrayList<Card>) databaseHelper.getAllCardWithDeckName(deckName);
         adapterCard.updateCardList(cards);
         adapterCard.notifyItemRemoved(position);
-        int total = databaseHelper.getTotalFromDeck(deckName) - 1;
+        long total = databaseHelper.getNumberOfTotalCards(deckName);
         databaseHelper.refreshTotal(deckName ,total);
-        totalTextView.setText(getString(R.string.total) + databaseHelper.getTotalFromDeck(deckName));
+        totalTextView.setText(getString(R.string.total) + databaseHelper.getNumberOfTotalCards(deckName));
     }
 
     public static void updateCards(DatabaseHelper databaseHelper, String deckName) {
         ArrayList<Card> cards = (ArrayList<Card>) databaseHelper.getAllCardWithDeckName(deckName);
         adapterCard.updateCardList(cards);
         adapterCard.notifyDataSetChanged();
+    }
+
+    //todo create a method to do it clearly
+    @SuppressLint("SetTextI18n")
+    public void updateNumbers(DatabaseHelper databaseHelper) {
+        totalTextView.setText(getString(R.string.total) + databaseHelper.getTotalFromDeck(deckName));
+        newTextView.setText("New: " + databaseHelper.getNumberOfNewCards(deckName));
+        learnTextView.setText("Learn: " + databaseHelper.getNumberOfLearnCards(deckName));
+        reviseTextView.setText("Revise: " + databaseHelper.getNumberOfReviseCards(deckName));
     }
 
 }

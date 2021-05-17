@@ -43,8 +43,7 @@ public class MenuBottomDeckFragment extends BottomSheetDialogFragment {
                     case R.id.menu_delete:
                         DatabaseHelper db = new DatabaseHelper(getContext());
                         if (deck != null) {
-                            boolean success = db.deleteDeck(getDeck());
-                            Toast.makeText(getContext(), "Returns " + success + " " + deck.getId(), Toast.LENGTH_SHORT).show();
+                            db.deleteDeck(getDeck());
                             DeckFragment.updateDecks(db, getPosition());
                             dismiss();
                         } else {

@@ -27,8 +27,6 @@ import java.util.ArrayList;
 public class DeckFragment extends Fragment {
     private String TAG = "ANTIGLUTEN";
 
-    private String getDeckName;
-    private FrameLayout frameLayout;
     private Button addDeck;
     private ArrayList<Deck> decks;
     private static RecyclerViewAdapterDecks adapterDecks;
@@ -49,67 +47,61 @@ public class DeckFragment extends Fragment {
         adapterDecks = new RecyclerViewAdapterDecks(getContext(), decks);
         recyclerView.setAdapter(adapterDecks);
 
+        for (Deck deck : decks) {
+            databaseHelper.refreshDecks(deck.getName());
+        }
+
         return rootView;
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+        for (Deck deck : decks) {
+            databaseHelper.refreshDecks(deck.getName());
+        }
 
         adapterDecks.notifyDataSetChanged();
 
+
         int arraySize = decks.size();
         DeckDialogFragment deckButtonDialogActivity = new DeckDialogFragment();
-        deckButtonDialogActivity.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                updateDecks(arraySize);
+        deckButtonDialogActivity.setOnDismissListener(dialog -> updateDecks(arraySize));
+        addDeck.setOnClickListener(v -> {
+            deckButtonDialogActivity.show(getChildFragmentManager(), "Dialog");
+            Log.d(TAG, "openDialog: dialog clicked");
 
-            }
-        });
-        addDeck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deckButtonDialogActivity.show(getChildFragmentManager(), "Dialog");
-                Log.d(TAG, "openDialog: dialog clicked");
-
-            }
         });
 
-        adapterDecks.setOnItemClickListener(new RecyclerViewAdapterDecks.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Log.d(TAG, "onItemClick: " + position);
-                DatabaseHelper db = new DatabaseHelper(getContext());
-                ArrayList<Deck> list = (ArrayList<Deck>) db.getAllDecks();
-                Deck deck = list.get(position);
-                Log.d(TAG, "onItemClick: " + deck.getId());
+        adapterDecks.setOnItemClickListener(position -> {
+            Log.d(TAG, "onItemClick: " + position);
+            DatabaseHelper db = new DatabaseHelper(getContext());
+            ArrayList<Deck> list = (ArrayList<Deck>) db.getAllDecks();
+            Deck deck = list.get(position);
+            Log.d(TAG, "onItemClick: " + deck.getId());
 
 
-                Intent intent = new Intent(getContext(), DeckBrowsingCardsActivity.class);
-                intent.putExtra("Deck", deck.getName());
-                intent.putExtra("position", position);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(getContext(), DeckBrowsingCardsActivity.class);
+            intent.putExtra("Deck", deck.getName());
+            intent.putExtra("position", position);
+            startActivity(intent);
         });
 
-        adapterDecks.setOnItemLongClickListener(new RecyclerViewAdapterDecks.OnItemLongClickListener() {
-            @Override
-            public void onItemLongClickListener(int position) {
-                Log.d(TAG, "onItemLongClickListener: " + position);
-                MenuBottomDeckFragment menuBottomDeckFragment = new MenuBottomDeckFragment();
-                menuBottomDeckFragment.newInstance(R.menu.email_bottom_sheet_menu, decks.get(position), position).show(getParentFragmentManager(), null);
+        adapterDecks.setOnItemLongClickListener(position -> {
+            Log.d(TAG, "onItemLongClickListener: " + position);
+            MenuBottomDeckFragment menuBottomDeckFragment = new MenuBottomDeckFragment();
+            menuBottomDeckFragment.newInstance(R.menu.email_bottom_sheet_menu, decks.get(position), position).show(getParentFragmentManager(), null);
 
 
-            }
         });
 
 
 
     }
 
-    public static void updateDecksData(DatabaseHelper databaseHelper, ArrayList<Deck> decks) {
-        decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
+    public static void updateDecksData(DatabaseHelper databaseHelper) {
+        ArrayList<Deck> decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
         adapterDecks.updateDeckList(decks);
         adapterDecks.notifyDataSetChanged();
     }
@@ -127,7 +119,4 @@ public class DeckFragment extends Fragment {
         adapterDecks.notifyItemRemoved(position);
     }
 
-    public static RecyclerViewAdapterDecks getRecyclerView() {
-        return adapterDecks;
-    }
 }

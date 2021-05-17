@@ -86,5 +86,5 @@
     <string name="cardFront">Enter front side</string>
     <string name="cardTranslation">Enter the translation</string>
     <string name="cardContext">Enter the context</string>
-    <string name="total">\"Total: \"</string>
+    <string name="total">Total: </string>
 </resources>

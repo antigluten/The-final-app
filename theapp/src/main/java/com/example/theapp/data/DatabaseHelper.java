@@ -6,17 +6,12 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.text.format.DateFormat;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "ANTIGLUTEN";
@@ -91,7 +86,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_CARD_DUE, card.getDueDate());
         values.put(COLUMN_CARD_DECK, card.getDeck());
 
-
         long insert = db.insert(TABLE_NAME_CARDS, null, values);
         db.close();
         return insert != -1;
@@ -151,7 +145,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-        db.close();
+//        db.close();
 
         return total;
     }
@@ -166,14 +160,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean deleteDeck(Deck deck) {
+    public void deleteDeck(Deck deck) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("DELETE FROM " + TABLE_NAME_DECKS + " WHERE " + COLUMN_ID + " = " + deck.getId(), null);
-        if (cursor.moveToFirst()) {
-            return true;
-        } else {
-            return false;
-        }
+        cursor.moveToFirst();
+        deleteCardsWithDeckName(deck.getName());
+        Log.d(TAG, "deleteDeck: deleted deck");
+    }
+
+    public void deleteCardsWithDeckName(String deckName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("DELETE FROM " + TABLE_NAME_CARDS +
+                " WHERE " + COLUMN_CARD_DECK + " =?", new String[]{deckName});
+        cursor.moveToFirst();
+        Log.d(TAG, "deleteCardsWithDeckName: deleted cards");
     }
 
     public List<Deck> getAllDecks() {
@@ -265,7 +265,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void refreshTotal(String deckName, int number) {
+    public void refreshTotal(String deckName, long number) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_TOTAL, number);
@@ -315,17 +315,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     /* todo card logic
-    0 - the card is just added, if you answer it right you will have to confirm second one to see it tomorrow, and if was wrong one it stays 0.
-    1 - it was 2, but you forgot it
-    2 - it has a review and you have to get one more review to see it later
-    3 - you made two right answers in a row and you can delay it
+    0 - new     the card is just added, if you answer it right you will have to confirm second one to see it tomorrow, and if was wrong one it stays 0.
+    1 - learn   it was 2, but you forgot it
+    2 - revise  it has a review and you have to get one more review to see it later
+    3 - mature  you made two right answers in a row and you can delay it
      */
+    public long refreshDecks(String deckName) {
+        SQLiteDatabase db = this.getReadableDatabase();
 
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_TOTAL, getNumberOfTotalCards(deckName));
+        values.put(COLUMN_NEW, getNumberOfNewCards(deckName));
+        values.put(COLUMN_RELEARN, getNumberOfLearnCards(deckName));
+        values.put(COLUMN_REVISE, getNumberOfReviseCards(deckName));
 
+        String whereClaus = "NAME=?";
+        String[] whereArgs = {deckName};
+
+        return db.update(TABLE_NAME_DECKS, values, whereClaus, whereArgs);
+    }
+
+    public long getNumberOfNewCards (String deckName) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return DatabaseUtils.longForQuery(db,
+                "SELECT COUNT(*) FROM CARDS WHERE DECK =? and TYPE =?", new String[]{deckName, String.valueOf(0)});
+    }
 
     public long getNumberOfLearnCards (String deckName) {
         SQLiteDatabase db = this.getReadableDatabase();
         return DatabaseUtils.longForQuery(db,
-                "SELECT COUNT(*) FROM CARDS WHERE DECK = 'test 1' and TYPE = 2", null);
+                "SELECT COUNT(*) FROM CARDS WHERE DECK =? and TYPE = 1", new String[]{deckName});
+    }
+
+    public long getNumberOfReviseCards (String deckName) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return DatabaseUtils.longForQuery(db,
+                "SELECT COUNT(*) FROM CARDS WHERE DECK =? and TYPE = 2", new String[]{deckName});
+    }
+
+    public long getNumberOfTotalCards (String deckName) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return DatabaseUtils.longForQuery(db,
+                "SELECT COUNT(*) FROM CARDS WHERE DECK =?", new String[]{deckName});
     }
 }

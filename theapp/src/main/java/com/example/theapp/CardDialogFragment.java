@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.theapp.data.Card;
@@ -32,6 +34,7 @@ import java.util.Locale;
 public class CardDialogFragment extends DialogFragment {
     private DialogInterface.OnDismissListener onDismissListener;
     private String deckName;
+    private boolean added = false;
 
     public CardDialogFragment(String deckName) {
         this.deckName = deckName;
@@ -40,8 +43,6 @@ public class CardDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.CustomAlertDialog);
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), android.R.style.Theme_Translucent_NoTitleBar);
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity(), R.style.ThemeOverlay_App_MaterialAlertDialog);
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_card, null);
@@ -54,62 +55,55 @@ public class CardDialogFragment extends DialogFragment {
         Button cardAdd = view.findViewById(R.id.dialogCardButtonAdd);
         Button cardCancel = view.findViewById(R.id.dialogCardButtonCancel);
 
-        cardAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String front = cardFront.getText().toString().trim();
-                String translation = cardTranslation.getText().toString().trim();
-                String sentence = cardContext.getText().toString().trim();
+        cardAdd.setOnClickListener(v -> {
+            String front = cardFront.getText().toString().trim();
+            String translation = cardTranslation.getText().toString().trim();
+            String sentence = cardContext.getText().toString().trim();
 
-                if (!front.isEmpty() && !translation.isEmpty()) {
-                    DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
-                    ArrayList<Card> cards = (ArrayList<Card>) databaseHelper.getAllCardWithDeckName(getName());
-                    boolean cardExist = true;
-                    for (Card card : cards) {
-                        if (front.equals(card.getFrontWord())) {
-                            cardFront.requestFocus();
-                            Toast.makeText(getContext(), "You have card with this front side", Toast.LENGTH_SHORT).show();
-                            cardExist = false;
-                            break;
-                        }
+            if (!front.isEmpty() && !translation.isEmpty()) {
+                DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+                ArrayList<Card> cards = (ArrayList<Card>) databaseHelper.getAllCardWithDeckName(getName());
+                boolean cardExist = true;
+                for (Card card : cards) {
+                    if (front.equals(card.getFrontWord())) {
+                        cardFront.requestFocus();
+                        Toast.makeText(getContext(), "You have card with this front side", Toast.LENGTH_SHORT).show();
+                        cardExist = false;
+                        break;
                     }
-                    if (cardExist) {
-                        Card card = new Card(front, translation, sentence, 0,
-                                getToday(), getToday(), deckName);
-                        boolean success = databaseHelper.addCard(card);
-                        if (success) {
-                            Toast.makeText(getContext(), "Success adding the card", Toast.LENGTH_SHORT).show();
-                            DeckBrowsingCardsActivity.updateCards(databaseHelper, deckName);
-                            dismiss();
-                        } else {
-                            Toast.makeText(getContext(), "Failed adding the card", Toast.LENGTH_SHORT).show();
-                        }
+                }
+                if (cardExist) {
+                    Card card = new Card(front, translation, sentence, 0,
+                            getToday(), getToday(), deckName);
+                    boolean success = databaseHelper.addCard(card);
+                    if (success) {
+                        Toast.makeText(getContext(), "Success adding the card", Toast.LENGTH_SHORT).show();
+                        added = true;
+                        DeckBrowsingCardsActivity.updateCards(databaseHelper, deckName);
+                        dismiss();
+                    } else {
+                        Toast.makeText(getContext(), "Failed adding the card", Toast.LENGTH_SHORT).show();
                     }
-
-
-
-
-                } else if (!front.isEmpty()) {
-                    cardTranslation.requestFocus();
-                    Toast.makeText(getContext(), "Enter the translation", Toast.LENGTH_SHORT).show();
                 }
-                else if (!translation.isEmpty()) {
-                    cardFront.requestFocus();
-                    Toast.makeText(getContext(), "Enter deck name", Toast.LENGTH_SHORT).show();
-                } else {
-                    cardFront.requestFocus();
-                    cardTranslation.requestFocus();
-                    Toast.makeText(getContext(), "Enter front side and translation", Toast.LENGTH_SHORT).show();
-                }
+
+
+
+
+            } else if (!front.isEmpty()) {
+                cardTranslation.requestFocus();
+                Toast.makeText(getContext(), "Enter the translation", Toast.LENGTH_SHORT).show();
+            }
+            else if (!translation.isEmpty()) {
+                cardFront.requestFocus();
+                Toast.makeText(getContext(), "Enter deck name", Toast.LENGTH_SHORT).show();
+            } else {
+                cardFront.requestFocus();
+                cardTranslation.requestFocus();
+                Toast.makeText(getContext(), "Enter front side and translation", Toast.LENGTH_SHORT).show();
             }
         });
 
-        cardCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+        cardCancel.setOnClickListener(v -> dismiss());
 
         return builder.create();
     }
@@ -140,5 +134,13 @@ public class CardDialogFragment extends DialogFragment {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.UK);
         Log.d("ANTIGLUTEN", "Adding card using method getToday: " + dateFormat.format(calendar.getTime()));
         return dateFormat.format(calendar.getTime());
+    }
+
+    public boolean getAdded() {
+        return added;
+    }
+
+    public void setAdded(boolean added) {
+        this.added = added;
     }
 }
