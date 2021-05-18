@@ -33,6 +33,7 @@
         <activity android:name="com.example.theapp.DeckBrowsingCardsActivity" />
         <activity android:name="com.example.theapp.SignUpActivity" />
         <activity android:name="com.example.theapp.LogInActivity" />
+        <activity android:name="com.example.theapp.StudyCardsActivity" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"

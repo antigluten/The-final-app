@@ -1,6 +1,11 @@
 package com.example.theapp.data;
 
+import android.annotation.SuppressLint;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Card {
     int id;
@@ -12,6 +17,7 @@ public class Card {
     String dateCreated;
     String dueDate;
     String deck;
+    long interval;
 
     public Card(){
 
@@ -45,6 +51,29 @@ public class Card {
         this.dateCreated = dateCreated;
         this.dueDate = dueDate;
         this.deck = deck;
+    }
+
+    public Card(int id, String frontWord, String translationWord, String context, int type, String dateCreated, String dueDate, String deck, long interval) {
+        this.id = id;
+        this.frontWord = frontWord;
+        this.translationWord = translationWord;
+        this.context = context;
+        this.type = type;
+        this.dateCreated = dateCreated;
+        this.dueDate = dueDate;
+        this.deck = deck;
+        this.interval = interval;
+    }
+
+    public Card(String frontWord, String translationWord, String context, int type, String dateCreated, String dueDate, String deck, long interval) {
+        this.frontWord = frontWord;
+        this.translationWord = translationWord;
+        this.context = context;
+        this.type = type;
+        this.dateCreated = dateCreated;
+        this.dueDate = dueDate;
+        this.deck = deck;
+        this.interval = interval;
     }
 
     public int getId() {
@@ -109,5 +138,23 @@ public class Card {
 
     public void setDeck(String deck) {
         this.deck = deck;
+    }
+
+    public String getDateAndTime() {
+//        Date date = new Date();
+//        long mill = date.getTime();
+        long mill = Long.parseLong(dateCreated);
+        @SuppressLint("SimpleDateFormat") DateFormat df = new SimpleDateFormat("dd:MM:yy:HH:mm:ss");
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(mill);
+        return df.format(calendar.getTime());
+    }
+
+    public void setInterval(long interval) {
+        this.interval = interval;
+    }
+
+    public long getInterval() {
+        return interval;
     }
 }

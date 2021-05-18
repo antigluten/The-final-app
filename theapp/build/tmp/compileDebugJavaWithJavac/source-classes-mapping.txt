@@ -12,6 +12,12 @@ com/example/theapp/User.java
  com.example.theapp.User
 com/example/theapp/adapters/MyViewHolder.java
  com.example.theapp.adapters.MyViewHolder
+com/example/theapp/databinding/DeckDialogBinding.java
+ com.example.theapp.databinding.DeckDialogBinding
+com/example/theapp/databinding/FragmentStudyCardsBinding.java
+ com.example.theapp.databinding.FragmentStudyCardsBinding
+com/example/theapp/fragments/LearnCardFragment.java
+ com.example.theapp.fragments.LearnCardFragment
 com/example/theapp/fragments/MenuBottomCardFragment.java
  com.example.theapp.fragments.MenuBottomCardFragment
  com.example.theapp.fragments.MenuBottomCardFragment$1
@@ -28,12 +34,16 @@ com/example/theapp/databinding/ActivityBrowsingDeckBinding.java
  com.example.theapp.databinding.ActivityBrowsingDeckBinding
 com/example/theapp/databinding/ActivityMainBinding.java
  com.example.theapp.databinding.ActivityMainBinding
+com/example/theapp/databinding/LayoutCardFrontBinding.java
+ com.example.theapp.databinding.LayoutCardFrontBinding
 com/example/theapp/databinding/FragmentStatisticsBinding.java
  com.example.theapp.databinding.FragmentStatisticsBinding
 com/example/theapp/CardTest.java
  com.example.theapp.CardTest
 com/example/theapp/databinding/ItemBrowsingCardsBinding.java
  com.example.theapp.databinding.ItemBrowsingCardsBinding
+com/example/theapp/databinding/LayoutMenuBottomDeckBinding.java
+ com.example.theapp.databinding.LayoutMenuBottomDeckBinding
 com/example/theapp/databinding/ItemTestBinding.java
  com.example.theapp.databinding.ItemTestBinding
 com/example/theapp/SignUpActivity.java
@@ -87,11 +97,15 @@ com/example/theapp/fragments/DeckFragment.java
  com.example.theapp.fragments.DeckFragment
 com/example/theapp/databinding/CardTestBinding.java
  com.example.theapp.databinding.CardTestBinding
+com/example/theapp/databinding/LayoutCardOpporsiteBinding.java
+ com.example.theapp.databinding.LayoutCardOpporsiteBinding
 com/example/theapp/databinding/LayoutMenuBottomCardBinding.java
  com.example.theapp.databinding.LayoutMenuBottomCardBinding
 com/example/theapp/databinding/DialogRenameDeckBinding.java
  com.example.theapp.databinding.DialogRenameDeckBinding
 com/example/theapp/data/Deck.java
  com.example.theapp.data.Deck
-com/example/theapp/databinding/DeckDialogBinding.java
- com.example.theapp.databinding.DeckDialogBinding
+com/example/theapp/StudyCardsActivity.java
+ com.example.theapp.StudyCardsActivity
+com/example/theapp/databinding/ActivityStudyCardsBinding.java
+ com.example.theapp.databinding.ActivityStudyCardsBinding

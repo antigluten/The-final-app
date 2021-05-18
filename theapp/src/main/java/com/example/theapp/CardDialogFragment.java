@@ -29,12 +29,16 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class CardDialogFragment extends DialogFragment {
     private DialogInterface.OnDismissListener onDismissListener;
     private String deckName;
     private boolean added = false;
+
+    private long oneDay = 86400000;
 
     public CardDialogFragment(String deckName) {
         this.deckName = deckName;
@@ -74,7 +78,8 @@ public class CardDialogFragment extends DialogFragment {
                 }
                 if (cardExist) {
                     Card card = new Card(front, translation, sentence, 0,
-                            getToday(), getToday(), deckName);
+                            getToday(), String.valueOf(getTodayEndTime()), deckName, oneDay);
+                    Log.d("ANTIGLUTEN", "onCreateDialog: card's Date " + card.getDateAndTime());
                     boolean success = databaseHelper.addCard(card);
                     if (success) {
                         Toast.makeText(getContext(), "Success adding the card", Toast.LENGTH_SHORT).show();
@@ -130,10 +135,7 @@ public class CardDialogFragment extends DialogFragment {
     }
 
     public String getToday() {
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.UK);
-        Log.d("ANTIGLUTEN", "Adding card using method getToday: " + dateFormat.format(calendar.getTime()));
-        return dateFormat.format(calendar.getTime());
+        return (String.valueOf(new Date().getTime()));
     }
 
     public boolean getAdded() {
@@ -142,5 +144,15 @@ public class CardDialogFragment extends DialogFragment {
 
     public void setAdded(boolean added) {
         this.added = added;
+    }
+
+    public long getTodayEndTime() {
+        Calendar c = new GregorianCalendar();
+        c.set(Calendar.HOUR_OF_DAY, 23); //anything 0 - 23
+        c.set(Calendar.MINUTE, 60);
+        c.set(Calendar.SECOND, 0);
+
+        Date d1 = c.getTime();
+        return d1.getTime();
     }
 }

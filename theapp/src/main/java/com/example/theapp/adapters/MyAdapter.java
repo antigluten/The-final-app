@@ -40,7 +40,6 @@ public class MyAdapter extends ArrayAdapter<Card> {
             viewHolder = new MyViewHolder(view);
             view.setTag(viewHolder);
         }
-        //TODO
         else {
             viewHolder = (MyViewHolder) view.getTag();
         }

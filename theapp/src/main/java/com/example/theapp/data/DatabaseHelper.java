@@ -11,6 +11,9 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -25,6 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_CARD_DATE_CREATED = "CREATED";
     public static final String COLUMN_CARD_DUE = "DUE";
     public static final String COLUMN_CARD_DECK = "DECK";
+    public static final String COLUMN_INTERVAL = "INTERVAL";
 
     public static final String TABLE_NAME_DECKS = "DECKS";
     public static final String COLUMN_NAME = "NAME";
@@ -34,9 +38,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_REVISE = "REVISE";
     public static final String COLUMN_DECK_CREATED = "CREATED";
 
+
     public DatabaseHelper(@Nullable Context context) {
-        super(context, "flashit.sql3", null, 1);
+        super(context, "flashIt.sql3", null, 1);
     }
+
+    long dayInMilliseconds = 86400000;
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -48,7 +55,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_CARD_TYPE + " INTEGER NOT NULL," +
                 COLUMN_CARD_DATE_CREATED + " TEXT NOT NULL," +
                 COLUMN_CARD_DUE + " TEXT NOT NULL," +
-                COLUMN_CARD_DECK + " TEXT NOT NULL)";
+                COLUMN_CARD_DECK + " TEXT NOT NULL," +
+                COLUMN_INTERVAL + " INTEGER NOT NULL)";
 
         String createDecks = "CREATE TABLE " + TABLE_NAME_DECKS + "(" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -85,6 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_CARD_DATE_CREATED, card.getDateCreated());
         values.put(COLUMN_CARD_DUE, card.getDueDate());
         values.put(COLUMN_CARD_DECK, card.getDeck());
+        values.put(COLUMN_INTERVAL, card.getInterval());
 
         long insert = db.insert(TABLE_NAME_CARDS, null, values);
         db.close();
@@ -145,7 +154,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-//        db.close();
 
         return total;
     }
@@ -227,15 +235,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String cardCreated = cursor.getString(5);
                 String cardDue = cursor.getString(6);
                 String deck = cursor.getString(7);
+                long interval = cursor.getLong(8);
 
 
-                returnList.add(new Card(id, frontWord, translation, using, cardType, cardCreated, cardDue, deck));
+                returnList.add(new Card(id, frontWord, translation, using, cardType, cardCreated, cardDue, deck, interval));
             } while (cursor.moveToNext());
 
         }
 
         cursor.close();
-//        db.close();
 
         return returnList;
     }
@@ -313,8 +321,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return type;
     }
 
-
-    /* todo card logic
+    /*
     0 - new     the card is just added, if you answer it right you will have to confirm second one to see it tomorrow, and if was wrong one it stays 0.
     1 - learn   it was 2, but you forgot it
     2 - revise  it has a review and you have to get one more review to see it later
@@ -338,24 +345,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public long getNumberOfNewCards (String deckName) {
         SQLiteDatabase db = this.getReadableDatabase();
         return DatabaseUtils.longForQuery(db,
-                "SELECT COUNT(*) FROM CARDS WHERE DECK =? and TYPE =?", new String[]{deckName, String.valueOf(0)});
+                "SELECT COUNT(*) FROM CARDS WHERE DECK =? and TYPE =? and DUE <?",
+                new String[]{deckName, String.valueOf(0), String.valueOf(getTodayEndTime())});
     }
 
     public long getNumberOfLearnCards (String deckName) {
         SQLiteDatabase db = this.getReadableDatabase();
         return DatabaseUtils.longForQuery(db,
-                "SELECT COUNT(*) FROM CARDS WHERE DECK =? and TYPE = 1", new String[]{deckName});
+                "SELECT COUNT(*) FROM CARDS WHERE DECK =? and TYPE = 1  and DUE <?",
+                new String[]{deckName, String.valueOf(getTodayEndTime())});
     }
 
     public long getNumberOfReviseCards (String deckName) {
         SQLiteDatabase db = this.getReadableDatabase();
         return DatabaseUtils.longForQuery(db,
-                "SELECT COUNT(*) FROM CARDS WHERE DECK =? and TYPE = 2", new String[]{deckName});
+                "SELECT COUNT(*) FROM CARDS WHERE DECK =? and TYPE = 2 and DUE <?",
+                new String[]{deckName, String.valueOf(getTodayEndTime())});
     }
 
     public long getNumberOfTotalCards (String deckName) {
         SQLiteDatabase db = this.getReadableDatabase();
         return DatabaseUtils.longForQuery(db,
                 "SELECT COUNT(*) FROM CARDS WHERE DECK =?", new String[]{deckName});
+    }
+
+    public long getTodayEndTime() {
+        Calendar c = new GregorianCalendar();
+        c.set(Calendar.HOUR_OF_DAY, 23); //anything 0 - 23
+        c.set(Calendar.MINUTE, 60);
+        c.set(Calendar.SECOND, 1);
+
+        Date d1 = c.getTime();
+        return d1.getTime();
     }
 }

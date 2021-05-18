@@ -7,8 +7,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -19,8 +21,10 @@ import com.example.theapp.DeckBrowsingCardsActivity;
 import com.example.theapp.DeckDialogFragment;
 import com.example.theapp.R;
 import com.example.theapp.adapters.RecyclerViewAdapterDecks;
+import com.example.theapp.data.Card;
 import com.example.theapp.data.DatabaseHelper;
 import com.example.theapp.data.Deck;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 
@@ -30,6 +34,7 @@ public class DeckFragment extends Fragment {
     private Button addDeck;
     private ArrayList<Deck> decks;
     private static RecyclerViewAdapterDecks adapterDecks;
+    private LinearLayout linearLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +44,7 @@ public class DeckFragment extends Fragment {
 
 
         DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+
         decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         RecyclerView recyclerView = rootView.findViewById(R.id.recyclerViewDeck);
@@ -46,6 +52,8 @@ public class DeckFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         adapterDecks = new RecyclerViewAdapterDecks(getContext(), decks);
         recyclerView.setAdapter(adapterDecks);
+
+        linearLayout = rootView.findViewById(R.id.bottomSheetContainerDeck);
 
         for (Deck deck : decks) {
             databaseHelper.refreshDecks(deck.getName());
@@ -58,6 +66,7 @@ public class DeckFragment extends Fragment {
     public void onResume() {
         super.onResume();
         DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+        decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
         for (Deck deck : decks) {
             databaseHelper.refreshDecks(deck.getName());
         }
@@ -88,14 +97,40 @@ public class DeckFragment extends Fragment {
             startActivity(intent);
         });
 
+
+        BottomSheetDialog dialog = new BottomSheetDialog(getContext(),
+                R.style.BottomSheetDialogTheme);
+
         adapterDecks.setOnItemLongClickListener(position -> {
-            Log.d(TAG, "onItemLongClickListener: " + position);
-            MenuBottomDeckFragment menuBottomDeckFragment = new MenuBottomDeckFragment();
-            menuBottomDeckFragment.newInstance(R.menu.email_bottom_sheet_menu, decks.get(position), position).show(getParentFragmentManager(), null);
+            View bottomSheetView = LayoutInflater.from(getContext()).
+                    inflate(R.layout.layout_menu_bottom_deck,
+                            linearLayout,
+                            false
+                    );
+
+            TextView deckNameView = bottomSheetView.findViewById(R.id.deckNameBottomSheetDeck);
+            decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
+
+            if (decks.size() != 0) {
+                deckNameView.setText(decks.get(position).getName());
+
+                LinearLayout deleteLayout = bottomSheetView.findViewById(R.id.bottomSheetDelete);
+                deleteLayout.setOnClickListener(v -> {
+                    databaseHelper.deleteDeck(decks.get(position));
+
+                    updateAfterDeletion(position);
+                    dialog.dismiss();
+                });
+
+                dialog.setContentView(bottomSheetView);
+                dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                dialog.show();
+            } else {
+
+            }
 
 
         });
-
 
 
     }
@@ -119,4 +154,10 @@ public class DeckFragment extends Fragment {
         adapterDecks.notifyItemRemoved(position);
     }
 
+    public void updateAfterDeletion(int position) {
+        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+        ArrayList<Deck> decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
+        adapterDecks.updateDeckList(decks);
+        adapterDecks.notifyItemRemoved(position);
+    }
 }

@@ -108,7 +108,8 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         });
         
 
-        BottomSheetDialog dialog = new BottomSheetDialog(DeckBrowsingCardsActivity.this, R.style.BottomSheetDialogTheme);
+        BottomSheetDialog dialog = new BottomSheetDialog(DeckBrowsingCardsActivity.this,
+                R.style.BottomSheetDialogTheme);
         adapterCard.setOnItemLongClickListener(position -> {
             View bottomSheetView = LayoutInflater.from(getApplicationContext()).
                     inflate(R.layout.layout_menu_bottom_card,
@@ -152,6 +153,8 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
 
 
         studyButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, StudyCardsActivity.class);
+            startActivity(intent);
 
         });
     }
@@ -169,8 +172,8 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         super.onDestroy();
 
         DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
-        DeckFragment.updateDecksData(databaseHelper);
         databaseHelper.refreshDecks(deckName);
+        DeckFragment.updateDecksData(databaseHelper);
     }
 
     public void updateCards(String deckName) {
@@ -197,10 +200,9 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         adapterCard.notifyDataSetChanged();
     }
 
-    //todo create a method to do it clearly
     @SuppressLint("SetTextI18n")
     public void updateNumbers(DatabaseHelper databaseHelper) {
-        totalTextView.setText(getString(R.string.total) + databaseHelper.getTotalFromDeck(deckName));
+        totalTextView.setText(getString(R.string.total) + databaseHelper.getNumberOfTotalCards(deckName));
         newTextView.setText("New: " + databaseHelper.getNumberOfNewCards(deckName));
         learnTextView.setText("Learn: " + databaseHelper.getNumberOfLearnCards(deckName));
         reviseTextView.setText("Revise: " + databaseHelper.getNumberOfReviseCards(deckName));
