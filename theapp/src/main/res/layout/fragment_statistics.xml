@@ -10,14 +10,61 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textViewTest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/work_sans"
-            android:layout_margin="45dp"
+
+        <eu.davidea.flipview.FlipView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:clickable="true"
+            android:inAnimation="@anim/grow_from_middle_x_axis"
+            android:outAnimation="@anim/shrink_to_middle_x_axis"
+            app:animationDuration="100"
+
+            app:checked="false"
+            app:enableInitialAnimation="false"
+            app:frontBackground="@drawable/rectangle"
+            app:rearBackground="@drawable/rectangle"
+            app:frontLayout="@layout/layout_card_front"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:rearLayout="@layout/layout_card_opporsite" />
+
+<!--        <com.wajahatkarim3.easyflipview.EasyFlipView-->
+
+<!--            android:id="@+id/cardFlipView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:flipDuration="500"-->
+<!--            app:flipEnabled="true"-->
+<!--            app:flipFrom="front"-->
+<!--            app:flipOnTouch="false"-->
+<!--            app:flipOnceEnabled="true"-->
+<!--            app:flipType="vertical"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/king_back_side"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center"-->
+<!--                android:src="@drawable/avatar_0"-->
+<!--                android:contentDescription="TODO"-->
+<!--                />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/king_front_side"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center"-->
+<!--                android:src="@drawable/avatar_1"-->
+<!--                android:contentDescription="TODO"-->
+<!--                />-->
+
+<!--        </com.wajahatkarim3.easyflipview.EasyFlipView>-->
 
 
 

@@ -34,6 +34,7 @@ anim fragment_fade_exit
 anim fragment_fast_out_extra_slow_in
 anim fragment_open_enter
 anim fragment_open_exit
+anim grow_from_middle_x_axis
 anim mtrl_bottom_sheet_slide_in
 anim mtrl_bottom_sheet_slide_out
 anim mtrl_card_lowers_interpolator
@@ -41,6 +42,17 @@ anim nav_default_enter_anim
 anim nav_default_exit_anim
 anim nav_default_pop_enter_anim
 anim nav_default_pop_exit_anim
+anim scale_down
+anim scale_up
+anim shrink_to_middle_x_axis
+animator animation_horizontal_flip_in
+animator animation_horizontal_flip_out
+animator animation_horizontal_right_in
+animator animation_horizontal_right_out
+animator animation_vertical_flip_front_in
+animator animation_vertical_flip_in
+animator animation_vertical_flip_out
+animator animation_vertical_front_out
 animator design_appbar_state_list_animator
 animator design_fab_hide_motion_spec
 animator design_fab_show_motion_spec
@@ -112,8 +124,14 @@ attr allowStacking
 attr alpha
 attr alphabeticModifiers
 attr altSrc
+attr animFlipInId
+attr animFlipOutId
+attr animateDesignLayoutOnly
+attr animateRearImage
 attr animate_relativeTo
+attr animationDuration
 attr animationMode
+attr anticipateInAnimationTime
 attr appBarLayoutStyle
 attr applyMotionScene
 attr arcMode
@@ -122,6 +140,8 @@ attr arrowHeadLength
 attr arrowShaftLength
 attr attributeName
 attr autoCompleteTextViewStyle
+attr autoFlipBack
+attr autoFlipBackTime
 attr autoSizeMaxTextSize
 attr autoSizeMinTextSize
 attr autoSizePresetSizes
@@ -202,6 +222,7 @@ attr cardUseCompatPadding
 attr cardViewStyle
 attr chainUseRtl
 attr checkboxStyle
+attr checked
 attr checkedButton
 attr checkedChip
 attr checkedIcon
@@ -381,6 +402,7 @@ attr elevationOverlayEnabled
 attr emphasisDisabledAlpha
 attr emphasisHighAlpha
 attr emphasisMediumAlpha
+attr enableInitialAnimation
 attr endIconCheckable
 attr endIconContentDescription
 attr endIconDrawable
@@ -424,6 +446,12 @@ attr fastScrollHorizontalTrackDrawable
 attr fastScrollVerticalThumbDrawable
 attr fastScrollVerticalTrackDrawable
 attr firstBaselineToTopHeight
+attr flipDuration
+attr flipEnabled
+attr flipFrom
+attr flipOnTouch
+attr flipOnceEnabled
+attr flipType
 attr floatingActionButtonStyle
 attr flow_firstHorizontalBias
 attr flow_firstHorizontalStyle
@@ -458,6 +486,11 @@ attr fontVariationSettings
 attr fontWeight
 attr foregroundInsidePadding
 attr framePosition
+attr frontBackground
+attr frontBackgroundColor
+attr frontImage
+attr frontImagePadding
+attr frontLayout
 attr gapBetweenBars
 attr gestureInsetBottomIgnored
 attr goIcon
@@ -502,6 +535,8 @@ attr indicatorDirectionLinear
 attr indicatorInset
 attr indicatorSize
 attr initialActivityCount
+attr initialLayoutAnimation
+attr initialLayoutAnimationDuration
 attr insetForeground
 attr isLightTheme
 attr isMaterialTheme
@@ -761,6 +796,14 @@ attr rangeFillColor
 attr ratingBarStyle
 attr ratingBarStyleIndicator
 attr ratingBarStyleSmall
+attr rearBackground
+attr rearBackgroundColor
+attr rearImage
+attr rearImageAnimation
+attr rearImageAnimationDelay
+attr rearImageAnimationDuration
+attr rearImagePadding
+attr rearLayout
 attr recyclerViewStyle
 attr region_heightLessThan
 attr region_heightMoreThan
@@ -1833,6 +1876,7 @@ drawable dialog_bg
 drawable divider
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable ic_action_done
 drawable ic_archive
 drawable ic_arrow_back
 drawable ic_arrow_down
@@ -1847,6 +1891,7 @@ drawable ic_done
 drawable ic_edit
 drawable ic_edit1
 drawable ic_forward
+drawable ic_gear
 drawable ic_home
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
@@ -1858,6 +1903,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_password
+drawable ic_plus
 drawable ic_profile
 drawable ic_reply
 drawable ic_reply_all
@@ -1922,7 +1968,9 @@ drawable paris_1
 drawable paris_2
 drawable paris_3
 drawable paris_4
+drawable profile_circle
 drawable progress_bar_background
+drawable rectangle
 drawable recycler_shape
 drawable recycler_view_selected
 drawable shape_progress_bar
@@ -2033,9 +2081,9 @@ id beginOnFirstDraw
 id beginning
 id blocking
 id bottom
-id bottomNavigationView
 id bottomSheetChangeType
 id bottomSheetContainer
+id bottomSheetContainerDeck
 id bottomSheetDelete
 id bounce
 id browser_actions_header_text
@@ -2091,16 +2139,23 @@ id decelerate
 id decelerateAndComplete
 id deckLearn
 id deckLearnBrowsing
+id deckLearnStudy
 id deckName
 id deckNameBottomSheet
+id deckNameBottomSheetDeck
 id deckNameBrowsing
 id deckNameDialog
+id deckNameStudy
 id deckRelearn
 id deckRelearnBrowsing
+id deckRelearnStudy
 id deckRevise
 id deckReviseBrowsing
+id deckReviseStudy
+id deckStudyButtons
 id deckTotal
 id deckTotalBrowsing
+id deckTotalStudy
 id decor_content_parent
 id default_activity_button
 id deleteCard
@@ -2113,12 +2168,21 @@ id design_menu_item_text
 id design_navigation_view
 id dialogButtonAdd
 id dialogButtonCancel
+id dialogButtonLogin
+id dialogButtonRegister
 id dialogCardButtonAdd
 id dialogCardButtonCancel
 id dialogCardContext
 id dialogCardFront
 id dialogCardTranslation
+id dialogEmailLogin
+id dialogEmailSignUp
 id dialogNewDeck
+id dialogPasswordLogin
+id dialogPasswordSignUp
+id dialogTextViewLogin
+id dialogTextViewSignUp
+id dialogUsernameSignUp
 id dialog_button
 id dimensions
 id direct
@@ -2133,6 +2197,7 @@ id dragRight
 id dragStart
 id dragUp
 id dropdown_menu
+id dueFutureButton
 id easeIn
 id easeInOut
 id easeOut
@@ -2154,9 +2219,13 @@ id filled
 id fitToContents
 id fixed
 id flip
+id flipView
 id floating
 id forever
+id fragmentContainerView
 id fragment_container_view_tag
+id frame_card_front
+id frame_card_opporsite
 id frame_content
 id ghost_view
 id ghost_view_holder
@@ -2179,6 +2248,8 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageview_front
+id imageview_rear
 id info
 id invisible
 id inward
@@ -2192,6 +2263,8 @@ id jumpToStart
 id labelGroup
 id labeled
 id largeLabel
+id laterButton
+id laterTodayButton
 id layout
 id left
 id leftToRight
@@ -2202,8 +2275,8 @@ id linear
 id linearLayout
 id linearLayoutBrowsing
 id linearLayoutBrowsingButton
+id linearLayoutStudy
 id listMode
-id listView
 id list_item
 id masked
 id material_clock_display
@@ -2336,6 +2409,7 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
+id search
 id search_badge
 id search_bar
 id search_button
@@ -2349,6 +2423,7 @@ id search_voice_btn
 id select_dialog_listview
 id selected
 id selection_type
+id settingsButton
 id shortcut
 id showCustom
 id showHome
@@ -2380,6 +2455,7 @@ id staticLayout
 id staticPostLayout
 id stop
 id stretch
+id studyContext
 id submenuarrow
 id submit_area
 id tabMode
@@ -2411,7 +2487,8 @@ id textStart
 id textTop
 id textView
 id textView2
-id textViewTest
+id textViewFront
+id textViewOpporsite
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -2453,6 +2530,8 @@ id wrap_content
 id zero_corner_chip
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
+integer anim_length
+integer anim_length_half
 integer app_bar_elevation_anim_duration
 integer bottom_sheet_slide_duration
 integer cancel_button_image_alpha
@@ -2517,6 +2596,7 @@ layout activity_browsing_deck
 layout activity_login
 layout activity_main
 layout activity_signup
+layout activity_study_cards
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout card_test
@@ -2538,15 +2618,23 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_card
+layout dialog_login
+layout dialog_register
 layout dialog_rename_deck
+layout flipview_front
+layout flipview_rear
 layout fragment_deck
 layout fragment_profile
 layout fragment_statistics
+layout fragment_study_cards
 layout item_browsing_cards
 layout item_deck
 layout item_recycler_view
 layout item_test
+layout layout_card_front
+layout layout_card_opporsite
 layout layout_menu_bottom_card
+layout layout_menu_bottom_deck
 layout material_chip_input_combo
 layout material_clock_display
 layout material_clock_display_divider
@@ -2618,6 +2706,7 @@ layout text_view_without_line_height
 menu email_bottom_sheet_menu
 menu menu_bottom_card
 menu navigation
+menu profile_app_bar
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation nav_graph
@@ -3616,6 +3705,7 @@ styleable DrawerArrowToggle arrowHeadLength arrowShaftLength barLength color dra
 styleable DrawerLayout elevation
 styleable ExtendedFloatingActionButton collapsedSize elevation extendMotionSpec hideMotionSpec showMotionSpec shrinkMotionSpec
 styleable ExtendedFloatingActionButton_Behavior_Layout behavior_autoHide behavior_autoShrink
+styleable FlipView animateDesignLayoutOnly animateRearImage animationDuration anticipateInAnimationTime checked enableInitialAnimation frontBackground frontBackgroundColor frontImage frontImagePadding frontLayout initialLayoutAnimation initialLayoutAnimationDuration rearBackground rearBackgroundColor rearImage rearImageAnimation rearImageAnimationDelay rearImageAnimationDuration rearImagePadding rearLayout
 styleable FloatingActionButton android_enabled backgroundTint backgroundTintMode borderWidth elevation ensureMinTouchTargetSize fabCustomSize fabSize hideMotionSpec hoveredFocusedTranslationZ maxImageSize pressedTranslationZ rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec useCompatPadding
 styleable FloatingActionButton_Behavior_Layout behavior_autoHide
 styleable FlowLayout itemSpacing lineSpacing
@@ -3716,6 +3806,7 @@ styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
+styleable easy_flip_view animFlipInId animFlipOutId autoFlipBack autoFlipBackTime flipDuration flipEnabled flipFrom flipOnTouch flipOnceEnabled flipType
 xml standalone_badge
 xml standalone_badge_gravity_bottom_end
 xml standalone_badge_gravity_bottom_start

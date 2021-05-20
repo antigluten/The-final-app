@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.theapp.R;
+import com.example.theapp.data.DatabaseHelper;
 import com.example.theapp.data.Deck;
 
 import java.util.ArrayList;
@@ -17,14 +18,16 @@ import java.util.ArrayList;
 public class RecyclerViewAdapterDecks extends RecyclerView.Adapter<RecyclerViewAdapterDecks.DeckViewHolder> {
     private Context context;
     private ArrayList<Deck> decks;
+    private DatabaseHelper databaseHelper;
 
     private RecyclerViewAdapterDecks.OnItemClickListener listener;
     private RecyclerViewAdapterDecks.OnItemLongClickListener onItemLongClickListener;
 
 
-    public RecyclerViewAdapterDecks(Context context, ArrayList<Deck> decks) {
+    public RecyclerViewAdapterDecks(Context context, ArrayList<Deck> decks, DatabaseHelper databaseHelper) {
         this.context = context;
         this.decks = decks;
+        this.databaseHelper = databaseHelper;
     }
 
     @NonNull
@@ -38,10 +41,10 @@ public class RecyclerViewAdapterDecks extends RecyclerView.Adapter<RecyclerViewA
     public void onBindViewHolder(@NonNull DeckViewHolder holder, int position) {
         Deck deck = decks.get(position);
         holder.name.setText(deck.getName());
-        holder.numberToRevise.setText(String.valueOf("Revise: " + deck.getNumberToRevise()));
-        holder.numberNewCards.setText(String.valueOf("New: " + deck.getNumberNewCards()));
-        holder.totalNumberOfCard.setText(String.valueOf("Total: " + deck.getTotalNumberOfCard()));
-        holder.numberToRelearn.setText(String.valueOf("Learn: " + deck.getNumberToRelearn()));
+        holder.numberToRevise.setText(String.valueOf("Revise: " + databaseHelper.getNumberOfReviseCards(deck.getName())));
+        holder.numberNewCards.setText(String.valueOf("New: " + databaseHelper.getNumberOfNewCards(deck.getName())));
+        holder.totalNumberOfCard.setText(String.valueOf("Total: " + databaseHelper.getNumberOfTotalCards(deck.getName())));
+        holder.numberToRelearn.setText(String.valueOf("Learn: " + databaseHelper.getNumberOfLearnCards(deck.getName())));
 
     }
 

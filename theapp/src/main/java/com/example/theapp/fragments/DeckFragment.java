@@ -50,7 +50,7 @@ public class DeckFragment extends Fragment {
         RecyclerView recyclerView = rootView.findViewById(R.id.recyclerViewDeck);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        adapterDecks = new RecyclerViewAdapterDecks(getContext(), decks);
+        adapterDecks = new RecyclerViewAdapterDecks(getContext(), decks, databaseHelper);
         recyclerView.setAdapter(adapterDecks);
 
         linearLayout = rootView.findViewById(R.id.bottomSheetContainerDeck);

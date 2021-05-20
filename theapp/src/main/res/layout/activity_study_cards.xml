@@ -15,26 +15,46 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutStudy"
         app:layout_constraintBottom_toTopOf="@+id/deckStudyButtons">
 
-        <eu.davidea.flipview.FlipView
-            android:layout_width="350dp"
-            android:layout_height="400dp"
-            app:frontBackground="@drawable/rectangle"
-            app:rearBackground="@drawable/rectangle"
+        <TextView
+            android:id="@+id/studyContext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/calibri"
+            android:maxWidth="350dp"
+            android:maxLines="3"
+            android:padding="12dp"
+            android:paddingLeft="30dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/flipView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <eu.davidea.flipview.FlipView
+            android:id="@+id/flipView"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
             android:clickable="true"
             android:inAnimation="@anim/grow_from_middle_x_axis"
             android:outAnimation="@anim/shrink_to_middle_x_axis"
             app:animationDuration="100"
+            app:checked="false"
 
+            app:enableInitialAnimation="false"
+            app:frontBackground="@drawable/rectangle"
             app:frontLayout="@layout/layout_card_front"
             app:rearLayout="@layout/layout_card_opporsite"
+            app:rearBackground="@drawable/rectangle"
 
-            app:checked="false"
-            app:enableInitialAnimation="false"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.843" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -48,10 +68,10 @@
         app:layout_constraintRight_toRightOf="parent">
 
         <TextView
-            android:id="@+id/toStudy"
+            android:id="@+id/deckNameStudy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8sp"
+            android:layout_marginTop="12sp"
             android:layout_marginBottom="8dp"
             android:text="@string/deckName"
             android:fontFamily="@font/futura_medium"
@@ -86,6 +106,15 @@
                 android:textColor="#118ab2"/>
 
             <TextView
+                android:id="@+id/deckRelearnStudy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24sp"
+                android:fontFamily="@font/poppins"
+                android:text="Learn: 0"
+                android:textColor="#ef476f" />
+
+            <TextView
                 android:id="@+id/deckReviseStudy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -95,14 +124,7 @@
                 android:textColor="#06d6a0" />
 
 
-            <TextView
-                android:id="@+id/deckRelearnStudy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24sp"
-                android:fontFamily="@font/poppins"
-                android:text="Relearn: 0"
-                android:textColor="#ef476f" />
+
 
         </LinearLayout>
 
@@ -119,18 +141,21 @@
         app:layout_constraintLeft_toLeftOf="parent">
 
         <Button
+            android:id="@+id/laterButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Again"
             android:layout_marginEnd="30dp"
             />
         <Button
+            android:id="@+id/laterTodayButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
             android:text="Hard"
             />
         <Button
+            android:id="@+id/dueFutureButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Good"

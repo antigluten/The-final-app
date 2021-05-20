@@ -4,7 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,23 +20,21 @@ import com.example.theapp.fragments.DeckFragment;
 import com.example.theapp.fragments.ProfileFragment;
 import com.example.theapp.fragments.StatisticsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     Fragment deckFragment = new DeckFragment();
-    Fragment statisticsFragment = new StatisticsFragment();
-    Fragment profileFragment = new ProfileFragment();
+//    Fragment statisticsFragment = new StatisticsFragment();
+//    Fragment profileFragment = new ProfileFragment();
 
     Fragment currentFragment = deckFragment;
-    
 
+    private FirebaseUser user;
 
-    private String TAG = "ANTIGLUTEN";
-
-    private ListView listView;
-    private ArrayList<String> contactArrayList;
-    private ArrayAdapter<String> arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,44 +43,40 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.frame_content, deckFragment, "deck")
-                .add(R.id.frame_content, statisticsFragment, "stats")
-                .add(R.id.frame_content, profileFragment, "profile")
-                .hide(statisticsFragment)
-                .hide(profileFragment)
+//                .add(R.id.frame_content, statisticsFragment, "stats")
+//                .add(R.id.frame_content, profileFragment, "profile")
+//                .hide(statisticsFragment)
+//                .hide(profileFragment)
                 .commit();
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.navigation_deck:
-                        changeFragment(deckFragment);
-                        return true;
-                    case R.id.navigation_stats:
-                        changeFragment(statisticsFragment);
-                        return true;
-                    case R.id.navigation_profile:
-                        changeFragment(profileFragment);
-                        return true;
-                }
-                return false;
-            }
-        });
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+//            switch (item.getItemId()) {
+//                case R.id.navigation_deck:
+//                    changeFragment(deckFragment);
+//                    return true;
+////                    case R.id.navigation_stats:
+////                        changeFragment(statisticsFragment);
+////                        return true;
+////                case R.id.navigation_profile:
+////                    changeFragment(profileFragment);
+////                    return true;
+//            }
+//            return false;
+//        });
         
 
 
     }
 
-    private void changeFragment(Fragment newFragment) {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .hide(currentFragment)
-                .show(newFragment)
-                .commit();
-        currentFragment = newFragment;
-    }
+//    private void changeFragment(Fragment newFragment) {
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .hide(currentFragment)
+//                .show(newFragment)
+//                .commit();
+//        currentFragment = newFragment;
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -89,5 +86,32 @@ public class MainActivity extends AppCompatActivity {
                 Toast.LENGTH_LONG
         ).show();
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        ImageButton button = findViewById(R.id.settingsButton);
+
+        LoginDialogFragment dialogFragment = new LoginDialogFragment();
+        dialogFragment.setCancelable(false);
+
+
+        if (user != null) {
+            button.setOnClickListener(v -> {
+                FirebaseAuth.getInstance().signOut();
+                dialogFragment.show(getSupportFragmentManager(), "Dialog");
+
+            });
+        } else {
+            dialogFragment.setOnDismissListener(v -> {
+                SignDialogFragment signDialogFragment = new SignDialogFragment();
+                signDialogFragment.setCancelable(false);
+                signDialogFragment.show(getSupportFragmentManager(), "Dialog");
+            });
+            dialogFragment.show(getSupportFragmentManager(), "Dialog");
+        }
     }
 }

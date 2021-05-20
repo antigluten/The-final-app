@@ -33,12 +33,13 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
     private static String deckName;
     private static RecyclerViewAdapterCard adapterCard;
     private ArrayList<Card> cards;
+    private ArrayList<Card> todayCards;
     private TextView totalTextView;
     private TextView newTextView;
     private TextView learnTextView;
     private TextView reviseTextView;
     private Button studyButton;
-
+    private DatabaseHelper databaseHelper;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -46,7 +47,7 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browsing_deck);
 
-        DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
+         databaseHelper = new DatabaseHelper(getBaseContext());
 
 
 
@@ -80,6 +81,8 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         reviseTextView.setText("Revise: " + databaseHelper.getNumberOfReviseCards(deckName));
 
         studyButton = findViewById(R.id.buttonStudy);
+
+        updateButtonState();
     }
 
 
@@ -88,6 +91,8 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        updateNumbers(databaseHelper);
+        updateButtonState();
         DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
         databaseHelper.refreshDecks(deckName);
 
@@ -106,7 +111,6 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
             }
 
         });
-        
 
         BottomSheetDialog dialog = new BottomSheetDialog(DeckBrowsingCardsActivity.this,
                 R.style.BottomSheetDialogTheme);
@@ -120,40 +124,40 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
             TextView deckNameView = bottomSheetView.findViewById(R.id.deckNameBottomSheet);
             cards = (ArrayList<Card>) databaseHelper.getAllCardWithDeckName(deckName);
 
-            if (cards.size() != 0) {
-                deckNameView.setText(cards.get(position).getFrontWord());
-                Log.d(TAG, "onResume: " + cards.size());
-                LinearLayout deleteLayout = bottomSheetView.findViewById(R.id.bottomSheetDelete);
-                deleteLayout.setOnClickListener(v -> {
-                    databaseHelper.deleteCard(cards.get(position));
-                    updateAfterDeletion(position, deckName);
-                    updateNumbers(databaseHelper);
-                    dialog.dismiss();
-                });
 
-                LinearLayout changeLayout = bottomSheetView.findViewById(R.id.bottomSheetChangeType);
-                changeLayout.setOnClickListener(v -> {
-                    databaseHelper.changeTypeOfCard(cards.get(position));
+            deckNameView.setText(cards.get(position).getFrontWord());
+            Log.d(TAG, "onResume: " + cards.size());
+            LinearLayout deleteLayout = bottomSheetView.findViewById(R.id.bottomSheetDelete);
+            deleteLayout.setOnClickListener(v -> {
+                databaseHelper.deleteCard(cards.get(position));
+                updateAfterDeletion(position, deckName);
+                updateNumbers(databaseHelper);
+                updateButtonState();
+                dialog.dismiss();
+            });
 
-                    updateNumbers(databaseHelper);
+            LinearLayout changeLayout = bottomSheetView.findViewById(R.id.bottomSheetChangeType);
+            changeLayout.setOnClickListener(v -> {
+                databaseHelper.changeTypeOfCard(cards.get(position));
+
+                updateNumbers(databaseHelper);
 
 
-                    dialog.dismiss();
-                });
+                dialog.dismiss();
+            });
 
-                dialog.setContentView(bottomSheetView);
-                dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                dialog.show();
-            } else {
+            dialog.setContentView(bottomSheetView);
+            dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            dialog.show();
 
-            }
 
 
         });
 
 
         studyButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, StudyCardsActivity.class);
+            Intent intent = new Intent(getBaseContext(), StudyCardsActivity.class);
+            intent.putExtra("Deck", deckName);
             startActivity(intent);
 
         });
@@ -181,6 +185,7 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         ArrayList<Card> cards = (ArrayList<Card>) databaseHelper.getAllCardWithDeckName(deckName);
         adapterCard.updateCardList(cards);
         adapterCard.notifyItemInserted(cards.size());
+        updateButtonState();
     }
 
     @SuppressLint("SetTextI18n")
@@ -192,6 +197,7 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         long total = databaseHelper.getNumberOfTotalCards(deckName);
         databaseHelper.refreshTotal(deckName ,total);
         totalTextView.setText(getString(R.string.total) + databaseHelper.getNumberOfTotalCards(deckName));
+        updateButtonState();
     }
 
     public static void updateCards(DatabaseHelper databaseHelper, String deckName) {
@@ -208,4 +214,12 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         reviseTextView.setText("Revise: " + databaseHelper.getNumberOfReviseCards(deckName));
     }
 
+    public void updateButtonState() {
+        todayCards = databaseHelper.getAllCardsToday(deckName);
+        if (todayCards.size() != 0) {
+            studyButton.setVisibility(View.VISIBLE);
+        } else {
+            studyButton.setVisibility(View.INVISIBLE);
+        }
+    }
 }

@@ -38,6 +38,9 @@ apply plugin: 'com.google.gms.google-services'
 
 
 dependencies {
+    implementation 'com.wajahatkarim3.EasyFlipView:EasyFlipView:3.0.0'
+    implementation 'eu.davidea:flipview:1.2.0'
+
     implementation 'com.github.whilu.CustomButton:library:1.0.0'
 
     implementation platform('com.google.firebase:firebase-bom:27.0.0')

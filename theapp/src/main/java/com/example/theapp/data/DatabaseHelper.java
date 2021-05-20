@@ -214,6 +214,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
+    public ArrayList<Card> getAllCardsToday(String deckName) {
+        ArrayList<Card> returnList = new ArrayList<>();
+
+        String queryString = "SELECT * FROM " + TABLE_NAME_CARDS +
+                " WHERE " + COLUMN_CARD_DECK + "=? and " + COLUMN_CARD_DUE + " <?";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, new String[]{deckName, String.valueOf(getTodayEndTime())});
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String frontWord = cursor.getString(1);
+                String translation = cursor.getString(2);
+                String using = cursor.getString(3);
+                int cardType = cursor.getInt(4);
+                String cardCreated = cursor.getString(5);
+                String cardDue = cursor.getString(6);
+                String deck = cursor.getString(7);
+                long interval = cursor.getLong(8);
+
+
+                returnList.add(new Card(id, frontWord, translation, using, cardType, cardCreated, cardDue, deck, interval));
+            } while (cursor.moveToNext());
+
+        }
+
+        cursor.close();
+
+        return returnList;
+    }
+
 
 
     public List<Card> getAllCardWithDeckName(String deckName) {
@@ -369,6 +401,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "SELECT COUNT(*) FROM CARDS WHERE DECK =?", new String[]{deckName});
     }
 
+    public long getNumberOfTotalCardsToday (String deckName) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return DatabaseUtils.longForQuery(db,
+                "SELECT COUNT(*) FROM CARDS WHERE DECK =? and DUE <?", new String[]{deckName, String.valueOf(getTodayEndTime())});
+    }
+
     public long getTodayEndTime() {
         Calendar c = new GregorianCalendar();
         c.set(Calendar.HOUR_OF_DAY, 23); //anything 0 - 23
@@ -377,5 +415,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         Date d1 = c.getTime();
         return d1.getTime();
+    }
+
+    public void updateInterval(long today, long interval, int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN_INTERVAL, interval);
+        values.put(COLUMN_CARD_DUE, today + interval);
+
+        String whereClaus = "ID=?";
+        String[] whereArgs = {String.valueOf(id)};
+
+        long insert = db.update(TABLE_NAME_CARDS, values, whereClaus, whereArgs);
+        Log.d(TAG, "changeTheInterval: " + insert);
+    }
+
+
+    public void increaseTypeOfCard(Card card) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        int type;
+
+        if (getType(card) < 4) {
+            type = getType(card) + 1;
+        } else {
+            type = getType(card);
+        }
+        values.put(COLUMN_CARD_TYPE, type);
+
+        String whereClaus = "ID=?";
+        String[] whereArgs = {String.valueOf(card.getId())};
+
+        long insert = db.update(TABLE_NAME_CARDS, values, whereClaus, whereArgs);
+        Log.d(TAG, "changeTypeOfCard: " + insert);
     }
 }

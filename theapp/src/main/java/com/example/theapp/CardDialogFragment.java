@@ -78,7 +78,7 @@ public class CardDialogFragment extends DialogFragment {
                 }
                 if (cardExist) {
                     Card card = new Card(front, translation, sentence, 0,
-                            getToday(), String.valueOf(getTodayEndTime()), deckName, oneDay);
+                            getToday(), String.valueOf(getTodayEndTime()), deckName, 0);
                     Log.d("ANTIGLUTEN", "onCreateDialog: card's Date " + card.getDateAndTime());
                     boolean success = databaseHelper.addCard(card);
                     if (success) {

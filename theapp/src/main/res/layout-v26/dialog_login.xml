@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/dialogTextViewLogin"
+        android:layout_width="243dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="0dp"
+        android:text="Log in"
+        android:fontFamily="@font/work_sans_bold"
+        android:textColor="@color/reply_blue_700"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/dialogPasswordLogin"
+        android:layout_width="243dp"
+        android:layout_height="40sp"
+        android:ems="10"
+        android:textSize="18sp"
+        android:paddingStart="12sp"
+        android:paddingEnd="12sp"
+        android:fontFamily="@font/work_sans"
+        android:inputType="textPassword"
+        android:layout_marginTop="12sp"
+        android:background="@drawable/deck"
+        android:hint="Enter your password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialogEmailLogin"
+        tools:ignore="RtlSymmetry" />
+
+    <EditText
+        android:id="@+id/dialogEmailLogin"
+        android:layout_width="243dp"
+        android:layout_height="40sp"
+        android:ems="10"
+        android:textSize="18sp"
+        android:paddingStart="12sp"
+        android:paddingEnd="12sp"
+        android:fontFamily="@font/work_sans"
+        android:inputType="textPersonName"
+        android:layout_marginTop="12sp"
+        android:background="@drawable/deck"
+        android:hint="Enter your login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialogTextViewLogin"
+        tools:ignore="RtlSymmetry" />
+
+
+    <Button
+        android:id="@+id/dialogButtonLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Log in"
+        app:layout_constraintStart_toEndOf="@+id/dialogButtonRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialogPasswordLogin" />
+
+    <Button
+        android:id="@+id/dialogButtonRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Register"
+        app:layout_constraintEnd_toStartOf="@+id/dialogButtonLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialogPasswordLogin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

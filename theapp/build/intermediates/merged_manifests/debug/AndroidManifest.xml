@@ -31,8 +31,12 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.theapp.DeckBrowsingCardsActivity" />
-        <activity android:name="com.example.theapp.SignUpActivity" />
-        <activity android:name="com.example.theapp.LogInActivity" />
+        <activity
+            android:name="com.example.theapp.SignUpActivity"
+            android:theme="@style/noAnimTheme" />
+        <activity
+            android:name="com.example.theapp.LogInActivity"
+            android:theme="@style/noAnimTheme" />
         <activity android:name="com.example.theapp.StudyCardsActivity" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"

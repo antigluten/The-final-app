@@ -25,6 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class LogInActivity extends Activity {
 
+    private FirebaseUser user;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,56 +39,58 @@ public class LogInActivity extends Activity {
         Button logIn = findViewById(R.id.profileRegisterButton);
         ProgressBar progressBar = findViewById(R.id.profileProgress);
 
+        user = mAuth.getCurrentUser();
+
         ConstraintLayout constraintLayout = findViewById(R.id.container2);
-        logIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String mail = login.getText().toString().trim();
-                String pass = password.getText().toString().trim();
+        logIn.setOnClickListener(v -> {
+            String mail = login.getText().toString().trim();
+            String pass = password.getText().toString().trim();
 
-                if (mail.isEmpty()) {
-                    login.setError("Please fill it");
-                    login.requestFocus();
-                    return;
-                }
-
-                if (pass.isEmpty()) {
-                    password.setError("Invalid password");
-                    password.requestFocus();
-                    return;
-                }
-
-                if (pass.length() < 8) {
-                    password.setError("Invalid length of password, min is 8");
-                    password.requestFocus();
-
-                }
-
-                constraintLayout.setVisibility(View.GONE);
-                progressBar.setVisibility(View.VISIBLE);
-
-                mAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            progressBar.setVisibility(View.INVISIBLE);
-                            finish();
-                        }
-                        else {
-                            progressBar.setVisibility(View.INVISIBLE);
-                            Toast.makeText(getBaseContext(), "Fail to sign in", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+            if (mail.isEmpty()) {
+                login.setError("Please fill it");
+                login.requestFocus();
+                return;
             }
+
+            if (pass.isEmpty()) {
+                password.setError("Invalid password");
+                password.requestFocus();
+                return;
+            }
+
+            if (pass.length() < 8) {
+                password.setError("Invalid length of password, min is 8");
+                password.requestFocus();
+
+            }
+
+            constraintLayout.setVisibility(View.GONE);
+            progressBar.setVisibility(View.VISIBLE);
+
+            mAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    finish();
+                }
+                else {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    Toast.makeText(getBaseContext(), "Fail to sign in", Toast.LENGTH_LONG).show();
+                }
+            });
         });
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), SignUpActivity.class));
-                finish();
-            }
+        register.setOnClickListener(v -> {
+            startActivity(new Intent(getBaseContext(), SignUpActivity.class));
+            finish();
         });
     }
+
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//
+//        if (user == null) {
+//            startActivity(new Intent(getBaseContext(), LogInActivity.class));
+//        }
+//    }
 }

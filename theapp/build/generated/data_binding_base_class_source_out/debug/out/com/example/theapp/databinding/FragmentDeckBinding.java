@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,12 +30,17 @@ public final class FragmentDeckBinding implements ViewBinding {
   @NonNull
   public final RecyclerView recyclerViewDeck;
 
+  @NonNull
+  public final ImageButton settingsButton;
+
   private FragmentDeckBinding(@NonNull FrameLayout rootView, @NonNull Button buttonAddDeck,
-      @NonNull LinearLayout linearLayout, @NonNull RecyclerView recyclerViewDeck) {
+      @NonNull LinearLayout linearLayout, @NonNull RecyclerView recyclerViewDeck,
+      @NonNull ImageButton settingsButton) {
     this.rootView = rootView;
     this.buttonAddDeck = buttonAddDeck;
     this.linearLayout = linearLayout;
     this.recyclerViewDeck = recyclerViewDeck;
+    this.settingsButton = settingsButton;
   }
 
   @Override
@@ -82,8 +88,14 @@ public final class FragmentDeckBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.settingsButton;
+      ImageButton settingsButton = rootView.findViewById(id);
+      if (settingsButton == null) {
+        break missingId;
+      }
+
       return new FragmentDeckBinding((FrameLayout) rootView, buttonAddDeck, linearLayout,
-          recyclerViewDeck);
+          recyclerViewDeck, settingsButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -20,20 +20,20 @@
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\drawable\\avatar_8.jpeg"
     },
     {
-        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\drawable_custom_progressbar.xml.flat",
-        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\drawable\\custom_progressbar.xml"
-    },
-    {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\font_work_sans_medium.xml.flat",
-        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\font\\work_sans_medium.xml"
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\drawable_custom_progressbar.xml.flat",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\drawable\\custom_progressbar.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_back.xml.flat",
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\drawable\\ic_arrow_back.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\font_work_sans_medium.xml.flat",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\font\\work_sans_medium.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
@@ -48,16 +48,20 @@
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\menu_bottom_card.xml"
     },
     {
-        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\layout_item_recycler_view.xml.flat",
-        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\item_recycler_view.xml"
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\layout_card_test.xml.flat",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\card_test.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\drawable_avatar_5.jpeg.flat",
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\drawable\\avatar_5.jpeg"
     },
     {
-        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\layout_card_test.xml.flat",
-        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\card_test.xml"
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\layout_item_recycler_view.xml.flat",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\item_recycler_view.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\layout-v26_dialog_login.xml.flat",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout-v26\\dialog_login.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\drawable_avatar_3.jpg.flat",
@@ -134,6 +138,10 @@
     {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\layout_activity_login.xml.flat",
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\drawable_ic_plus.xml.flat",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\drawable\\ic_plus.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\drawable_ic_archive.xml.flat",
@@ -292,6 +300,10 @@
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\drawable\\ic_mail.xml"
     },
     {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\layout_dialog_register.xml.flat",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\dialog_register.xml"
+    },
+    {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\drawable_ic_reply_all.xml.flat",
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\drawable\\ic_reply_all.xml"
     },
@@ -368,6 +380,10 @@
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\drawable\\ic_twotone_error.xml"
     },
     {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\drawable_profile_circle.xml.flat",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\drawable\\profile_circle.xml"
+    },
+    {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\drawable_ic_twotone_star.xml.flat",
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\drawable\\ic_twotone_star.xml"
     },
@@ -382,6 +398,10 @@
     {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\drawable_ic_gear.xml.flat",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\drawable\\ic_gear.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\drawable_ic_search.xml.flat",
@@ -422,6 +442,10 @@
     {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\font_poppins.ttf.flat",
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\font\\poppins.ttf"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\menu_profile_app_bar.xml.flat",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\menu\\profile_app_bar.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\res\\merged\\debug\\drawable_nav_divider_top.xml.flat",
