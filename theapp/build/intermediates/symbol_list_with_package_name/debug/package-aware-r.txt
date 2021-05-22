@@ -2264,7 +2264,6 @@ id labelGroup
 id labeled
 id largeLabel
 id laterButton
-id laterTodayButton
 id layout
 id left
 id leftToRight

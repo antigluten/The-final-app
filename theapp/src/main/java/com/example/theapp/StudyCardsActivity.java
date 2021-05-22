@@ -3,7 +3,6 @@ package com.example.theapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,8 +30,7 @@ public class StudyCardsActivity extends AppCompatActivity {
     private TextView opporsiteCard;
     private TextView contextTextView;
 
-    private Button laterButton;
-    private Button todayLaterButton;
+    private Button againButton;
     private Button dueFutureButton;
 
     private ArrayList<Card> cards;
@@ -66,9 +64,7 @@ public class StudyCardsActivity extends AppCompatActivity {
         reviseNumber = findViewById(R.id.deckReviseStudy);
         reviseNumber.setText("Revise " + databaseHelper.getNumberOfReviseCards(deckName));
 
-
-        laterButton = findViewById(R.id.laterButton);
-        todayLaterButton = findViewById(R.id.laterTodayButton);
+        againButton = findViewById(R.id.laterButton);
         dueFutureButton = findViewById(R.id.dueFutureButton);
 
         contextTextView = findViewById(R.id.studyContext);
@@ -86,6 +82,14 @@ public class StudyCardsActivity extends AppCompatActivity {
         dueFutureButton.setOnClickListener(v -> {
             setNextCard(databaseHelper);
         });
+
+        againNumber.setOnClickListener(v -> {
+            setAgainButton(databaseHelper);
+        });
+
+        againButton.setOnClickListener(v -> {
+            setAgainButton(databaseHelper);
+        });
     }
 
     public void setNextCard(DatabaseHelper databaseHelper) {
@@ -94,7 +98,7 @@ public class StudyCardsActivity extends AppCompatActivity {
             databaseHelper.updateInterval(getToday(), oneDay, card.getId());
         } else {
             long interval = (long) (card.getInterval() * 1.2);
-            databaseHelper.updateInterval(getToday() ,interval, card.getId());
+            databaseHelper.updateInterval(getToday(), interval, card.getId());
         }
         databaseHelper.increaseTypeOfCard(card);
         cards.remove(0);
@@ -106,6 +110,19 @@ public class StudyCardsActivity extends AppCompatActivity {
             Toast.makeText(getBaseContext(), "You studies all cards today", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    public void setAgainButton(DatabaseHelper databaseHelper) {
+        Card card = cards.get(0);
+        databaseHelper.changeTypeOfCard(card);
+        if (card.getInterval() == 0) {
+            databaseHelper.updateInterval(getToday(), oneDay, card.getId());
+        } else {
+            long interval = (long) (card.getInterval() * 0.8);
+            databaseHelper.updateInterval(getToday(), interval, card.getId());
+        }
+        Collections.shuffle(cards);
+        setNextView();
     }
 
     public void setNextView() {

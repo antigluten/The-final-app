@@ -34,7 +34,7 @@ public class MenuBottomDeckFragment extends BottomSheetDialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         navigationView = view.findViewById(R.id.navigation_view);
-        navigationView.inflateMenu(R.menu.email_bottom_sheet_menu);
+//        navigationView.inflateMenu(R.menu.email_bottom_sheet_menu);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

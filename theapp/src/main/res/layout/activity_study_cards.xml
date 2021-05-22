@@ -23,14 +23,15 @@
             android:maxWidth="350dp"
             android:maxLines="3"
             android:padding="12dp"
-            android:paddingLeft="30dp"
+            android:paddingStart="30dp"
             android:text=""
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/flipView"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlSymmetry" />
 
         <eu.davidea.flipview.FlipView
             android:id="@+id/flipView"
@@ -54,7 +55,8 @@
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.843" />
+            app:layout_constraintVertical_bias="0.843"
+            android:focusable="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -145,20 +147,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Again"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="180dp"
             />
-        <Button
-            android:id="@+id/laterTodayButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
-            android:text="Hard"
-            />
+
         <Button
             android:id="@+id/dueFutureButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Good"
+            android:text="Got"
             />
 
     </LinearLayout>

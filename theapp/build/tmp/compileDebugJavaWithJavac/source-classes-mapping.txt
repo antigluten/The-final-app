@@ -7,8 +7,8 @@ com/example/theapp/databinding/FragmentStudyCardsBinding.java
 com/example/theapp/fragments/MenuBottomCardFragment.java
  com.example.theapp.fragments.MenuBottomCardFragment
  com.example.theapp.fragments.MenuBottomCardFragment$1
-com/example/theapp/DeckBrowsingCardsActivity.java
- com.example.theapp.DeckBrowsingCardsActivity
+com/example/theapp/data/Deck.java
+ com.example.theapp.data.Deck
 com/example/theapp/databinding/FragmentProfileBinding.java
  com.example.theapp.databinding.FragmentProfileBinding
 com/example/theapp/databinding/FragmentDeckBinding.java
@@ -19,8 +19,8 @@ com/example/theapp/databinding/LayoutCardFrontBinding.java
  com.example.theapp.databinding.LayoutCardFrontBinding
 com/example/theapp/databinding/FragmentStatisticsBinding.java
  com.example.theapp.databinding.FragmentStatisticsBinding
-com/example/theapp/data/Deck.java
- com.example.theapp.data.Deck
+com/example/theapp/SignDialogFragment.java
+ com.example.theapp.SignDialogFragment
 com/example/theapp/databinding/ItemRecyclerViewBinding.java
  com.example.theapp.databinding.ItemRecyclerViewBinding
 com/example/theapp/adapters/RecyclerViewAdapterCard.java
@@ -33,8 +33,8 @@ com/example/theapp/BuildConfig.java
 com/example/theapp/fragments/ProfileFragment.java
  com.example.theapp.fragments.ProfileFragment
  com.example.theapp.fragments.ProfileFragment$1
-com/example/theapp/StudyCardsActivity.java
- com.example.theapp.StudyCardsActivity
+com/example/theapp/MainActivity.java
+ com.example.theapp.MainActivity
 com/example/theapp/data/Card.java
  com.example.theapp.data.Card
 com/example/theapp/databinding/ActivitySignupBinding.java
@@ -109,7 +109,7 @@ com/example/theapp/databinding/CardTestBinding.java
  com.example.theapp.databinding.CardTestBinding
 com/example/theapp/databinding/DialogRenameDeckBinding.java
  com.example.theapp.databinding.DialogRenameDeckBinding
-com/example/theapp/MainActivity.java
- com.example.theapp.MainActivity
-com/example/theapp/SignDialogFragment.java
- com.example.theapp.SignDialogFragment
+com/example/theapp/DeckBrowsingCardsActivity.java
+ com.example.theapp.DeckBrowsingCardsActivity
+com/example/theapp/StudyCardsActivity.java
+ com.example.theapp.StudyCardsActivity

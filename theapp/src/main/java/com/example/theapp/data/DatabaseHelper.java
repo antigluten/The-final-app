@@ -321,8 +321,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        int type = getType(card) + 1;
-        values.put(COLUMN_CARD_TYPE, type);
+        values.put(COLUMN_CARD_TYPE, 1);
 
         String whereClaus = "ID=?";
         String[] whereArgs = {String.valueOf(card.getId())};

@@ -3,6 +3,7 @@ package com.example.theapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -27,6 +28,8 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String TAG = "ANTIGLUTEN";
+
     Fragment deckFragment = new DeckFragment();
 //    Fragment statisticsFragment = new StatisticsFragment();
 //    Fragment profileFragment = new ProfileFragment();
@@ -107,9 +110,10 @@ public class MainActivity extends AppCompatActivity {
             });
         } else {
             dialogFragment.setOnDismissListener(v -> {
-                SignDialogFragment signDialogFragment = new SignDialogFragment();
-                signDialogFragment.setCancelable(false);
-                signDialogFragment.show(getSupportFragmentManager(), "Dialog");
+                Log.d(TAG, "onResume: logged in");
+//                SignDialogFragment signDialogFragment = new SignDialogFragment();
+//                signDialogFragment.setCancelable(false);
+//                signDialogFragment.show(getSupportFragmentManager(), "Dialog");
             });
             dialogFragment.show(getSupportFragmentManager(), "Dialog");
         }

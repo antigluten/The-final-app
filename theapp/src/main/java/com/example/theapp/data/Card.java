@@ -141,8 +141,6 @@ public class Card {
     }
 
     public String getDateAndTime() {
-//        Date date = new Date();
-//        long mill = date.getTime();
         long mill = Long.parseLong(dateCreated);
         @SuppressLint("SimpleDateFormat") DateFormat df = new SimpleDateFormat("dd:MM:yy:HH:mm:ss");
         Calendar calendar = Calendar.getInstance();

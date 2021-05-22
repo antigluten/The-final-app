@@ -1,7 +1,9 @@
 package com.example.theapp;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +21,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class SignDialogFragment extends DialogFragment {
+    private DialogInterface.OnDismissListener onDismissListener;
+
+
     private FirebaseAuth mAuth;
+    private String TAG = "ANTIGLUTEN";
 
     @NonNull
     @Override
@@ -65,15 +71,16 @@ public class SignDialogFragment extends DialogFragment {
             if (pass.length() < 8) {
                 password.setError("Invalid length of password, min is 8");
                 password.requestFocus();
-
+                return;
             }
 
             mAuth.createUserWithEmailAndPassword(mail, pass)
                     .addOnCompleteListener(task -> {
+//                        Log.d(TAG, "onCreateDialog: " + mAuth.getCurrentUser().getUid());
                         if (task.isSuccessful()) {
                             User user = new User(name, pass, mail);
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child(mAuth.getCurrentUser().getUid())
                                     .setValue(user)
                                     .addOnCompleteListener(task1 -> {
                                         if (task1.isSuccessful()) {
@@ -93,6 +100,18 @@ public class SignDialogFragment extends DialogFragment {
         });
 
         return builder.create();
+    }
+
+    public void setOnDismissListener(DialogInterface.OnDismissListener onDismissListener) {
+        this.onDismissListener = onDismissListener;
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        if (onDismissListener != null) {
+            onDismissListener.onDismiss(dialog);
+        }
     }
 
 }

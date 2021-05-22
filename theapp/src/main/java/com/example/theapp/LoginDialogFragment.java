@@ -2,28 +2,20 @@ package com.example.theapp;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.theapp.data.DatabaseHelper;
-import com.example.theapp.data.Deck;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.ArrayList;
 
 public class LoginDialogFragment extends DialogFragment {
     private DialogInterface.OnDismissListener onDismissListener;
@@ -76,16 +68,22 @@ public class LoginDialogFragment extends DialogFragment {
             mAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     dismiss();
-                }
-                else {
+                } else {
                     Toast.makeText(getContext(), "Fail to sign in", Toast.LENGTH_LONG).show();
                 }
             });
         });
 
         register.setOnClickListener(v -> {
-            dismiss();
+            SignDialogFragment signDialogFragment = new SignDialogFragment();
+            signDialogFragment.setCancelable(false);
+            signDialogFragment.show(getChildFragmentManager(), "Dialog");
+
+            signDialogFragment.setOnDismissListener(k -> {
+                dismiss();
+            });
         });
+
 
         return builder.create();
     }

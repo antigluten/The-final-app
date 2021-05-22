@@ -46,38 +46,4 @@
             android:fontFamily="@font/work_sans"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/bottomSheetChangeType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_ripple_layout"
-        android:orientation="horizontal"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="12sp"
-        android:padding="12sp">
-
-        <ImageView
-            android:layout_width="20sp"
-            android:layout_height="20sp"
-            android:layout_marginStart="10sp"
-            android:src="@drawable/ic_edit1"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15sp"
-            android:layout_marginEnd="25sp"
-            android:text="Change type"
-            android:textColor="@color/reply_black_800"
-            android:textSize="14sp"
-            android:fontFamily="@font/work_sans"/>
-
-    </LinearLayout>
-
-
-
-
 </LinearLayout>

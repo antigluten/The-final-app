@@ -136,16 +136,6 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
                 dialog.dismiss();
             });
 
-            LinearLayout changeLayout = bottomSheetView.findViewById(R.id.bottomSheetChangeType);
-            changeLayout.setOnClickListener(v -> {
-                databaseHelper.changeTypeOfCard(cards.get(position));
-
-                updateNumbers(databaseHelper);
-
-
-                dialog.dismiss();
-            });
-
             dialog.setContentView(bottomSheetView);
             dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             dialog.show();
