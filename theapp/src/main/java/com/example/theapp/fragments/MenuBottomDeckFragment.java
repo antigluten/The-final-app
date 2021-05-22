@@ -35,25 +35,22 @@ public class MenuBottomDeckFragment extends BottomSheetDialogFragment {
 
         navigationView = view.findViewById(R.id.navigation_view);
 //        navigationView.inflateMenu(R.menu.email_bottom_sheet_menu);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Toast.makeText(getContext(), "Item: " + item.toString(), Toast.LENGTH_SHORT).show();
-                switch (item.getItemId()) {
-                    case R.id.menu_delete:
-                        DatabaseHelper db = new DatabaseHelper(getContext());
-                        if (deck != null) {
-                            db.deleteDeck(getDeck());
-                            DeckFragment.updateDecks(db, getPosition());
-                            dismiss();
-                        } else {
-                            Toast.makeText(getContext(), "Null object", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                }
-                dismiss();
-                return true;
+        navigationView.setNavigationItemSelectedListener(item -> {
+            Toast.makeText(getContext(), "Item: " + item.toString(), Toast.LENGTH_SHORT).show();
+            switch (item.getItemId()) {
+                case R.id.menu_delete:
+                    DatabaseHelper db = new DatabaseHelper(getContext());
+                    if (deck != null) {
+                        db.deleteDeck(getDeck());
+                        DeckFragment.updateDecks(db, getPosition());
+                        dismiss();
+                    } else {
+                        Toast.makeText(getContext(), "Null object", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
             }
+            dismiss();
+            return true;
         });
 
 

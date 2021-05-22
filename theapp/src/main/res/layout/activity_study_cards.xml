@@ -80,7 +80,7 @@
             android:layout_gravity="center"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:textColor="@color/reply_black_800"
+            android:textColor="@color/black_800"
             android:textSize="30sp" />
 
         <LinearLayout
@@ -105,7 +105,7 @@
                 android:layout_marginStart="24sp"
                 android:fontFamily="@font/poppins"
                 android:text="New: 0"
-                android:textColor="#118ab2"/>
+                android:textColor="#118ab2" />
 
             <TextView
                 android:id="@+id/deckRelearnStudy"
@@ -124,8 +124,6 @@
                 android:fontFamily="@font/poppins"
                 android:text="Revise: 0"
                 android:textColor="#06d6a0" />
-
-
 
 
         </LinearLayout>
@@ -147,15 +145,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Again"
-            android:layout_marginEnd="180dp"
-            />
+            android:layout_marginEnd="180dp" />
 
         <Button
             android:id="@+id/dueFutureButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Got"
-            />
+            android:text="Got" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

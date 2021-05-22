@@ -1,9 +1,7 @@
 package com.example.theapp;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.theapp.data.DatabaseHelper;
@@ -41,44 +38,36 @@ public class DeckDialogFragment extends AppCompatDialogFragment implements Dialo
         Button buttonAdd = view.findViewById(R.id.dialogButtonAdd);
         Button buttonCancel = view.findViewById(R.id.dialogButtonCancel);
 
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = deckName.getText().toString().trim();
-                if (!name.isEmpty()) {
-                    DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
-                    ArrayList<Deck> list = (ArrayList<Deck>) databaseHelper.getAllDecks();
-                    boolean deckExist = true;
-                    for (Deck deck : list) {
-                        if (name.equals(deck.getName())) {
-                            deckName.requestFocus();
-                            Toast.makeText(getContext(), "You have deck with this name", Toast.LENGTH_SHORT).show();
-                            deckExist = false;
-                            break;
-                        }
+        buttonAdd.setOnClickListener(v -> {
+            String name = deckName.getText().toString().trim();
+            if (!name.isEmpty()) {
+                DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+                ArrayList<Deck> list = (ArrayList<Deck>) databaseHelper.getAllDecks();
+                boolean deckExist = true;
+                for (Deck deck : list) {
+                    if (name.equals(deck.getName())) {
+                        deckName.requestFocus();
+                        Toast.makeText(getContext(), "You have deck with this name", Toast.LENGTH_SHORT).show();
+                        deckExist = false;
+                        break;
                     }
-                    if (deckExist) {
-                        boolean success = databaseHelper.addDeck(new Deck(name));
-                        if (success) {
-                            Toast.makeText(getContext(), "Success adding the deck", Toast.LENGTH_SHORT).show();
-                            dismiss();
-                        } else {
-                            Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                } else {
-                    deckName.requestFocus();
-                    Toast.makeText(getContext(), "Enter deck name", Toast.LENGTH_SHORT).show();
                 }
+                if (deckExist) {
+                    boolean success = databaseHelper.addDeck(new Deck(name));
+                    if (success) {
+                        Toast.makeText(getContext(), "Success adding the deck", Toast.LENGTH_SHORT).show();
+                        dismiss();
+                    } else {
+                        Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            } else {
+                deckName.requestFocus();
+                Toast.makeText(getContext(), "Enter deck name", Toast.LENGTH_SHORT).show();
             }
         });
 
-        buttonCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+        buttonCancel.setOnClickListener(v -> dismiss());
 
 
         return builder.create();

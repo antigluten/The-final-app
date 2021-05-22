@@ -1,6 +1,5 @@
 package com.example.theapp.fragments;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.MenuRes;
@@ -19,7 +17,6 @@ import com.example.theapp.DeckBrowsingCardsActivity;
 import com.example.theapp.R;
 import com.example.theapp.data.Card;
 import com.example.theapp.data.DatabaseHelper;
-import com.example.theapp.data.Deck;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -46,25 +43,22 @@ public class MenuBottomCardFragment extends BottomSheetDialogFragment {
         navigationView = view.findViewById(R.id.navigation_view_card);
         navigationView.inflateMenu(R.menu.menu_bottom_card);
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Toast.makeText(getContext(), "Item: " + item.toString(), Toast.LENGTH_SHORT).show();
-                switch (item.getItemId()) {
-                    case R.id.menu_delete:
-                        DatabaseHelper db = new DatabaseHelper(getContext());
-                        if (card != null) {
-                            db.deleteCard(card);
-                            DeckBrowsingCardsActivity.deleteCard(db, getPosition());
-                            dismiss();
-                        } else {
-                            Toast.makeText(getContext(), "Null object", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                }
-                dismiss();
-                return true;
+        navigationView.setNavigationItemSelectedListener(item -> {
+            Toast.makeText(getContext(), "Item: " + item.toString(), Toast.LENGTH_SHORT).show();
+            switch (item.getItemId()) {
+                case R.id.menu_delete:
+                    DatabaseHelper db = new DatabaseHelper(getContext());
+                    if (card != null) {
+                        db.deleteCard(card);
+                        DeckBrowsingCardsActivity.deleteCard(db, getPosition());
+                        dismiss();
+                    } else {
+                        Toast.makeText(getContext(), "Null object", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
             }
+            dismiss();
+            return true;
         });
 
 

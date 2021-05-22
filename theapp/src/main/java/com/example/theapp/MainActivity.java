@@ -1,31 +1,18 @@
 package com.example.theapp;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.theapp.fragments.DeckFragment;
-import com.example.theapp.fragments.ProfileFragment;
-import com.example.theapp.fragments.StatisticsFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "ANTIGLUTEN";
@@ -67,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //            return false;
 //        });
-        
 
 
     }
@@ -85,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         Toast.makeText(
                 this,
-                "requestCode:"+requestCode+"|resultCode:"+resultCode,
+                "requestCode:" + requestCode + "|resultCode:" + resultCode,
                 Toast.LENGTH_LONG
         ).show();
         super.onActivityResult(requestCode, resultCode, data);

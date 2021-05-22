@@ -16,12 +16,12 @@
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\dialog_rename_deck.xml"
     },
     {
-        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\deck_dialog.xml",
-        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\deck_dialog.xml"
-    },
-    {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\menu_bottom_sheet_dialog_layout.xml",
         "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\menu_bottom_sheet_dialog_layout.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\deck_dialog.xml",
+        "source": "C:\\AndroidProjects\\The-final-app\\theapp\\src\\main\\res\\layout\\deck_dialog.xml"
     },
     {
         "merged": "C:\\AndroidProjects\\The-final-app\\theapp\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_browsing_cards.xml",

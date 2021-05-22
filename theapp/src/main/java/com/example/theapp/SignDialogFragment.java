@@ -3,17 +3,14 @@ package com.example.theapp;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.DialogFragment;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -38,7 +35,7 @@ public class SignDialogFragment extends DialogFragment {
 
         mAuth = FirebaseAuth.getInstance();
 
-        EditText login  = view.findViewById(R.id.dialogUsernameSignUp);
+        EditText login = view.findViewById(R.id.dialogUsernameSignUp);
         EditText password = view.findViewById(R.id.dialogPasswordSignUp);
         EditText email = view.findViewById(R.id.dialogEmailSignUp);
         Button submit = view.findViewById(R.id.dialogCardButtonAdd);
@@ -84,16 +81,15 @@ public class SignDialogFragment extends DialogFragment {
                                     .setValue(user)
                                     .addOnCompleteListener(task1 -> {
                                         if (task1.isSuccessful()) {
-                                            Toast.makeText(getContext(),"User was registered", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getContext(), "User was registered", Toast.LENGTH_SHORT).show();
                                             dismiss();
-                                        }
-                                        else {
-                                            Toast.makeText(getContext(),"Fail to register, try again!!!", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(getContext(), "Fail to register, try again!!!", Toast.LENGTH_SHORT).show();
                                         }
                                     });
 
                         } else {
-                            Toast.makeText(getContext(),"Fail to register!!!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Fail to register!!!", Toast.LENGTH_SHORT).show();
                         }
 
                     });

@@ -10,7 +10,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
 
 
         <LinearLayout
@@ -28,7 +27,7 @@
                 android:layout_marginTop="12sp"
                 android:fontFamily="@font/work_sans_bold"
                 android:text="@string/yourDecks"
-                android:textColor="@color/reply_blue_700"
+                android:textColor="@color/blue_700"
                 android:textSize="40sp" />
 
 

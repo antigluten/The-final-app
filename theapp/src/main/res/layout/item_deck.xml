@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="80sp"
@@ -9,10 +8,7 @@
     android:layout_marginEnd="8sp"
     android:clickable="true"
     android:focusable="true"
-    android:background="@drawable/custom_ripple"
-    android:transitionName="@string/email_card_detail_transition_name">
-
-
+    android:background="@drawable/custom_ripple">
 
 
     <TextView
@@ -22,7 +18,7 @@
         android:text="@string/deckName"
         android:layout_marginTop="12sp"
         android:layout_marginStart="24sp"
-        android:textColor="@color/reply_black_800"
+        android:textColor="@color/black_800"
         android:fontFamily="@font/work_sans_medium"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +32,7 @@
         android:layout_marginTop="18sp"
         android:fontFamily="@font/work_sans"
         android:text="Total: 0"
-        android:textColor="@color/reply_black_800"
+        android:textColor="@color/black_800"
         app:layout_constraintStart_toEndOf="@id/deckRevise"
         app:layout_constraintTop_toBottomOf="@+id/deckName" />
 

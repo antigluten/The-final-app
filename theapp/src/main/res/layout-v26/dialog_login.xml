@@ -14,7 +14,7 @@
         android:layout_marginTop="0dp"
         android:text="Log in"
         android:fontFamily="@font/work_sans_bold"
-        android:textColor="@color/reply_blue_700"
+        android:textColor="@color/blue_700"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

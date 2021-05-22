@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class Card {
     int id;
@@ -19,7 +18,7 @@ public class Card {
     String deck;
     long interval;
 
-    public Card(){
+    public Card() {
 
     }
 

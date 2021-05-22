@@ -49,9 +49,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
-
         </LinearLayout>
 
         <LinearLayout
@@ -76,7 +73,7 @@
                 android:layout_marginStart="24sp"
                 android:fontFamily="@font/poppins"
                 android:text="New: 0"
-                android:textColor="#118ab2"/>
+                android:textColor="#118ab2" />
 
             <TextView
                 android:id="@+id/deckReviseBrowsing"
@@ -116,7 +113,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="12dp"
             tools:ignore="RtlSymmetry"
-            tools:listitem="@layout/item_browsing_cards"/>
+            tools:listitem="@layout/item_browsing_cards" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <LinearLayout

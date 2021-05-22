@@ -1,37 +1,27 @@
 package com.example.theapp;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.theapp.data.Card;
 import com.example.theapp.data.DatabaseHelper;
-import com.example.theapp.data.Deck;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Locale;
 
 public class CardDialogFragment extends DialogFragment {
     private DialogInterface.OnDismissListener onDismissListener;
@@ -92,13 +82,10 @@ public class CardDialogFragment extends DialogFragment {
                 }
 
 
-
-
             } else if (!front.isEmpty()) {
                 cardTranslation.requestFocus();
                 Toast.makeText(getContext(), "Enter the translation", Toast.LENGTH_SHORT).show();
-            }
-            else if (!translation.isEmpty()) {
+            } else if (!translation.isEmpty()) {
                 cardFront.requestFocus();
                 Toast.makeText(getContext(), "Enter deck name", Toast.LENGTH_SHORT).show();
             } else {

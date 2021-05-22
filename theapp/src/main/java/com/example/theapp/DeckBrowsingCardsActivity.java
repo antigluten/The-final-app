@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.theapp.adapters.RecyclerViewAdapterCard;
 import com.example.theapp.data.Card;
 import com.example.theapp.data.DatabaseHelper;
-import com.example.theapp.data.Deck;
 import com.example.theapp.fragments.DeckFragment;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -47,8 +46,7 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browsing_deck);
 
-         databaseHelper = new DatabaseHelper(getBaseContext());
-
+        databaseHelper = new DatabaseHelper(getBaseContext());
 
 
         Intent intent = getIntent();
@@ -69,7 +67,7 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         floatingActionButton = findViewById(R.id.buttonBrowsing);
 
         totalTextView = findViewById(R.id.deckTotalBrowsing);
-        totalTextView.setText(getString(R.string.total) + databaseHelper.getNumberOfTotalCards(deckName));
+        totalTextView.setText("Total: " + databaseHelper.getNumberOfTotalCards(deckName));
 
         newTextView = findViewById(R.id.deckLearnBrowsing);
         newTextView.setText("New: " + databaseHelper.getNumberOfNewCards(deckName));
@@ -84,7 +82,6 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
 
         updateButtonState();
     }
-
 
 
     @SuppressLint("SetTextI18n")
@@ -141,7 +138,6 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
             dialog.show();
 
 
-
         });
 
 
@@ -185,7 +181,7 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
         adapterCard.updateCardList(cards);
         adapterCard.notifyItemRemoved(position);
         long total = databaseHelper.getNumberOfTotalCards(deckName);
-        databaseHelper.refreshTotal(deckName ,total);
+        databaseHelper.refreshTotal(deckName, total);
         totalTextView.setText(getString(R.string.total) + databaseHelper.getNumberOfTotalCards(deckName));
         updateButtonState();
     }
@@ -198,7 +194,7 @@ public class DeckBrowsingCardsActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     public void updateNumbers(DatabaseHelper databaseHelper) {
-        totalTextView.setText(getString(R.string.total) + databaseHelper.getNumberOfTotalCards(deckName));
+        totalTextView.setText("Total: " + databaseHelper.getNumberOfTotalCards(deckName));
         newTextView.setText("New: " + databaseHelper.getNumberOfNewCards(deckName));
         learnTextView.setText("Learn: " + databaseHelper.getNumberOfLearnCards(deckName));
         reviseTextView.setText("Revise: " + databaseHelper.getNumberOfReviseCards(deckName));

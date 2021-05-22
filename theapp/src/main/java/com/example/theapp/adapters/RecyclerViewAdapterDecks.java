@@ -1,5 +1,6 @@
 package com.example.theapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,14 +38,15 @@ public class RecyclerViewAdapterDecks extends RecyclerView.Adapter<RecyclerViewA
         return new DeckViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull DeckViewHolder holder, int position) {
         Deck deck = decks.get(position);
         holder.name.setText(deck.getName());
-        holder.numberToRevise.setText(String.valueOf("Revise: " + databaseHelper.getNumberOfReviseCards(deck.getName())));
-        holder.numberNewCards.setText(String.valueOf("New: " + databaseHelper.getNumberOfNewCards(deck.getName())));
-        holder.totalNumberOfCard.setText(String.valueOf("Total: " + databaseHelper.getNumberOfTotalCards(deck.getName())));
-        holder.numberToRelearn.setText(String.valueOf("Learn: " + databaseHelper.getNumberOfLearnCards(deck.getName())));
+        holder.numberToRevise.setText("Revise: " + databaseHelper.getNumberOfReviseCards(deck.getName()));
+        holder.numberNewCards.setText("New: " + databaseHelper.getNumberOfNewCards(deck.getName()));
+        holder.totalNumberOfCard.setText("Total: " + databaseHelper.getNumberOfTotalCards(deck.getName()));
+        holder.numberToRelearn.setText("Learn: " + databaseHelper.getNumberOfLearnCards(deck.getName()));
 
     }
 
@@ -73,37 +75,30 @@ public class RecyclerViewAdapterDecks extends RecyclerView.Adapter<RecyclerViewA
             numberNewCards = itemView.findViewById(R.id.deckLearn);
             numberToRevise = itemView.findViewById(R.id.deckRevise);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (listener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            listener.onItemClick(position);
-                        }
+            itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(position);
                     }
                 }
             });
 
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    if (onItemLongClickListener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            onItemLongClickListener.onItemLongClickListener(position);
-                            return true;
-                        }
+            itemView.setOnLongClickListener(v -> {
+                if (onItemLongClickListener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        onItemLongClickListener.onItemLongClickListener(position);
+                        return true;
                     }
-                    return false;
                 }
+                return false;
             });
 
 
         }
 
     }
-
 
 
     public void setOnItemClickListener(RecyclerViewAdapterDecks.OnItemClickListener listener) {

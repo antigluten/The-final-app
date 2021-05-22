@@ -1,7 +1,6 @@
 package com.example.theapp.adapters;
 
 import android.content.Context;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.theapp.R;
 import com.example.theapp.data.Card;
@@ -39,8 +37,7 @@ public class MyAdapter extends ArrayAdapter<Card> {
 
             viewHolder = new MyViewHolder(view);
             view.setTag(viewHolder);
-        }
-        else {
+        } else {
             viewHolder = (MyViewHolder) view.getTag();
         }
 
@@ -49,7 +46,8 @@ public class MyAdapter extends ArrayAdapter<Card> {
         viewHolder.translation.setText(card.getTranslationWord());
         if (card.getContext().isEmpty()) {
             viewHolder.context.setText("");
-        } {
+        }
+        {
             viewHolder.context.setText(card.getContext());
         }
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottomSheetContainerDeck"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -14,9 +13,9 @@
         android:padding="16sp"
         android:text="CardName"
         android:fontFamily="@font/work_sans_medium"
-        android:textColor="@color/reply_black_800"
+        android:textColor="@color/black_800"
         android:textSize="24sp"
-        android:gravity="center"/>
+        android:gravity="center" />
 
     <LinearLayout
         android:id="@+id/bottomSheetDelete"
@@ -41,11 +40,10 @@
             android:layout_marginStart="15sp"
             android:layout_marginEnd="25sp"
             android:text="Delete the card"
-            android:textColor="@color/reply_black_800"
+            android:textColor="@color/black_800"
             android:textSize="14sp"
-            android:fontFamily="@font/work_sans"/>
+            android:fontFamily="@font/work_sans" />
     </LinearLayout>
-
 
 
 </LinearLayout>

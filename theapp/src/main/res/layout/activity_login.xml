@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -17,7 +16,7 @@
             android:fontFamily="@font/poppins"
             android:text="Log in"
             android:layout_marginTop="25sp"
-            android:textColor="@color/reply_black_800"
+            android:textColor="@color/black_800"
             android:textSize="35sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +32,7 @@
             android:background="@drawable/deck"
             android:drawableStart="@drawable/ic_profile"
             android:drawablePadding="10dp"
-            android:textColorHint="@color/reply_black_800"
+            android:textColorHint="@color/black_800"
             android:ems="10"
             android:paddingEnd="12dp"
             android:fontFamily="@font/futura_medium"
@@ -49,7 +48,7 @@
         <EditText
             android:id="@+id/profileLoginPassword"
             android:layout_width="270dp"
-            android:textColorHint="@color/reply_black_800"
+            android:textColorHint="@color/black_800"
             android:layout_height="50dp"
             android:layout_marginTop="18sp"
             android:background="@drawable/deck"
@@ -87,7 +86,7 @@
             android:textSize="16dp"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/poppins"
-            android:textColor="@color/reply_black_800"
+            android:textColor="@color/black_800"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.75"
@@ -99,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible"
-        android:indeterminateTint="@color/reply_black_800"
+        android:indeterminateTint="@color/black_800"
         android:max="5000"
         android:indeterminateDrawable="@drawable/shape_progress_bar"
         android:background="@drawable/progress_bar_background"

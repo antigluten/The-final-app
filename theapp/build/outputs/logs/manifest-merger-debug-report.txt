@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-28:12
+ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-30:12
 MERGED from [androidx.databinding:viewbinding:4.1.3] C:\Users\Андрей\.gradle\caches\transforms-2\files-2.1\ec19ce0aafa0a7bbf7a701a761ec4419\jetified-viewbinding-4.1.3\AndroidManifest.xml:17:1-22:12
 MERGED from [com.wajahatkarim3.EasyFlipView:EasyFlipView:3.0.0] C:\Users\Андрей\.gradle\caches\transforms-2\files-2.1\3d49dc5791815700b4eb5dddd96abcd4\jetified-EasyFlipView-3.0.0\AndroidManifest.xml:2:1-11:12
 MERGED from [eu.davidea:flipview:1.2.0] C:\Users\Андрей\.gradle\caches\transforms-2\files-2.1\8ef0d908d69b2dbadb784bce89ff1b1e\jetified-flipview-1.2.0\AndroidManifest.xml:2:1-11:12
@@ -70,25 +70,25 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Андрей\
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] C:\Users\Андрей\.gradle\caches\transforms-2\files-2.1\afb782e07d4bbc8533901393806316b2\lifecycle-livedata-core-2.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\Андрей\.gradle\caches\transforms-2\files-2.1\367920e8cb183d2256bf124c7a7d2198\core-runtime-2.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Андрей\.gradle\caches\transforms-2\files-2.1\24e648294cf77a46049257c1d33eef66\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-30:12
 	package
 		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:3:5-33
 		INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml
 		INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml
-		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-28:12
+		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-30:12
 		INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml
-		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-28:12
+		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:1-30:12
 		INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:5:5-26:19
+ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:5:5-28:19
 MERGED from [com.github.whilu.CustomButton:library:1.0.0] C:\Users\Андрей\.gradle\caches\transforms-2\files-2.1\f5d6f8ea6635d19df7df207dd1ef7715\jetified-library-1.0.0\AndroidManifest.xml:11:5-14:19
 MERGED from [com.github.whilu.CustomButton:library:1.0.0] C:\Users\Андрей\.gradle\caches\transforms-2\files-2.1\f5d6f8ea6635d19df7df207dd1ef7715\jetified-library-1.0.0\AndroidManifest.xml:11:5-14:19
 MERGED from [com.google.firebase:firebase-auth:20.0.4] C:\Users\Андрей\.gradle\caches\transforms-2\files-2.1\158d14ef1c34ba968897e3f848642edd\jetified-firebase-auth-20.0.4\AndroidManifest.xml:26:5-81:19
@@ -128,11 +128,11 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\А
 	android:roundIcon
 		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:9:9-54
 	android:icon
-		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:7:9-43
+		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:7:9-40
 	android:allowBackup
 		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:6:9-35
 	android:theme
-		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:11:9-43
+		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:11:9-53
 activity#com.example.theapp.CardTest
 ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:12:9-46
 	android:name
@@ -152,25 +152,25 @@ ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:
 	android:name
 		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:17:27-74
 activity#com.example.theapp.DeckBrowsingCardsActivity
-ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:20:9-62
+ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:20:9-63
 	android:name
 		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:20:19-60
 activity#com.example.theapp.SignUpActivity
-ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:21:9-22:81
+ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:21:9-23:50
 	android:theme
-		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:22:44-78
+		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:23:13-47
 	android:name
 		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:22:13-43
 activity#com.example.theapp.LogInActivity
-ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:23:9-24:80
+ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:24:9-26:50
 	android:theme
-		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:24:43-77
+		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:26:13-47
 	android:name
-		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:24:13-42
+		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:25:13-42
 activity#com.example.theapp.StudyCardsActivity
-ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:25:9-55
+ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:27:9-56
 	android:name
-		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:25:19-53
+		ADDED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml:27:19-53
 uses-sdk
 INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\AndroidProjects\The-final-app\theapp\src\main\AndroidManifest.xml

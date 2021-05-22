@@ -1,24 +1,17 @@
 package com.example.theapp;
 
 import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 
@@ -34,7 +27,7 @@ public class SignUpActivity extends Activity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        EditText login  = findViewById(R.id.profileName);
+        EditText login = findViewById(R.id.profileName);
         EditText password = findViewById(R.id.profilePassword);
         EditText email = findViewById(R.id.profileEmail);
         Button submit = findViewById(R.id.profileSubmit);
@@ -81,18 +74,17 @@ public class SignUpActivity extends Activity {
                                     .setValue(user)
                                     .addOnCompleteListener(task1 -> {
                                         if (task1.isSuccessful()) {
-                                            Toast.makeText(getBaseContext(),"User was registered", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getBaseContext(), "User was registered", Toast.LENGTH_SHORT).show();
                                             progressBar.setVisibility(View.INVISIBLE);
                                             finish();
-                                        }
-                                        else {
-                                            Toast.makeText(getBaseContext(),"Fail to register, try again!!!", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(getBaseContext(), "Fail to register, try again!!!", Toast.LENGTH_SHORT).show();
                                             progressBar.setVisibility(View.INVISIBLE);
                                         }
                                     });
 
                         } else {
-                            Toast.makeText(getBaseContext(),"Fail to register!!!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getBaseContext(), "Fail to register!!!", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);
                         }
 

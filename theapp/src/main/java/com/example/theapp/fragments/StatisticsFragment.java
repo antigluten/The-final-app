@@ -1,12 +1,11 @@
 package com.example.theapp.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.theapp.R;
 
@@ -20,7 +19,6 @@ public class StatisticsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_statistics, container, false);
-
 
 
         return rootView;

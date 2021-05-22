@@ -4,48 +4,24 @@
     <style name="white" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/white</item>
     </style>
-    <style name="noAnimTheme" parent="Theme.Reply">
+
+    <style name="noAnimTheme" parent="Theme.FlashItStandard">
         <item name="android:windowAnimationStyle">@null</item>
 
     </style>
 
-    
     <style name="progressBarCustom" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:colorAccent">#0099ff</item>
-    </style>
-
-
-    <!--Components-->
-
-    <style name="Widget.Reply.NavigationView" parent="Widget.MaterialComponents.NavigationView">
-        <!--Remove any scrim insets applied by NavigationView for system bars-->
-        <item name="insetForeground">@android:color/transparent</item>
-        <!--Set the background color of NavigationView-->
-        <item name="android:background">@android:color/transparent</item>
-        <item name="elevation">0dp</item>
-        <item name="itemTextAppearance">?attr/textAppearanceBody2</item>
-        <item name="itemTextColor">@color/color_on_surface_emphasis_medium</item>
-        <item name="itemIconTint">@color/color_on_surface_emphasis_medium</item>
-    </style>
-
-    <style name="Widget.Reply.Chip.Entry" parent="Widget.MaterialComponents.Chip.Entry">
-        <item name="closeIconSize">0dp</item>
-        <item name="closeIconEnabled">false</item>
-        <item name="chipIcon">@drawable/avatar_none</item>
-        <item name="chipIconSize">@dimen/chip_icon_diameter</item>
-        <item name="chipStartPadding">0dp</item>
-        <item name="android:checkable">false</item>
     </style>
 
     <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowBackground">@drawable/dialog_bg</item>
     </style>
 
-
-
     <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.MaterialComponents">
         <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
     </style>
+
     <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">25dp</item>

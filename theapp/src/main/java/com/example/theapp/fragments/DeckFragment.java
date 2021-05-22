@@ -1,6 +1,5 @@
 package com.example.theapp.fragments;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,7 +19,6 @@ import com.example.theapp.DeckBrowsingCardsActivity;
 import com.example.theapp.DeckDialogFragment;
 import com.example.theapp.R;
 import com.example.theapp.adapters.RecyclerViewAdapterDecks;
-import com.example.theapp.data.Card;
 import com.example.theapp.data.DatabaseHelper;
 import com.example.theapp.data.Deck;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -125,8 +122,6 @@ public class DeckFragment extends Fragment {
                 dialog.setContentView(bottomSheetView);
                 dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
                 dialog.show();
-            } else {
-
             }
 
 
@@ -141,7 +136,7 @@ public class DeckFragment extends Fragment {
         adapterDecks.notifyDataSetChanged();
     }
 
-    public void updateDecks(int arraySize){
+    public void updateDecks(int arraySize) {
         DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
         decks = (ArrayList<Deck>) databaseHelper.getAllDecks();
         adapterDecks.updateDeckList(decks);
