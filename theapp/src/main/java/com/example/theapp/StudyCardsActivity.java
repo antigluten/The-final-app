@@ -102,7 +102,27 @@ public class StudyCardsActivity extends AppCompatActivity {
         }
         databaseHelper.increaseTypeOfCard(card);
         cards.remove(0);
-        updateNumbers(databaseHelper);
+        totalNumber.setText("Total: " + cards.size());
+        int learn = 0, revise = 0, newCards = 0;
+        for (int i = 0; i < cards.size(); i++) {
+            switch (cards.get(i).getType()) {
+                case 0:
+                    newCards++;
+                    break;
+                case 1:
+                    learn++;
+                    break;
+                case 2:
+                    revise++;
+                    break;
+            }
+        }
+        newNumber.setText("New: " + newCards);
+        againNumber.setText("Again: " + learn);
+        reviseNumber.setText("Revise: " + revise);
+
+
+//        updateNumbers(databaseHelper);
         if (cards.size() != 0) {
             setNextView();
         } else {
