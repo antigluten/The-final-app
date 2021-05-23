@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/blue_50_alpha_060">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragmentContainerView"
@@ -21,12 +22,12 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/calibri"
             android:maxWidth="350dp"
-            android:maxLines="3"
+            android:maxLines="5"
             android:padding="12dp"
             android:paddingStart="30dp"
             android:text=""
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/flipView"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -35,28 +36,27 @@
 
         <eu.davidea.flipview.FlipView
             android:id="@+id/flipView"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
+            android:layout_width="281dp"
+            android:layout_height="250dp"
             android:clickable="true"
+            android:focusable="true"
             android:inAnimation="@anim/grow_from_middle_x_axis"
             android:outAnimation="@anim/shrink_to_middle_x_axis"
             app:animationDuration="100"
-            app:checked="false"
 
+            app:checked="false"
             app:enableInitialAnimation="false"
             app:frontBackground="@drawable/rectangle"
             app:frontLayout="@layout/layout_card_front"
-            app:rearLayout="@layout/layout_card_opporsite"
-            app:rearBackground="@drawable/rectangle"
-
-
             app:layout_constraintBottom_toBottomOf="parent"
+
+
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.843"
-            android:focusable="true" />
+            app:layout_constraintVertical_bias="0.767"
+            app:rearBackground="@drawable/rectangle"
+            app:rearLayout="@layout/layout_card_opporsite" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
